@@ -2,12 +2,33 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      BTCPrice: 0
+    }
+  }
+
+  componentDidMount() {
+    this.fetchBTCPrice()
+  }
+
+  fetchBTCPrice() {
+    return fetch('https://api.coindesk.com/v1/bpi/currentprice.json')
+      .then(response => response.json())
+      .then(responseJson => {
+        this.setState({ BTCPrice: responseJson['bpi']['USD']['rate'] });
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  }
+
   render() {
     return (
       <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
+        <Text>Price of BTC is:</Text>
+        <Text>${ this.state.BTCPrice }</Text>
       </View>
     );
   }
