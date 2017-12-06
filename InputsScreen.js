@@ -6,34 +6,9 @@ export default class InputsScreen extends React.Component {
     super(props);
 
     this.state = {
-      currentBTCPrice: '0',
       purchasedBTCAmount: '0',
       purchasedBTCPrice: '0',
     }
-  }
-
-  componentDidMount() {
-    this.fetchCurrentBTCPrice()
-  }
-
-  fetchCurrentBTCPrice() {
-    return fetch('https://api.coindesk.com/v1/bpi/currentprice.json')
-      .then(response => response.json())
-      .then(responseJson => {
-        this.setState({ currentBTCPrice: parseFloat(responseJson['bpi']['USD']['rate_float']).toFixed(2) });
-      })
-      .catch(error => {
-        console.error(error);
-      });
-  }
-
-  calculateDiff() {
-    return (
-      (
-        parseFloat(this.state.currentBTCPrice).toFixed(2) -
-        parseFloat(this.state.purchasedBTCPrice
-      ).toFixed(2)) * this.state.purchasedBTCAmount
-    ).toFixed(2);
   }
 
   updateAmountInput(purchasedBTCAmount) {
@@ -49,9 +24,6 @@ export default class InputsScreen extends React.Component {
 
     return (
       <View style={styles.container}>
-        <Text>Price of BTC is:</Text>
-        <Text>${ this.state.currentBTCPrice }</Text>
-
         <Text>How many BTC did you purchase?</Text>
         <TextInput
           style={styles.input}
@@ -69,12 +41,12 @@ export default class InputsScreen extends React.Component {
           onChangeText={ input => this.updatePriceInput(input) }
         />
 
-        <Text>You are up: </Text>
-        <Text>${ this.calculateDiff() }</Text>
-
         <Button
-          title="Home"
-          onPress={ () => navigate('Home') }
+          title="Submit"
+          onPress={ () => navigate('Home', {
+            purchasedBTCAmount: this.state.purchasedBTCAmount,
+            purchasedBTCPrice: this.state.purchasedBTCPrice
+          }) }
         />
       </View>
     );

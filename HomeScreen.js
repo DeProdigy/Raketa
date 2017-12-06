@@ -5,10 +5,12 @@ export default class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
 
+    const params = this.props.navigation.state.params ? this.props.navigation.state.params : {};
+
     this.state = {
       currentBTCPrice: '0',
-      purchasedBTCAmount: '0',
-      purchasedBTCPrice: '0',
+      purchasedBTCAmount: params.purchasedBTCAmount || '0',
+      purchasedBTCPrice: params.purchasedBTCPrice || '0',
     }
   }
 
@@ -40,42 +42,16 @@ export default class HomeScreen extends React.Component {
     ).toFixed(2);
   }
 
-  updateAmountInput(purchasedBTCAmount) {
-    this.setState({ purchasedBTCAmount: purchasedBTCAmount })
-  }
-
-  updatePriceInput(purchasedBTCPrice) {
-    this.setState({ purchasedBTCPrice: purchasedBTCPrice})
-  }
-
   render() {
     const { navigate } = this.props.navigation;
 
     return (
       <View style={styles.container}>
-        <Text>Price of BTC is:</Text>
-        <Text>${ this.state.currentBTCPrice }</Text>
-
-        <Text>How many BTC did you purchase?</Text>
-        <TextInput
-          style={styles.input}
-          keyboardType='numeric'
-          placeholder='0.00'
-          value={ this.state.purchasedBTCAmount }
-          onChangeText={ input => this.updateAmountInput(input) }
-        />
-        <Text>At what price $$$?</Text>
-        <TextInput
-          style={styles.input}
-          keyboardType='numeric'
-          placeholder='0.00'
-          value={ this.state.purchasedBTCPrice }
-          onChangeText={ input => this.updatePriceInput(input) }
-        />
-
         <Text>You are up: </Text>
         <Text>${ this.calculateDiff() }</Text>
 
+        <Text>Price of BTC is:</Text>
+        <Text>${ this.state.currentBTCPrice }</Text>
 
         <Button
           title="Inputs"
