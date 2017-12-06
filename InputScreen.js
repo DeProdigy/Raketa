@@ -1,27 +1,29 @@
 import React from 'react';
 import { StyleSheet, Text, TextInput, Button, View } from 'react-native';
 
-export default class InputsScreen extends React.Component {
+export default class InputScreen extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      purchasedBTCAmount: '0',
-      purchasedBTCPrice: '0',
+      amount: '0',
+      price: '0',
     }
   }
 
-  updateAmountInput(purchasedBTCAmount) {
-    this.setState({ purchasedBTCAmount: purchasedBTCAmount })
+  updateAmountInput(amount) {
+    this.setState({ amount: amount })
   }
 
-  updatePriceInput(purchasedBTCPrice) {
-    this.setState({ purchasedBTCPrice: purchasedBTCPrice})
+  updatePriceInput(price) {
+    this.setState({ price: price})
+  }
+
+  handleSubmit() {
+    this.props.addTransaction(this.state.amount, this.state.price)
   }
 
   render() {
-    const { navigate } = this.props.navigation;
-
     return (
       <View style={styles.container}>
         <Text>How many BTC did you purchase?</Text>
@@ -29,7 +31,7 @@ export default class InputsScreen extends React.Component {
           style={styles.input}
           keyboardType='numeric'
           placeholder='0.00'
-          value={ this.state.purchasedBTCAmount }
+          value={ this.state.amount }
           onChangeText={ input => this.updateAmountInput(input) }
         />
         <Text>At what price $$$?</Text>
@@ -37,16 +39,13 @@ export default class InputsScreen extends React.Component {
           style={styles.input}
           keyboardType='numeric'
           placeholder='0.00'
-          value={ this.state.purchasedBTCPrice }
+          value={ this.state.price }
           onChangeText={ input => this.updatePriceInput(input) }
         />
 
         <Button
           title="Submit"
-          onPress={ () => navigate('Home', {
-            purchasedBTCAmount: this.state.purchasedBTCAmount,
-            purchasedBTCPrice: this.state.purchasedBTCPrice
-          }) }
+          onPress={ () => this.props.addTransaction(this.state.amount, this.state.price) }
         />
       </View>
     );
