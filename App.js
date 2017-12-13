@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, TextInput, Button, View } from 'react-native';
+import { StyleSheet, Text, TextInput, Button, View, FlatList } from 'react-native';
 import InputScreen from './InputScreen';
 
 export default class App extends React.Component {
@@ -37,13 +37,13 @@ export default class App extends React.Component {
     this.state.transactions.forEach((transaction) => {
       delta += (this.state.currentBTCPrice * transaction.amount) - (transaction.amount * transaction.price);
     })
-    
+
     return parseFloat(delta).toFixed(2);
   }
 
   addTransaction(amount, price) {
-    let newTransaction = { amount: parseFloat(amount), price: parseFloat(price).toFixed(2) };
-    this.setState( { transactions: this.state.transactions.concat([newTransaction]) } );
+    let newTransaction = { amount: parseFloat(amount), price: parseFloat(price).toFixed(2) || 0 };
+    this.setState( { transactions: this.state.transactions.concat([newTransaction]) } || 0 );
     this.toggleInputScreen();
   }
 
