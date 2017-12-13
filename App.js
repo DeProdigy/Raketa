@@ -42,7 +42,7 @@ export default class App extends React.Component {
   }
 
   addTransaction(amount, price, ticker) {
-    let newTransaction = { amount: parseFloat(amount), price: parseFloat(price).toFixed(2) || 0, ticker: ticker };
+    let newTransaction = { amount: parseFloat(amount), price: parseFloat(price).toFixed(2) || 0, ticker: ticker, key: this.state.transactions.length };
     this.setState( { transactions: this.state.transactions.concat([newTransaction]) } || 0 );
     this.toggleInputScreen();
   }
@@ -64,6 +64,18 @@ export default class App extends React.Component {
 
           <Text>Price of BTC is:</Text>
           <Text>${ this.state.currentBTCPrice }</Text>
+
+          <Text>Transactions:</Text>
+          <FlatList
+            data={this.state.transactions}
+            renderItem={({item}) =>
+              <View>
+                <Text>{item.ticker}</Text>
+                <Text>{item.amount}</Text>
+                <Text>{item.price}</Text>
+              </View>
+            }
+          />
 
           <Button
             title='Add Transaction'
@@ -89,5 +101,16 @@ const styles = StyleSheet.create({
     height: 50,
     width: '100%',
     padding: 10,
+  },
+  listItem: {
+    backgroundColor: '#000',
+    padding: 10,
+    borderColor: '#000',
+    borderWidth: 1,
+    height: '100%',
+    width: '100%',
+  },
+  listItemText: {
+    color: '#FFF',
   }
 });

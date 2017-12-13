@@ -8,7 +8,7 @@ export default class InputScreen extends React.Component {
     this.state = {
       amount: '0',
       price: '0',
-      ticker: '',
+      ticker: null,
       tickers: [
         'BTC',
         'ETH',
@@ -30,7 +30,7 @@ export default class InputScreen extends React.Component {
   }
 
   render() {
-    let serviceItems = this.state.tickers.map( (s, i) => {
+    let serviceItems = this.state.tickers.map((s, i) => {
         return <Picker.Item key={i} value={s} label={s} />
     });
 
@@ -40,8 +40,7 @@ export default class InputScreen extends React.Component {
         <Picker
           style={styles.picker}
           selectedValue={this.state.ticker}
-          onValueChange={(itemValue, itemIndex) => this.setState({ticker: itemValue})}
-          enabled={true}>
+          onValueChange={(itemValue) => this.setState({ticker: itemValue})}>
           {serviceItems}
         </Picker>
 
