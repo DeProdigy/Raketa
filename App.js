@@ -41,8 +41,8 @@ export default class App extends React.Component {
     return parseFloat(delta).toFixed(2);
   }
 
-  addTransaction(amount, price) {
-    let newTransaction = { amount: parseFloat(amount), price: parseFloat(price).toFixed(2) || 0 };
+  addTransaction(amount, price, ticker) {
+    let newTransaction = { amount: parseFloat(amount), price: parseFloat(price).toFixed(2) || 0, ticker: ticker };
     this.setState( { transactions: this.state.transactions.concat([newTransaction]) } || 0 );
     this.toggleInputScreen();
   }
