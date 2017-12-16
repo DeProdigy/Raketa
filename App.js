@@ -1,21 +1,10 @@
 import React from 'react';
 import { StyleSheet, Text, TextInput, Button, View, FlatList } from 'react-native';
-import InputScreen from './InputScreen';
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      showInputs: false,
-      currentBTCPrice: 0,
-      transactions: [],
-    }
   }
-
-  static navigationOptions = {
-    title: 'Welcome',
-  };
 
   componentDidMount() {
     this.fetchCurrentBTCPrice()
@@ -32,58 +21,12 @@ export default class App extends React.Component {
       });
   }
 
-  calculateDiff() {
-    let delta = 0;
-    this.state.transactions.forEach((transaction) => {
-      delta += (this.state.currentBTCPrice * transaction.amount) - (transaction.amount * transaction.price);
-    })
-
-    return parseFloat(delta).toFixed(2);
-  }
-
-  addTransaction(amount, price, ticker) {
-    let newTransaction = { amount: parseFloat(amount), price: parseFloat(price).toFixed(2) || 0, ticker: ticker, key: this.state.transactions.length };
-    this.setState( { transactions: this.state.transactions.concat([newTransaction]) } || 0 );
-    this.toggleInputScreen();
-  }
-
-  toggleInputScreen() {
-    this.setState({ showInputs: !this.state.showInputs });
-  }
-
   render() {
-    if (this.state.showInputs) {
-      return (
-        <InputScreen addTransaction={ this.addTransaction.bind(this) }/>
-      );
-    } else {
-      return (
-        <View style={styles.container}>
-          <Text>You are up: </Text>
-          <Text>${ this.calculateDiff() }</Text>
-
-          <Text>Price of BTC is:</Text>
-          <Text>${ this.state.currentBTCPrice }</Text>
-
-          <Text>Transactions:</Text>
-          <FlatList
-            data={this.state.transactions}
-            renderItem={({item}) =>
-              <View>
-                <Text>{item.ticker}</Text>
-                <Text>{item.amount}</Text>
-                <Text>{item.price}</Text>
-              </View>
-            }
-          />
-
-          <Button
-            title='Add Transaction'
-            onPress={ () => this.toggleInputScreen() }
-          />
-        </View>
-      );
-    }
+    return (
+      <View style={styles.container}>
+          <Text>You are here</Text>
+      </View>
+    );
   }
 }
 
@@ -95,22 +38,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     padding: 50,
   },
-  input: {
-    borderColor: '#000',
-    borderWidth: 1,
-    height: 50,
-    width: '100%',
-    padding: 10,
-  },
-  listItem: {
-    backgroundColor: '#000',
-    padding: 10,
-    borderColor: '#000',
-    borderWidth: 1,
-    height: '100%',
-    width: '100%',
-  },
-  listItemText: {
-    color: '#FFF',
-  }
 });
