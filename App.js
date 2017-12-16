@@ -58,14 +58,20 @@ export default class App extends React.Component {
           <View style={styles.container}>
               <FlatList
                   data={this.state.coinMarketcapData}
-                  renderItem={({item}) =>
+                  renderItem={({item, index}) =>
                       <View style={styles.listCell}>
+                          <Text>
+                              #{index + 1}
+                          </Text>
                           <Image
-                              style={{width: 10, height: 10}}
+                              style={styles.listCellImage}
                               source={{uri: this.coinImage(item)}}
                           />
-                          <Text>
-                              {item.symbol} ${item.price_usd}
+                          <Text style={styles.listCellInfo}>
+                              {item.symbol}
+                          </Text>
+                          <Text style={styles.listCellInfo}>
+                              ${item.price_usd}
                           </Text>
                       </View>
                   }
@@ -89,7 +95,19 @@ const styles = StyleSheet.create({
     padding: 50,
   },
   listCell: {
+    flexWrap: 'wrap',
+    alignItems: 'flex-start',
+    flexDirection:'row',
     width: '100%',
     height: 30,
-  }
+    padding: 20,
+  },
+  listCellImage: {
+    width: 20,
+    height: 20,
+    marginLeft: 20,
+  },
+  listCellInfo: {
+    marginLeft: 20,
+  },
 });
