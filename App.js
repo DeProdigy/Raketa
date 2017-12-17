@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, FlatList, Image } from 'react-native';
+import { View, Text } from 'react-native';
 
 import styles from './styles/MainStyles';
 import CoinList from './CoinList';
