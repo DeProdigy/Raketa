@@ -14,6 +14,7 @@ export default class CoinList extends React.Component {
       sortByMarketCapAscending: true,
       sortByPriceAscending: true,
       sortByChangeAscending: true,
+      sortByVolumeAscending: true,
     }
   }
 
@@ -123,6 +124,25 @@ export default class CoinList extends React.Component {
     });
   }
 
+  sortByVolume() {
+    let sortedList;
+
+    if (this.state.sortByVolumeAscending) {
+      sortedList = this.state.coinMarketcapData.sort(function(a, b) {
+        return parseFloat(a['24h_volume_usd']) - parseFloat(b['24h_volume_usd']);
+      });
+    } else {
+      sortedList = this.state.coinMarketcapData.sort(function(a, b) {
+        return parseFloat(b['24h_volume_usd']) - parseFloat(a['24h_volume_usd']);
+      });
+    }
+
+    this.setState({
+      coinMarketcapData: sortedList,
+      sortByVolumeAscending: !this.state.sortByVolumeAscending,
+    });
+  }
+
   render() {
     return (
         <View style={styles.container}>
@@ -144,6 +164,11 @@ export default class CoinList extends React.Component {
             <Button
                 title='Change'
                 onPress={this.sortByChange.bind(this)}
+            />
+
+            <Button
+                title='Volume'
+                onPress={this.sortByVolume.bind(this)}
             />
 
             <FlatList
@@ -172,6 +197,9 @@ export default class CoinList extends React.Component {
                         </Text>
                         <Text style={styles.listCellInfo}>
                             {item.percent_change_24h}%
+                        </Text>
+                        <Text style={styles.listCellInfo}>
+                            ${item['24h_volume_usd']}
                         </Text>
                     </View>
                 }
