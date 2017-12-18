@@ -9,7 +9,7 @@ export default class CoinListCell extends React.Component {
 
     this.state = {
       item: this.props.item,
-      index: this.props.index,
+      coinMarketcapData: this.props.coinMarketcapData,
       cryptoCompareData: this.props.cryptoCompareData,
     }
   }
@@ -30,7 +30,7 @@ export default class CoinListCell extends React.Component {
     return (
         <View style={styles.listCell}>
             <Text>
-                #{this.state.index + 1}
+                #{this.state.coinMarketcapData.indexOf(this.state.item) + 1}
             </Text>
             <Image
                 style={styles.listCellImage}

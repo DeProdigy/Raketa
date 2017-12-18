@@ -167,11 +167,11 @@ export default class CoinList extends React.Component {
                 renderItem={({item, index}) =>
                     <CoinListCell
                         item={item}
-                        index={index}
+                        coinMarketcapData={this.state.coinMarketcapData}
                         cryptoCompareData={this.state.cryptoCompareData}
                     />
                 }
-                keyExtractor={(item, index) => item.name}
+                keyExtractor={(item, index) => item.id}
             />
         </View>
     );
