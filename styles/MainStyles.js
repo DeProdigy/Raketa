@@ -21,4 +21,9 @@ export default styles = StyleSheet.create({
   listCellInfo: {
     marginLeft: 20,
   },
+  button: {
+    width: 200,
+    height: 20,
+    backgroundColor: '#000'
+  }
 });
