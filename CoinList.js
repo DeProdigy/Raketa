@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import { View, Text, Button, FlatList } from 'react-native';
 
@@ -8,7 +9,6 @@ import CoinListCell from './CoinListCell';
 export default class CoinList extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
       cryptoCompareData: this.props.cryptoCompareData,
       coinMarketcapData: this.props.coinMarketcapData,
