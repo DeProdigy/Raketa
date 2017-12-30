@@ -10,7 +10,8 @@
     "react-native/no-color-literals": 2,
     "import/no-unresolved": [
       2, { "caseSensitive": false }
-    ]
+    ],
+    "no-console": 0
   },
   "plugins": [
     "react",
