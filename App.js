@@ -1,7 +1,6 @@
 import { TabNavigator } from 'react-navigation';
-
-import Top100Screen from './Top100Screen';
-import FavoritesScreen from './FavoritesScreen';
+import Top100Screen from './components/Top100Screen';
+import FavoritesScreen from './components/FavoritesScreen';
 
 const App = TabNavigator({
   Top100: { screen: Top100Screen },
