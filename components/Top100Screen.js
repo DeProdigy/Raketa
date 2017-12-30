@@ -1,11 +1,16 @@
-import React from 'react';
-import { View, Text } from 'react-native';
-
-import styles from './styles/MainStyles';
+import React, { Component } from 'react';
+import {View, Text} from 'react-native';
+import top100ScreenStyles from '../styles/Top100ScreenStyles';
+import coinListStyles from '../styles/CoinListStyles';
 import CoinList from './CoinList';
 
 
-export default class Top100Screen extends React.Component {
+export default class Top100Screen extends Component {
+
+  static navigationOptions = {
+    tabBarLabel: 'Top100',
+  };
+
   constructor(props) {
     super(props);
 
@@ -16,10 +21,6 @@ export default class Top100Screen extends React.Component {
       coinMarketcapData: [],
     }
   }
-
-  static navigationOptions = {
-    tabBarLabel: 'Top100',
-  };
 
   componentDidMount() {
     this.fetchCryptoCompareData();
@@ -49,19 +50,26 @@ export default class Top100Screen extends React.Component {
   }
 
   render() {
-    if (this.state.cryptoCompareDataFetched && this.state.coinMarketcapDataFetched) {
-        return (
-            <CoinList
-                cryptoCompareData={this.state.cryptoCompareData}
-                coinMarketcapData={this.state.coinMarketcapData}
-            />
-        );
+    let containerView;
+    const isDataFetched = this.state.cryptoCompareDataFetched && this.state.coinMarketcapDataFetched;
+
+    if (isDataFetched) {
+      containerView = (
+        <CoinList
+          style={coinListStyles.container}
+          cryptoCompareData={this.state.cryptoCompareData}
+          coinMarketcapData={this.state.coinMarketcapData}
+        /> );
     } else {
-        return (
-            <View style={styles.container}>
-                <Text>Loading...</Text>
-            </View>
-        );
+      containerView = (
+        <View>
+          <Text>Loading...</Text>
+        </View> );
     }
+    return (
+      <View style={top100ScreenStyles.container}>
+        {containerView}
+      </View>
+    );
   }
 }
