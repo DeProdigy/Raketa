@@ -7,7 +7,10 @@
     "react-native/no-unused-styles": 2,
     "react-native/split-platform-components": 2,
     "react-native/no-inline-styles": 2,
-    "react-native/no-color-literals": 2
+    "react-native/no-color-literals": 2,
+    "import/no-unresolved": [
+      2, { "caseSensitive": false }
+    ]
   },
   "plugins": [
     "react",
@@ -16,5 +19,5 @@
   "ecmaFeatures": {
     "jsx": true
   },
-  "extends": "airbnb"
+  "extends": ["airbnb","react-native"]
 }
