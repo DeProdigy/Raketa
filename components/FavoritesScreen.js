@@ -1,7 +1,7 @@
-import React from 'react';
-import { View, Text, Button } from 'react-native';
+import React, { Component } from 'react';
+import { View, Text } from 'react-native';
 
-export default class FavoritesScreen extends React.Component {
+export default class FavoritesScreen extends Component {
   static navigationOptions = {
     tabBarLabel: 'Favorites',
   };
@@ -9,7 +9,7 @@ export default class FavoritesScreen extends React.Component {
   render() {
     return (
       <View>
-          <Text>Favorites</Text>
+        <Text>Favorites</Text>
       </View>
     );
   }
