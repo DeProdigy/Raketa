@@ -6,11 +6,6 @@ import CoinList from './CoinList';
 
 
 export default class Top100Screen extends Component {
-
-  static navigationOptions = {
-    tabBarLabel: 'Top100',
-  };
-
   constructor(props) {
     super(props);
 
