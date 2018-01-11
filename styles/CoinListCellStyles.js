@@ -2,10 +2,8 @@ import { StyleSheet } from 'react-native';
 import Colors from './Colors';
 
 export default coinListCellStyles = StyleSheet.create({
-  container: {
-    backgroundColor: Colors.raketaBackgroundBlue,
-  },
-    listCell: {
+  listCell: {
+    backgroundColor: Colors.rkLightBlue,
     flexWrap: 'wrap',
     alignItems: 'flex-start',
     flexDirection:'row',

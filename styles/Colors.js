@@ -1,3 +1,6 @@
-export default Colors = {
-  raketaBackgroundBlue: '#202037',
+const Colors = {
+  rkDarkBlue: '#202037',
+  rkLightBlue: '#21243B'
 };
+
+export default Colors; 

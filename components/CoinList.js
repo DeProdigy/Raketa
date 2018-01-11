@@ -1,17 +1,24 @@
+// @flow
+
 import React, { Component } from 'react';
-import {View, Button, FlatList} from 'react-native';
-import coinListStyles from '../styles/CoinListStyles';
+import {View, FlatList} from 'react-native';
+import propTypes from 'prop-types';
 import CoinListCell from './CoinListCell';
+import CoinListHeader from './CoinListHeader';
+import coinListStyles from '../styles/CoinListStyles';
 
 
 export default class CoinList extends Component {
   constructor(props) {
     super(props);
+
+    this.sortByChange = this.sortByChange.bind(this);
+    this.sortByMarketCap = this.sortByMarketCap.bind(this);
+    this.sortByVolume = this.sortByVolume.bind(this);
+
     this.state = {
       cryptoCompareData: this.props.cryptoCompareData,
       coinMarketcapData: this.props.coinMarketcapData,
-      sortByNameAscending: true,
-      sortByPriceAscending: true,
       sortByChangeAscending: true,
       sortByVolumeAscending: true,
     };
@@ -31,60 +38,6 @@ export default class CoinList extends Component {
     this.setState({
       coinMarketcapData: sortedList,
       sortByMarketCap: !this.state.sortByMarketCap,
-    });
-  }
-
-  sortByPrice() {
-    let sortedList;
-
-    if (this.state.sortByPriceAscending) {
-      sortedList = this.state.coinMarketcapData.sort((a, b) => parseFloat(a.price_usd) -
-      parseFloat(b.price_usd));
-    } else {
-      sortedList = this.state.coinMarketcapData.sort((a, b) => parseFloat(b.price_usd) -
-      parseFloat(a.price_usd));
-    }
-
-    this.setState({
-      coinMarketcapData: sortedList,
-      sortByPriceAscending: !this.state.sortByPriceAscending,
-    });
-  }
-
-  sortbyName() {
-    let sortedList;
-
-    if (this.state.sortByNameAscending) {
-      sortedList = this.state.coinMarketcapData.sort((a, b) => {
-        const nameA = a.name.toUpperCase(); // ignore upper and lowercase
-        const nameB = b.name.toUpperCase(); // ignore upper and lowercase
-        if (nameA < nameB) {
-          return -1;
-        }
-        if (nameA > nameB) {
-          return 1;
-        }
-        // names must be equal
-        return 0;
-      });
-    } else {
-      sortedList = this.state.coinMarketcapData.sort((a, b) => {
-        const nameA = a.name.toUpperCase(); // ignore upper and lowercase
-        const nameB = b.name.toUpperCase(); // ignore upper and lowercase
-        if (nameB < nameA) {
-          return -1;
-        }
-        if (nameB > nameA) {
-          return 1;
-        }
-        // names must be equal
-        return 0;
-      });
-    }
-
-    this.setState({
-      coinMarketcapData: sortedList,
-      sortByNameAscending: !this.state.sortByNameAscending,
     });
   }
 
@@ -124,35 +77,18 @@ export default class CoinList extends Component {
 
   render() {
     return (
-      <View style={coinListStyles.container}>
-        <Button
-          title="Name"
-          onPress={this.sortbyName.bind(this)}
-        />
-
-        <Button
-          title="Market Cap"
-          onPress={this.sortByMarketCap.bind(this)}
-        />
-
-        <Button
-          title="Price"
-          onPress={this.sortByPrice.bind(this)}
-        />
-
-        <Button
-          title="Change"
-          onPress={this.sortByChange.bind(this)}
-        />
-
-        <Button
-          title="Volume"
-          onPress={this.sortByVolume.bind(this)}
-        />
-
+      <View>
         <FlatList
+          contentContainerStyle={coinListStyles.container}
           data={this.state.coinMarketcapData}
           extraData={this.state}
+          ListHeaderComponent={(
+            <CoinListHeader
+              sortByMarketCap={this.sortByMarketCap}
+              sortByChange={this.sortByChange}
+              sortByVolume={this.sortByVolume}
+            />
+        )}
           renderItem={({ item, index }) =>
             (<CoinListCell
               item={item}
@@ -166,3 +102,8 @@ export default class CoinList extends Component {
     );
   }
 }
+
+CoinList.propTypes = {
+  cryptoCompareData: propTypes.objectOf(propTypes.any).isRequired,
+  coinMarketcapData: propTypes.arrayOf(propTypes.any).isRequired
+};

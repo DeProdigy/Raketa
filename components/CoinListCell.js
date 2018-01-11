@@ -29,7 +29,7 @@ export default class CoinListCell extends Component {
 
   render() {
     return (
-      <View>
+      <View style={coinListCellStyles.listCell}>
         <Text>
           #{this.state.coinMarketcapData.indexOf(this.state.item) + 1}
         </Text>

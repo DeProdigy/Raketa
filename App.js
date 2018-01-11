@@ -1,20 +1,16 @@
 import React from 'react';
-import { Image } from 'react-native';
+import { View } from 'react-native';
 import { TabNavigator } from 'react-navigation';
 import Top100Screen from './components/Top100Screen';
 import FavoritesScreen from './components/FavoritesScreen';
+import Navbar from './components/Navbar';
+import appStyles from './styles/AppStyles';
 
-const App = TabNavigator({
+const TabNav = TabNavigator({
   Top100: {
     screen: Top100Screen,
     navigationOptions: {
       tabBarLabel: 'Top100',
-      tabBarIcon: ({ tintColor }) => (
-        <Image
-          source={{uri: 'https://www.moneymetals.com/images/products/10-dollar-liberty-gold-coin-20140321124620.jpg'}}
-          style={{width: 20, height: 20}}
-        />
-      ),
     }
   },
   Favorites: {
@@ -23,6 +19,23 @@ const App = TabNavigator({
 }, {
   swipeEnabled: true,
   animationEnabled: true,
+  tabBarOptions: {
+  activeTintColor: '#e91e63',
+  labelStyle: {
+    fontSize: 12,
+  },
+  style: {
+    backgroundColor: 'blue',
+  },
+}
+
 });
+
+const App = () => (
+  <View style={appStyles.container}>
+    <TabNav />
+    <Navbar />
+  </View>
+);
 
 export default App;
