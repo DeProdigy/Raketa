@@ -1,0 +1,29 @@
+dependencies: \
+  /Users/drak/Documents/Raketa/node_modules/react-native-navigation/ios/RCCDrawerController/RCCDrawerController.m \
+  /Users/drak/Documents/Raketa/node_modules/react-native-navigation/ios/RCCDrawerController/RCCDrawerController.h \
+  /Users/drak/Documents/Raketa/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBridge.h \
+  /Users/drak/Documents/Raketa/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBridgeDelegate.h \
+  /Users/drak/Documents/Raketa/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTJavaScriptLoader.h \
+  /Users/drak/Documents/Raketa/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTDefines.h \
+  /Users/drak/Documents/Raketa/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBridgeModule.h \
+  /Users/drak/Documents/Raketa/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTFrameUpdate.h \
+  /Users/drak/Documents/Raketa/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTInvalidating.h \
+  /Users/drak/Documents/Raketa/node_modules/react-native-navigation/ios/RCCDrawerController/MMDrawerController/MMDrawerController.h \
+  /Users/drak/Documents/Raketa/node_modules/react-native-navigation/ios/RCCDrawerController/RCCDrawerProtocol.h \
+  /Users/drak/Documents/Raketa/node_modules/react-native-navigation/ios/RCCViewController.h \
+  /Users/drak/Documents/Raketa/node_modules/react-native-navigation/ios/RCCDrawerController/MMDrawerController/MMExampleDrawerVisualStateManager.h \
+  /Users/drak/Documents/Raketa/node_modules/react-native-navigation/ios/RCCDrawerController/MMDrawerController/MMDrawerVisualState.h \
+  /Users/drak/Documents/Raketa/node_modules/react-native-navigation/ios/RCCDrawerController/RCCDrawerHelper.h \
+  /Users/drak/Documents/Raketa/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTConvert.h \
+  /Users/drak/Documents/Raketa/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTAnimationType.h \
+  /Users/drak/Documents/Raketa/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBorderStyle.h \
+  /Users/drak/Documents/Raketa/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTLog.h \
+  /Users/drak/Documents/Raketa/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTAssert.h \
+  /Users/drak/Documents/Raketa/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTUtils.h \
+  /Users/drak/Documents/Raketa/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTPointerEvents.h \
+  /Users/drak/Documents/Raketa/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTTextDecorationLineType.h \
+  /Users/drak/Documents/Raketa/ios/build/Build/Products/Debug-iphonesimulator/include/yoga/Yoga.h \
+  /Users/drak/Documents/Raketa/ios/build/Build/Products/Debug-iphonesimulator/include/yoga/YGEnums.h \
+  /Users/drak/Documents/Raketa/ios/build/Build/Products/Debug-iphonesimulator/include/yoga/YGMacros.h \
+  /Users/drak/Documents/Raketa/node_modules/react-native-navigation/ios/RCCManagerModule.h \
+  /Users/drak/Documents/Raketa/node_modules/react-native-navigation/ios/UIViewController+Rotation.h

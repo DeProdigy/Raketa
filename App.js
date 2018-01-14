@@ -1,41 +1,23 @@
-import React from 'react';
-import { View } from 'react-native';
-import { TabNavigator } from 'react-navigation';
-import Top100Screen from './components/Top100Screen';
-import FavoritesScreen from './components/FavoritesScreen';
-import Navbar from './components/Navbar';
-import appStyles from './styles/AppStyles';
+import { Navigation } from 'react-native-navigation';
+import { registerScreens } from './screens';
 
-const TabNav = TabNavigator({
-  Top100: {
-    screen: Top100Screen,
-    navigationOptions: {
-      tabBarLabel: 'Top100',
+registerScreens();
+
+Navigation.startTabBasedApp({
+  tabs: [
+    {
+      label: 'One',
+      screen: 'Top100Screen', // this is a registered name for a screen
+      // icon: require('../img/one.png'),
+      // selectedIcon: require('../img/one_selected.png'), // iOS only
+      title: 'Screen One'
+    },
+    {
+      label: 'Two',
+      screen: 'FavoritesScreen',
+      // icon: require('../img/two.png'),
+      // selectedIcon: require('../img/two_selected.png'), // iOS only
+      title: 'Screen Two'
     }
-  },
-  Favorites: {
-    screen: FavoritesScreen,
-  },
-}, {
-  swipeEnabled: true,
-  animationEnabled: true,
-  tabBarOptions: {
-  activeTintColor: '#e91e63',
-  labelStyle: {
-    fontSize: 12,
-  },
-  style: {
-    backgroundColor: 'blue',
-  },
-}
-
+  ]
 });
-
-const App = () => (
-  <View style={appStyles.container}>
-    <TabNav />
-    <Navbar />
-  </View>
-);
-
-export default App;

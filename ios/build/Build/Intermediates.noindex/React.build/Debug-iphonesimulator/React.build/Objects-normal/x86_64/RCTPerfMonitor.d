@@ -1,0 +1,32 @@
+dependencies: \
+  /Users/drak/Documents/Raketa/node_modules/react-native/React/Profiler/RCTPerfMonitor.m \
+  /Users/drak/Documents/Raketa/node_modules/react-native/React/Base/RCTDefines.h \
+  /Users/drak/Documents/Raketa/node_modules/react-native/React/Base/RCTBridge.h \
+  /Users/drak/Documents/Raketa/node_modules/react-native/React/Base/RCTBridgeDelegate.h \
+  /Users/drak/Documents/Raketa/node_modules/react-native/React/Base/RCTJavaScriptLoader.h \
+  /Users/drak/Documents/Raketa/node_modules/react-native/React/Base/RCTBridgeModule.h \
+  /Users/drak/Documents/Raketa/node_modules/react-native/React/Base/RCTFrameUpdate.h \
+  /Users/drak/Documents/Raketa/node_modules/react-native/React/Base/RCTInvalidating.h \
+  /Users/drak/Documents/Raketa/node_modules/react-native/React/Modules/RCTDevSettings.h \
+  /Users/drak/Documents/Raketa/node_modules/react-native/React/Profiler/RCTFPSGraph.h \
+  /Users/drak/Documents/Raketa/node_modules/react-native/React/Base/RCTJavaScriptExecutor.h \
+  /Users/drak/Documents/Raketa/node_modules/react-native/React/Base/RCTPerformanceLogger.h \
+  /Users/drak/Documents/Raketa/node_modules/react-native/React/Base/RCTRootView.h \
+  /Users/drak/Documents/Raketa/node_modules/react-native/React/Modules/RCTUIManager.h \
+  /Users/drak/Documents/Raketa/node_modules/react-native/React/Views/RCTViewManager.h \
+  /Users/drak/Documents/Raketa/node_modules/react-native/React/Base/RCTConvert.h \
+  /Users/drak/Documents/Raketa/node_modules/react-native/React/Views/RCTAnimationType.h \
+  /Users/drak/Documents/Raketa/node_modules/react-native/React/Views/RCTBorderStyle.h \
+  /Users/drak/Documents/Raketa/node_modules/react-native/React/Base/RCTLog.h \
+  /Users/drak/Documents/Raketa/node_modules/react-native/React/Base/RCTAssert.h \
+  /Users/drak/Documents/Raketa/node_modules/react-native/React/Base/RCTUtils.h \
+  /Users/drak/Documents/Raketa/node_modules/react-native/React/Views/RCTPointerEvents.h \
+  /Users/drak/Documents/Raketa/node_modules/react-native/React/Views/RCTTextDecorationLineType.h \
+  /Users/drak/Documents/Raketa/ios/build/Build/Products/Debug-iphonesimulator/include/yoga/Yoga.h \
+  /Users/drak/Documents/Raketa/ios/build/Build/Products/Debug-iphonesimulator/include/yoga/YGEnums.h \
+  /Users/drak/Documents/Raketa/ios/build/Build/Products/Debug-iphonesimulator/include/yoga/YGMacros.h \
+  /Users/drak/Documents/Raketa/node_modules/react-native/React/Base/RCTEventDispatcher.h \
+  /Users/drak/Documents/Raketa/node_modules/react-native/React/Views/UIView+React.h \
+  /Users/drak/Documents/Raketa/node_modules/react-native/React/Views/RCTComponent.h \
+  /Users/drak/Documents/Raketa/node_modules/react-native/React/Base/RCTBridge+Private.h \
+  /Users/drak/Documents/Raketa/node_modules/react-native/React/DevSupport/RCTDevMenu.h

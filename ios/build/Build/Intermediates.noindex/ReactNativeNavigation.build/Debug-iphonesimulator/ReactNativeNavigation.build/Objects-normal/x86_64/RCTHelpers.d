@@ -1,0 +1,29 @@
+dependencies: \
+  /Users/drak/Documents/Raketa/node_modules/react-native-navigation/ios/Helpers/RCTHelpers.m \
+  /Users/drak/Documents/Raketa/node_modules/react-native-navigation/ios/Helpers/RCTHelpers.h \
+  /Users/drak/Documents/Raketa/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTRootView.h \
+  /Users/drak/Documents/Raketa/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBridge.h \
+  /Users/drak/Documents/Raketa/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBridgeDelegate.h \
+  /Users/drak/Documents/Raketa/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTJavaScriptLoader.h \
+  /Users/drak/Documents/Raketa/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTDefines.h \
+  /Users/drak/Documents/Raketa/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBridgeModule.h \
+  /Users/drak/Documents/Raketa/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTFrameUpdate.h \
+  /Users/drak/Documents/Raketa/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTInvalidating.h \
+  /Users/drak/Documents/Raketa/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTView.h \
+  /Users/drak/Documents/Raketa/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBorderStyle.h \
+  /Users/drak/Documents/Raketa/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTComponent.h \
+  /Users/drak/Documents/Raketa/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTPointerEvents.h \
+  /Users/drak/Documents/Raketa/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTScrollView.h \
+  /Users/drak/Documents/Raketa/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTAutoInsetsProtocol.h \
+  /Users/drak/Documents/Raketa/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTEventDispatcher.h \
+  /Users/drak/Documents/Raketa/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTScrollableProtocol.h \
+  /Users/drak/Documents/Raketa/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTFont.h \
+  /Users/drak/Documents/Raketa/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTConvert.h \
+  /Users/drak/Documents/Raketa/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTAnimationType.h \
+  /Users/drak/Documents/Raketa/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTLog.h \
+  /Users/drak/Documents/Raketa/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTAssert.h \
+  /Users/drak/Documents/Raketa/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTUtils.h \
+  /Users/drak/Documents/Raketa/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTTextDecorationLineType.h \
+  /Users/drak/Documents/Raketa/ios/build/Build/Products/Debug-iphonesimulator/include/yoga/Yoga.h \
+  /Users/drak/Documents/Raketa/ios/build/Build/Products/Debug-iphonesimulator/include/yoga/YGEnums.h \
+  /Users/drak/Documents/Raketa/ios/build/Build/Products/Debug-iphonesimulator/include/yoga/YGMacros.h

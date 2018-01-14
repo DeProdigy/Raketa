@@ -1,0 +1,29 @@
+dependencies: \
+  /Users/drak/Documents/Raketa/node_modules/react-native/React/DevSupport/RCTPackagerConnection.m \
+  /Users/drak/Documents/Raketa/node_modules/react-native/React/DevSupport/RCTPackagerConnection.h \
+  /Users/drak/Documents/Raketa/node_modules/react-native/React/Base/RCTDefines.h \
+  /Users/drak/Documents/Raketa/node_modules/react-native/React/Base/RCTAssert.h \
+  /Users/drak/Documents/Raketa/node_modules/react-native/React/Base/RCTBridge.h \
+  /Users/drak/Documents/Raketa/node_modules/react-native/React/Base/RCTBridgeDelegate.h \
+  /Users/drak/Documents/Raketa/node_modules/react-native/React/Base/RCTJavaScriptLoader.h \
+  /Users/drak/Documents/Raketa/node_modules/react-native/React/Base/RCTBridgeModule.h \
+  /Users/drak/Documents/Raketa/node_modules/react-native/React/Base/RCTFrameUpdate.h \
+  /Users/drak/Documents/Raketa/node_modules/react-native/React/Base/RCTInvalidating.h \
+  /Users/drak/Documents/Raketa/node_modules/react-native/React/Base/RCTBundleURLProvider.h \
+  /Users/drak/Documents/Raketa/node_modules/react-native/React/Base/RCTConvert.h \
+  /Users/drak/Documents/Raketa/node_modules/react-native/React/Views/RCTAnimationType.h \
+  /Users/drak/Documents/Raketa/node_modules/react-native/React/Views/RCTBorderStyle.h \
+  /Users/drak/Documents/Raketa/node_modules/react-native/React/Base/RCTLog.h \
+  /Users/drak/Documents/Raketa/node_modules/react-native/React/Base/RCTUtils.h \
+  /Users/drak/Documents/Raketa/node_modules/react-native/React/Views/RCTPointerEvents.h \
+  /Users/drak/Documents/Raketa/node_modules/react-native/React/Views/RCTTextDecorationLineType.h \
+  /Users/drak/Documents/Raketa/ios/build/Build/Products/Debug-iphonesimulator/include/yoga/Yoga.h \
+  /Users/drak/Documents/Raketa/ios/build/Build/Products/Debug-iphonesimulator/include/yoga/YGEnums.h \
+  /Users/drak/Documents/Raketa/ios/build/Build/Products/Debug-iphonesimulator/include/yoga/YGMacros.h \
+  /Users/drak/Documents/Raketa/node_modules/react-native/React/../Libraries/WebSocket/RCTReconnectingWebSocket.h \
+  /Users/drak/Documents/Raketa/node_modules/react-native/React/../Libraries/WebSocket/RCTSRWebSocket.h \
+  /Users/drak/Documents/Raketa/node_modules/react-native/React/DevSupport/RCTPackagerConnectionBridgeConfig.h \
+  /Users/drak/Documents/Raketa/node_modules/react-native/React/DevSupport/RCTPackagerConnectionConfig.h \
+  /Users/drak/Documents/Raketa/node_modules/react-native/React/DevSupport/RCTReloadPackagerMethod.h \
+  /Users/drak/Documents/Raketa/node_modules/react-native/React/DevSupport/RCTPackagerClient.h \
+  /Users/drak/Documents/Raketa/node_modules/react-native/React/DevSupport/RCTSamplingProfilerPackagerMethod.h

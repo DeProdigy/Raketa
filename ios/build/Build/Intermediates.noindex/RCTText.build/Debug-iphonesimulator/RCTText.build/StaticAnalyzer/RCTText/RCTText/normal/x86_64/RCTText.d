@@ -1,0 +1,21 @@
+dependencies: \
+  /Users/drak/Documents/Raketa/node_modules/react-native/Libraries/Text/RCTText.m \
+  /Users/drak/Documents/Raketa/node_modules/react-native/Libraries/Text/RCTText.h \
+  /Users/drak/Documents/Raketa/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTUtils.h \
+  /Users/drak/Documents/Raketa/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTAssert.h \
+  /Users/drak/Documents/Raketa/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTDefines.h \
+  /Users/drak/Documents/Raketa/ios/build/Build/Products/Debug-iphonesimulator/include/React/UIView+React.h \
+  /Users/drak/Documents/Raketa/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTComponent.h \
+  /Users/drak/Documents/Raketa/ios/build/Build/Products/Debug-iphonesimulator/include/yoga/YGEnums.h \
+  /Users/drak/Documents/Raketa/ios/build/Build/Products/Debug-iphonesimulator/include/yoga/YGMacros.h \
+  /Users/drak/Documents/Raketa/node_modules/react-native/Libraries/Text/RCTShadowText.h \
+  /Users/drak/Documents/Raketa/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTShadowView.h \
+  /Users/drak/Documents/Raketa/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTRootView.h \
+  /Users/drak/Documents/Raketa/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBridge.h \
+  /Users/drak/Documents/Raketa/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBridgeDelegate.h \
+  /Users/drak/Documents/Raketa/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTJavaScriptLoader.h \
+  /Users/drak/Documents/Raketa/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBridgeModule.h \
+  /Users/drak/Documents/Raketa/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTFrameUpdate.h \
+  /Users/drak/Documents/Raketa/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTInvalidating.h \
+  /Users/drak/Documents/Raketa/ios/build/Build/Products/Debug-iphonesimulator/include/yoga/Yoga.h \
+  /Users/drak/Documents/Raketa/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTTextDecorationLineType.h
