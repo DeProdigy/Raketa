@@ -3,20 +3,8 @@ import {View, Text} from 'react-native';
 import top100ScreenStyles from '../styles/Top100ScreenStyles';
 import coinListStyles from '../styles/CoinListStyles';
 import CoinList from '../components/CoinList';
-import Colors from '../styles/Colors';
-
 
 export default class Top100Screen extends Component {
-
-  static navigatorStyle = {
-    screenBackgroundColor: '#000000',
-    drawUnderNavBar: true,
-    drawUnderTabBar: true,
-    // navBarTranslucent: true,
-    navBarBlur: true,
-    navBarBackgroundColor: Colors.rkNavBarBlue,
-    statusBarTextColorScheme: 'light',
-  };
 
   constructor(props) {
     super(props);

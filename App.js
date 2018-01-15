@@ -1,23 +1,66 @@
 import { Navigation } from 'react-native-navigation';
 import { registerScreens } from './screens';
+import Colors from './styles/Colors';
 
 registerScreens();
+
+const navigatorStyle = {
+  screenBackgroundColor: '#000000',
+  drawUnderNavBar: true,
+  drawUnderTabBar: true,
+  navBarTranslucent: true,
+  navBarBackgroundColor: Colors.rkNavBarBlue,
+  statusBarTextColorScheme: 'light',
+  navBarButtonColor: Colors.rkPureWhite
+};
+
+const navigatorButtons = {
+  rightButtons: [
+    {
+      buttonColor: 'red'
+    },
+    {
+      icon: require('./images/icon-settings.png'),
+      id: 'settings'
+    }
+  ]
+}
 
 Navigation.startTabBasedApp({
   tabs: [
     {
-      label: 'One',
       screen: 'Top100Screen', // this is a registered name for a screen
-      // icon: require('../img/one.png'),
-      // selectedIcon: require('../img/one_selected.png'), // iOS only
-      title: 'Screen One'
+      icon: require('./images/icon-top100.png'),
+      selectedIcon: require('./images/icon-top100-selected.png'),
+      titleImage: require('./images/logo-navbar.png'),
+      navigatorStyle,
+      navigatorButtons
     },
     {
-      label: 'Two',
+      screen: 'MoversScreen',
+      icon: require('./images/icon-movers.png'),
+      selectedIcon: require('./images/icon-movers-selected.png'),
+      title: 'Movers',
+      navigatorStyle,
+      navigatorButtons
+
+    },
+    {
       screen: 'FavoritesScreen',
-      // icon: require('../img/two.png'),
-      // selectedIcon: require('../img/two_selected.png'), // iOS only
-      title: 'Screen Two'
+      icon: require('./images/icon-favorites.png'),
+      selectedIcon: require('./images/icon-favorites-selected.png'),
+      title: 'Favorites',
+      navigatorStyle,
+      navigatorButtons
     }
-  ]
+  ],
+  tabsStyle: {
+    tabBarTranslucent: true,
+    tabBarBackgroundColor: Colors.rkNavBarBlue,
+    tabBarSelectedButtonColor: Colors.rkPureWhite
+  },
+  appStyle: {
+    orientation: 'portrait'
+  }
+
 });
