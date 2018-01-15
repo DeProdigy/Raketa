@@ -26,6 +26,12 @@
   "jest": {
     "preset": "jest-expo"
   },
+  "env": {
+    "react-native/react-native": true
+  },
+  "ecmaFeatures": {
+    "jsx": true
+  },
   "dependencies": {
     "babel-preset-react-native-stage-0": "^1.0.1",
     "prop-types": "^15.6.0",
