@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import {View, Text} from 'react-native';
 import top100ScreenStyles from '../styles/Top100ScreenStyles';
 import coinListStyles from '../styles/CoinListStyles';
-import CoinList from './CoinList';
-
+import CoinList from '../components/CoinList';
 
 export default class Top100Screen extends Component {
+
   constructor(props) {
     super(props);
 
