@@ -14,18 +14,7 @@ export default class CoinListHeaderButton extends Component {
   handleOnPress() {
     this.props.onPress(this.props.index);
   }
-// this.props.sortByMarketCap
-  // handleOnPress() {
-  //   if (this.state.isSelected) {
-  //     this.setState({
-  //       isAscending: !this.state.isAscending
-  //     })
-  //   } else {
-  //     this.setState({
-  //       isSelected: true
-  //     })
-  //   }
-  // }
+
 
   render() {
 
@@ -34,11 +23,12 @@ export default class CoinListHeaderButton extends Component {
     const isAscending = this.props.isAscending;
 
     return(
-
-      <View style={isSelected ? coinListHeaderButtonStyles.selected : coinListHeaderButtonStyles.unselected}>
-        <TouchableOpacity
-          onPress={this.handleOnPress}
-        >
+      <View style={
+        isSelected ?
+        coinListHeaderButtonStyles.selected :
+        coinListHeaderButtonStyles.unselected}
+      >
+        <TouchableOpacity onPress={this.handleOnPress}>
           <View style={coinListHeaderButtonStyles.textContainer}>
             <Text style={coinListHeaderButtonStyles.title}>{title}</Text>
             { isSelected ?

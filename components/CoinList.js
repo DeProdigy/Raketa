@@ -12,16 +12,18 @@ export default class CoinList extends Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      cryptoCompareData: this.props.cryptoCompareData,
+      coinMarketcapData: this.props.coinMarketcapData,
+      sortByMarketCap: true,
+      sortByChangeAscending: false,
+      sortByVolumeAscending: false,
+    };
+
     this.sortByChange = this.sortByChange.bind(this);
     this.sortByMarketCap = this.sortByMarketCap.bind(this);
     this.sortByVolume = this.sortByVolume.bind(this);
 
-    this.state = {
-      cryptoCompareData: this.props.cryptoCompareData,
-      coinMarketcapData: this.props.coinMarketcapData,
-      sortByChangeAscending: true,
-      sortByVolumeAscending: true,
-    };
   }
 
   sortByMarketCap() {

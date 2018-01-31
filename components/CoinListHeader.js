@@ -25,11 +25,21 @@ export default class CoinListHeader extends Component {
         isAscending: this.state.selectedButton.index === index ? !this.state.selectedButton.isAscending : true
       }
     });
+
+    if (index === 0) {
+      this.props.sortByMarketCap();
+    } else if (index === 1) {
+      this.props.sortByChange();
+    } else if (index === 2) {
+      this.props.sortByVolume();
+    }
+
   }
 
   render() {
     const selectedIndex = this.state.selectedButton.index;
     const isAscending = this.state.selectedButton.isAscending;
+
     return(
       <View style={coinListHeaderStyles.container}>
         {["M.CAP", "CHANGE", "VOLUME"].map((title,index) =>
