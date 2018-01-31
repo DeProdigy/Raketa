@@ -1,67 +1,48 @@
 //@flow
 
 import React, { Component } from 'react';
-import { View, TouchableOpacity, Text, Image } from 'react-native';
-import propTypes from 'prop-types';
+import { View } from 'react-native';
 import coinListHeaderStyles from '../styles/CoinListHeaderStyles';
-
+import CoinListHeaderButton from './CoinListHeaderButton';
 
 export default class CoinListHeader extends Component {
 
   constructor(props) {
     super(props);
     this.state ={
-
+      selectedButton: {
+        index: 0,
+        isAscending: true
+      }
     }
+    this.handleHeaderButtonPress = this.handleHeaderButtonPress.bind(this);
+  }
+
+  handleHeaderButtonPress(index) {
+    this.setState({
+      selectedButton: {
+        index,
+        isAscending: this.state.selectedButton.index === index ? !this.state.selectedButton.isAscending : true
+      }
+    });
   }
 
   render() {
+    const selectedIndex = this.state.selectedButton.index;
+    const isAscending = this.state.selectedButton.isAscending;
     return(
       <View style={coinListHeaderStyles.container}>
-
-        <TouchableOpacity
-          style={coinListHeaderStyles.button}
-          onPress={this.props.sortByMarketCap}
-        >
-          <View style={coinListHeaderStyles.textContainer}>
-            <Text>M. CAP</Text>
-            <View style={coinListHeaderStyles.icon}>
-              <Image source={require('../images/icon-up-sort.png')} />
-            </View>
-          </View>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          style={coinListHeaderStyles.button}
-          onPress={this.props.sortByChange}
-        >
-          <View style={coinListHeaderStyles.textContainer}>
-            <Text>CHANGE</Text>
-            <View style={coinListHeaderStyles.icon}>
-              <Image source={require('../images/icon-up-sort.png')} />
-            </View>
-          </View>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          style={coinListHeaderStyles.button}
-          onPress={this.props.sortByVolume}
-        >
-          <View style={coinListHeaderStyles.textContainer}>
-            <Text>VOLUME</Text>
-            <View style={coinListHeaderStyles.icon}>
-              <Image source={require('../images/icon-up-sort.png')} />
-            </View>
-          </View>
-        </TouchableOpacity>
-
+        {["M.CAP", "CHANGE", "VOLUME"].map((title,index) =>
+          (<CoinListHeaderButton
+            index={index}
+            onPress={this.handleHeaderButtonPress}
+            title={title}
+            isSelected={selectedIndex === index}
+            isAscending={isAscending}
+            key={title}
+          />)
+        )}
       </View>
     );
   }
 }
-
-CoinListHeader.propTypes = {
-  sortByMarketCap: propTypes.arrayOf(propTypes.any).isRequired,
-  sortByChange: propTypes.arrayOf(propTypes.any).isRequired,
-  sortByVolume: propTypes.arrayOf(propTypes.any).isRequired
-};
