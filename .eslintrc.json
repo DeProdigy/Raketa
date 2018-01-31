@@ -1,4 +1,5 @@
 {
+  "parser": "babel-eslint",
   "env": {
     "react-native/react-native": true
   },
@@ -17,8 +18,11 @@
     "react",
     "react-native"
   ],
-  "ecmaFeatures": {
-    "jsx": true
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true,
+      "modules": true
+    }
   },
   "extends": ["airbnb","react-native"]
 }
