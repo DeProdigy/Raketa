@@ -7,9 +7,8 @@ export default coinListCellStyles = StyleSheet.create({
     flexWrap: 'wrap',
     alignItems: 'flex-start',
     flexDirection:'row',
-    width: '100%',
     height: 80,
-    padding: 20,
+    marginBottom: 4
   },
   listCellImage: {
     width: 20,

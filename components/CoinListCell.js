@@ -28,11 +28,16 @@ export default class CoinListCell extends Component {
   }
 
   render() {
+
+    const isPercentChangePositive = this.state.item.percent_change_24h > 0;
     return (
       <View style={coinListCellStyles.listCell}>
-        <Text>
-          #{this.state.coinMarketcapData.indexOf(this.state.item) + 1}
-        </Text>
+        <Image
+          source={isPercentChangePositive ?
+            require('../images/icon-up-change.png') :
+            require('../images/icon-down-change.png')
+        }
+        />
         <Image
           style={coinListCellStyles.listCellImage}
           source={{uri: this.coinImage(this.state.item)}}
@@ -41,19 +46,13 @@ export default class CoinListCell extends Component {
           {this.state.item.symbol}
         </Text>
         <Text style={coinListCellStyles.listCellInfo}>
-                {this.state.item.name}
+          {this.state.item.name}
         </Text>
         <Text style={coinListCellStyles.listCellInfo}>
           ${this.state.item.price_usd}
         </Text>
         <Text style={coinListCellStyles.listCellInfo}>
-          ${this.state.item.market_cap_usd}
-        </Text>
-        <Text style={coinListCellStyles.listCellInfo}>
           {this.state.item.percent_change_24h}%
-        </Text>
-        <Text style={coinListCellStyles.listCellInfo}>
-          ${this.state.item['24h_volume_usd']}
         </Text>
       </View>
     );

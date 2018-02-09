@@ -4,7 +4,7 @@ import Colors from './Colors';
 const coinListStyles = StyleSheet.create({
   container: {
     backgroundColor: Colors.raketaBackgroundBlue,
-    paddingVertical: 100
+    paddingVertical: 90
   },
 });
 
