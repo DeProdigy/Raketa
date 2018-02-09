@@ -33,12 +33,13 @@ export default class CoinListHeaderButton extends Component {
             <Text style={coinListHeaderButtonStyles.title}>{title}</Text>
             { isSelected ?
               <View style={coinListHeaderButtonStyles.icon}>
-                {
-                 isAscending ?
-                   <Image source={require('../images/icon-up-sort.png')} />
-                   :
-                   <Image source={require('../images/icon-down-sort.png')} />
-                 }
+                <Image
+                  source={
+                    isAscending ?
+                    require('../images/icon-up-sort.png') :
+                    require('../images/icon-down-sort.png')
+                  }
+                />
               </View> :
               <View />
              }
