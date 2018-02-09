@@ -17,6 +17,7 @@ export default coinListCellStyles = StyleSheet.create({
   },
   listCellInfo: {
     marginLeft: 20,
+    color: '#FFFFFF'
   },
   button: {
     width: 200,
