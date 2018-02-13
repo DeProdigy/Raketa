@@ -16,15 +16,15 @@ export default class CoinListCell extends Component {
   }
 
   coinImage(coin) {
-    if (coin.symbol == 'MIOTA') {
+    if (coin.symbol === 'MIOTA') {
       return 'https://www.cryptocompare.com/media/1383540/iota_logo.png';
-    } else if (coin.symbol == 'BCC') {
+    } else if (coin.symbol === 'BCC') {
       return 'https://www.cryptocompare.com/media/9350709/bccoin1.png';
-    } else if (this.state.cryptoCompareData['Data'][coin.symbol]) {
-      return 'https://www.cryptocompare.com' + this.state.cryptoCompareData['Data'][coin.symbol]['ImageUrl'];
-    } else {
-      return 'https://www.moneymetals.com/images/products/10-dollar-liberty-gold-coin-20140321124620.jpg';
+    } else if (this.state.cryptoCompareData.Data[coin.symbol]) {
+      return 'https://www.cryptocompare.com' + this.state.cryptoCompareData.Data[coin.symbol].ImageUrl;
     }
+      return 'https://www.moneymetals.com/images/products/10-dollar-liberty-gold-coin-20140321124620.jpg';
+
   }
 
   render() {
