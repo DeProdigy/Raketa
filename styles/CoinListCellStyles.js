@@ -69,7 +69,7 @@ export default coinListCellStyles = StyleSheet.create({
   },
   changeText: {
     ...sanFranciscoWeights.bold,
-    fontSize:16,
+    fontSize:14,
     color: Colors.rkGreen
   },
   changeTextNegative: {
