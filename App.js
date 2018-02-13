@@ -8,10 +8,14 @@ const navigatorStyle = {
   screenBackgroundColor: '#000000',
   drawUnderNavBar: true,
   drawUnderTabBar: true,
-  navBarTranslucent: true,
+  navBarTranslucent: false,
   navBarBackgroundColor: Colors.rkNavBarBlue,
   statusBarTextColorScheme: 'light',
-  navBarButtonColor: Colors.rkPureWhite
+  navBarButtonColor: Colors.rkPureWhite,
+  topBarElevationShadowEnabled: true,
+  topBarShadowOpacity: 0.5,
+  topBarShadowOffset: 0.2,
+  topBarShadowRadius: 1.5
 };
 
 const navigatorButtons = {
@@ -55,7 +59,7 @@ Navigation.startTabBasedApp({
     }
   ],
   tabsStyle: {
-    tabBarTranslucent: true,
+    tabBarTranslucent: false,
     tabBarBackgroundColor: Colors.rkNavBarBlue,
     tabBarSelectedButtonColor: Colors.rkPureWhite
   },
