@@ -23,7 +23,6 @@ export default class CoinList extends Component {
     this.sortByChange = this.sortByChange.bind(this);
     this.sortByMarketCap = this.sortByMarketCap.bind(this);
     this.sortByVolume = this.sortByVolume.bind(this);
-
   }
 
   sortByMarketCap() {
