@@ -8,7 +8,6 @@ export default priceRangeViewStyles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'flex-start',
     alignItems: 'stretch',
-    height: 200,
     marginTop: 16
   },
   headerContainer: {
@@ -34,9 +33,61 @@ export default priceRangeViewStyles = StyleSheet.create({
     fontSize: 12,
     textAlign: 'left'
   },
+  priceRangeView: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    marginTop: 100,
+  },
+  priceRangeSVGContainer: {
+    height: 18,
+    // backgroundColor: 'black',
+    flex: 1,
+  },
+  priceRangeGroup: {
+    backgroundColor: 'yellow'
+  },
+  priceRangeLine: {
+    height: 10,
+    width: 150,
+    flex: 1,
+    alignSelf: 'center'
+  },
+  priceRangeCircle: {
+    width: 10,
+    height: 10,
+    borderRadius: 5,
+    backgroundColor: 'red'
+  },
   dividerLine: {
     backgroundColor: Colors.rkDarkGray,
-    height: 1,
+    height: 0.5,
     marginTop: 16
+  },
+  mainStatContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginTop: 16
+  },
+  leftAlignedStatContainer: {
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start'
+  },
+  rightAlignedStatContainer: {
+    flexDirection: 'column',
+    justifyContent: 'flex-end',
+    alignItems: 'flex-end'
+  },
+  statText: {
+    ...sanFranciscoWeights.semibold,
+    color: Colors.rkPureWhite,
+    fontSize: 12,
+    textAlign: 'left',
+    marginTop: 8
+  },
+  statTextRight: {
+    textAlign: 'right'
   }
 });

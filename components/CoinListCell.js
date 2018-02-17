@@ -8,13 +8,6 @@ import PriceRangeView from './PriceRangeView'
 export default class CoinListCell extends Component {
   constructor(props) {
     super(props);
-    // this.state = {
-    //   h: 80
-    //   // item: this.props.item,
-    //   // coinMarketcapData: this.props.coinMarketcapData,
-    //   // cryptoCompareData: this.props.cryptoCompareData,
-    // };
-
     this.handleCellPress = this.handleCellPress.bind(this);
   }
 
@@ -28,7 +21,10 @@ export default class CoinListCell extends Component {
     } else if (coin.symbol === 'BCC') {
       return 'https://www.cryptocompare.com/media/9350709/bccoin1.png';
     } else if (this.props.cryptoCompareData.Data[coin.symbol]) {
-      return 'https://www.cryptocompare.com' + this.props.cryptoCompareData.Data[coin.symbol].ImageUrl;
+
+      console.log('https://www.cryptocompare.com' + this.props.cryptoCompareData.Data[coin.symbol].ImageUrl);
+      return 'http://www.cryptocompare.com' + this.props.cryptoCompareData.Data[coin.symbol].ImageUrl;
+
     }
       return 'https://www.moneymetals.com/images/products/10-dollar-liberty-gold-coin-20140321124620.jpg';
 
@@ -49,17 +45,16 @@ export default class CoinListCell extends Component {
 
   let expandedView = <View />;
   if (this.state.isExpanded) {
-    expandedView =  <PriceRangeView />;
+
+    expandedView =  <PriceRangeView item={this.props.item} />;
   }
 
   return (
     <View style={coinListCellStyles.mainContainer}>
-
       <TouchableOpacity
         style={coinListCellStyles.highlightContainer}
         onPress={this.handleCellPress}
       >
-
         <View style={coinListCellStyles.contentContainer}>
           <View style={coinListCellStyles.collapsedContainer}>
             <View style={coinListCellStyles.nameSymbolContainer}>
@@ -98,9 +93,7 @@ export default class CoinListCell extends Component {
           </View>
           {expandedView}
         </View>
-
       </TouchableOpacity>
-
     </View>
     );
   }

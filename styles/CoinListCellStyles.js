@@ -83,5 +83,5 @@ export default coinListCellStyles = StyleSheet.create({
   },
   changeTextNegative: {
     color: Colors.rkRed
-  }
+  },
 });
