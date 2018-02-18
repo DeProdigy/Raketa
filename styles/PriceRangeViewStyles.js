@@ -34,30 +34,50 @@ export default priceRangeViewStyles = StyleSheet.create({
     textAlign: 'left'
   },
   priceRangeView: {
-    flexDirection: 'row',
+    flexDirection: 'column',
     justifyContent: 'flex-start',
-    alignItems: 'center',
-    marginTop: 100,
+    alignItems: 'stretch',
+    marginTop: 40,
+  },
+  priceRangeCurrentContainer: {
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    alignItems: 'center'
+  },
+  priceRangeCurrentText: {
+    ...sanFranciscoWeights.semibold,
+    color: Colors.rkPureWhite,
+    fontSize: 15,
+    textAlign: 'center'
+  },
+  priceRangeCurrentChangeText: {
+    ...sanFranciscoWeights.semibold,
+    color: Colors.rkRed,
+    fontSize: 12,
+    textAlign: 'center',
+    marginTop: 6
   },
   priceRangeSVGContainer: {
     height: 18,
-    // backgroundColor: 'black',
+    marginTop: 8,
     flex: 1,
   },
-  priceRangeGroup: {
-    backgroundColor: 'yellow'
+  priceRangeBottomContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginTop: 2,
   },
-  priceRangeLine: {
-    height: 10,
-    width: 150,
-    flex: 1,
-    alignSelf: 'center'
+  priceRangeText: {
+    ...sanFranciscoWeights.semibold,
+    color: Colors.rkPureWhite,
+    fontSize: 12,
   },
-  priceRangeCircle: {
-    width: 10,
-    height: 10,
-    borderRadius: 5,
-    backgroundColor: 'red'
+  leftAlign: {
+    textAlign: 'left'
+  },
+  rightAlign: {
+    textAlign: 'right',
   },
   dividerLine: {
     backgroundColor: Colors.rkDarkGray,
@@ -89,5 +109,30 @@ export default priceRangeViewStyles = StyleSheet.create({
   },
   statTextRight: {
     textAlign: 'right'
+  },
+  favoritesButton: {
+    height: 44,
+    borderRadius: 22,
+    marginTop: 32,
+    backgroundColor: 'rgba(255,255,255,0.05)',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  favoritesButtonImageText: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center'
+  },
+  favoritesButtonIcon: {
+    width: 16,
+    height: 14,
+    marginRight: 9
+  },
+  favoritesButtonText: {
+    ...sanFranciscoWeights.semibold,
+    color: Colors.rkPureWhite,
+    fontSize: 12,
+    textAlign: 'left',
   }
 });
