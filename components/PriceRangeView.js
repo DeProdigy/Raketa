@@ -1,6 +1,6 @@
 // @flow
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity} from 'react-native';
+import { View, Text, TouchableOpacity, Image} from 'react-native';
 import Colors from '../styles/Colors';
 import Svg,{
     Circle,
@@ -35,30 +35,39 @@ export default class PriceRangeView extends Component {
 
   render() {
 
+    const s = priceRangeViewStyles;
+
     const marketCap = this.props.item.market_cap_usd;
     const circulatingSupply = this.props.item.available_supply;
     const volume = this.props.item['24h_volume_usd'];
     const totalSupply = this.props.item.max_supply;
 
+
     return(
-      <View style={priceRangeViewStyles.mainContainer}>
-        <View style={priceRangeViewStyles.headerContainer}>
-          <Text style={priceRangeViewStyles.headerText}>
+      <View style={s.mainContainer}>
+        <View style={s.headerContainer}>
+          <Text style={s.headerText}>
             {'PRICE RANGE'}
           </Text>
-          <View style={priceRangeViewStyles.headerButtonsContainer}>
+          <View style={s.headerButtonsContainer}>
 
             {['1h','3h','6h', '12h','24h','1y','YTD'].map( text =>
               (
                 <TouchableOpacity key={text}>
-                  <Text style={priceRangeViewStyles.headerButtonText}>{text}</Text>
+                  <Text style={s.headerButtonText}>{text}</Text>
                 </TouchableOpacity>
               )
             )}
           </View>
-          <View style={priceRangeViewStyles.priceRangeView}>
+          <View style={s.priceRangeView}>
+
+            <View style={s.priceRangeCurrentContainer}>
+              <Text style={s.priceRangeCurrentText}>$11325.10</Text>
+              <Text style={s.priceRangeCurrentChangeText}>-7.53%($20.50)</Text>
+            </View>
+
             <Svg
-              style={priceRangeViewStyles.priceRangeSVGContainer}
+              style={s.priceRangeSVGContainer}
             >
               <Defs>
                 <LinearGradient id="grad" x1="0%" y1="0" x2="100%" y2="0">
@@ -69,22 +78,22 @@ export default class PriceRangeView extends Component {
                   <G >
                     <Rect
                       y="40%"
-                      x="2%"
-                      width="96%"
+                      x="7%"
+                      width="85%"
                       height="4"
                     />
                     <Circle
-                      cx="2%"
+                      cx="7%"
                       cy="50%"
                       r="5"
                     />
                     <Circle
-                      cx="98%"
+                      cx="93%"
                       cy="50%"
                       r="5"
                     />
                     <Polygon
-                      x="100"
+                      x="150"
                       y="11"
                       rotation="180"
                       points="0,2 20,2 10,10"
@@ -104,37 +113,47 @@ export default class PriceRangeView extends Component {
                 clipPath="url(#clip)"
               />
             </Svg>
-          </View>
-
-
-          <View style={priceRangeViewStyles.dividerLine} />
-
-
-          <View style={priceRangeViewStyles.mainStatContainer}>
-
-            <View style={priceRangeViewStyles.leftAlignedStatContainer}>
-              <Text style={priceRangeViewStyles.headerText}>MARKET CAP</Text>
-              <Text style={priceRangeViewStyles.statText}>${marketCap}</Text>
-            </View>
-            <View style={priceRangeViewStyles.rightAlignedStatContainer}>
-              <Text style={priceRangeViewStyles.headerText}>VOLUME(24H)</Text>
-              <Text style={[priceRangeViewStyles.statText, priceRangeViewStyles.statTextRight]}>${volume}</Text>
+            <View style={s.priceRangeBottomContainer}>
+              <Text style={[s.priceRangeText, s.leftAlign]}>$653.50</Text>
+              <Text style={[s.priceRangeText, s.rightAlign]}>$873.50</Text>
             </View>
 
           </View>
+          <View style={s.dividerLine} />
+          <View style={s.mainStatContainer}>
 
-          <View style={priceRangeViewStyles.mainStatContainer}>
-
-            <View style={priceRangeViewStyles.leftAlignedStatContainer}>
-              <Text style={priceRangeViewStyles.headerText}>CIRCULATING SUPPLY</Text>
-              <Text style={priceRangeViewStyles.statText}>{circulatingSupply}</Text>
+            <View style={s.leftAlignedStatContainer}>
+              <Text style={s.headerText}>MARKET CAP</Text>
+              <Text style={s.statText}>${marketCap}</Text>
             </View>
-            <View style={priceRangeViewStyles.rightAlignedStatContainer}>
-              <Text style={priceRangeViewStyles.headerText}>MAX SUPPLY</Text>
-              <Text style={[priceRangeViewStyles.statText, priceRangeViewStyles.statTextRight]}>{totalSupply}</Text>
+            <View style={s.rightAlignedStatContainer}>
+              <Text style={s.headerText}>VOLUME(24H)</Text>
+              <Text style={[s.statText, s.statTextRight]}>${volume}</Text>
             </View>
 
           </View>
+
+          <View style={s.mainStatContainer}>
+            <View style={s.leftAlignedStatContainer}>
+              <Text style={s.headerText}>CIRCULATING SUPPLY</Text>
+              <Text style={s.statText}>{circulatingSupply}</Text>
+            </View>
+            <View style={s.rightAlignedStatContainer}>
+              <Text style={s.headerText}>MAX SUPPLY</Text>
+              <Text style={[s.statText, s.statTextRight]}>{totalSupply}</Text>
+            </View>
+          </View>
+
+          <TouchableOpacity style={s.favoritesButton}>
+            <View style={s.favoritesButtonImageText}>
+              <Image
+                style={s.favoritesButtonIcon}
+                source={require('../images/icon-addfavorites.png')}
+              />
+              <Text style={s.favoritesButtonText}>Add to Favorites</Text>
+            </View>
+          </TouchableOpacity>
+
         </View>
       </View>
 
