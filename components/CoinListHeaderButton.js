@@ -17,7 +17,6 @@ export default class CoinListHeaderButton extends Component {
 
 
   render() {
-
     const title = this.props.title;
     const isSelected = this.props.isSelected;
     const isAscending = this.props.isAscending;

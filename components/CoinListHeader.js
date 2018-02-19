@@ -9,21 +9,15 @@ export default class CoinListHeader extends Component {
 
   constructor(props) {
     super(props);
-    this.state ={
-      selectedButton: {
-        index: 0,
-        isAscending: true
-      }
+    this.state = {
+      selectedButton: {index: 0}
     }
     this.handleHeaderButtonPress = this.handleHeaderButtonPress.bind(this);
   }
 
   handleHeaderButtonPress(index) {
     this.setState({
-      selectedButton: {
-        index,
-        isAscending: this.state.selectedButton.index === index ? !this.state.selectedButton.isAscending : true
-      }
+      selectedButton: {index}
     });
 
     if (index === 0) {
@@ -33,23 +27,31 @@ export default class CoinListHeader extends Component {
     } else if (index === 2) {
       this.props.sortByVolume();
     }
+  }
 
+  isAscending(index) {
+    if (index === 0) {
+      return this.props.sortByMarketCapAscending;
+    } else if (index === 1) {
+      return this.props.sortByChangeAscending;
+    } else if (index === 2) {
+      return this.props.sortByVolumeAscending;
+    }
   }
 
   render() {
     const selectedIndex = this.state.selectedButton.index;
-    const isAscending = this.state.selectedButton.isAscending;
 
     return(
       <View style={coinListHeaderStyles.container}>
-        {["M.CAP", "CHANGE", "VOLUME"].map((title,index) =>
+        {this.props.buttons.map((button, index) =>
           (<CoinListHeaderButton
             index={index}
             onPress={this.handleHeaderButtonPress}
-            title={title}
+            title={button.title}
             isSelected={selectedIndex === index}
-            isAscending={isAscending}
-            key={title}
+            isAscending={this.isAscending(index)}
+            key={button.title}
           />)
         )}
       </View>
