@@ -7,7 +7,6 @@ import CoinListCell from './CoinListCell';
 import CoinListHeader from './CoinListHeader';
 import coinListStyles from '../styles/CoinListStyles';
 
-
 export default class CoinList extends Component {
   constructor(props) {
     super(props);
@@ -15,9 +14,14 @@ export default class CoinList extends Component {
     this.state = {
       cryptoCompareData: this.props.cryptoCompareData,
       coinMarketcapData: this.props.coinMarketcapData,
-      sortByMarketCap: true,
+      sortByMarketCapAscending: true,
       sortByChangeAscending: false,
       sortByVolumeAscending: false,
+      buttons: [
+        { title: "M.CAP" },
+        { title: "CHANGE" },
+        { title: "VOLUME" },
+      ],
     };
 
     this.sortByChange = this.sortByChange.bind(this);
@@ -28,7 +32,7 @@ export default class CoinList extends Component {
   sortByMarketCap() {
     let sortedList;
 
-    if (this.state.sortByMarketCap) {
+    if (this.state.sortByMarketCapAscending) {
       sortedList = this.state.coinMarketcapData.sort((a, b) => parseFloat(a.market_cap_usd) -
       parseFloat(b.market_cap_usd));
     } else {
@@ -38,7 +42,7 @@ export default class CoinList extends Component {
 
     this.setState({
       coinMarketcapData: sortedList,
-      sortByMarketCap: !this.state.sortByMarketCap,
+      sortByMarketCapAscending: !this.state.sortByMarketCapAscending,
     });
   }
 
@@ -88,6 +92,10 @@ export default class CoinList extends Component {
               sortByMarketCap={this.sortByMarketCap}
               sortByChange={this.sortByChange}
               sortByVolume={this.sortByVolume}
+              sortByMarketCapAscending={this.state.sortByMarketCapAscending}
+              sortByChangeAscending={this.state.sortByChangeAscending}
+              sortByVolumeAscending={this.state.sortByVolumeAscending}
+              buttons={this.state.buttons}
             />
         )}
           renderItem={({ item, index }) =>
