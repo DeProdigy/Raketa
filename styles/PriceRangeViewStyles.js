@@ -1,3 +1,4 @@
+// @flow
 import { StyleSheet } from 'react-native';
 import { sanFranciscoWeights } from 'react-native-typography';
 import Colors from './Colors';
@@ -135,4 +136,5 @@ export default priceRangeViewStyles = StyleSheet.create({
     fontSize: 12,
     textAlign: 'left',
   }
+
 });

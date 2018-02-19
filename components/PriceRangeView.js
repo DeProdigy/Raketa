@@ -1,7 +1,6 @@
 // @flow
 import React, { Component } from 'react';
 import { View, Text, TouchableOpacity, Image} from 'react-native';
-import Colors from '../styles/Colors';
 import Svg,{
     Circle,
     G,
@@ -12,6 +11,7 @@ import Svg,{
     ClipPath,
     Polygon
 } from 'react-native-svg';
+import Colors from '../styles/Colors';
 import priceRangeViewStyles from '../styles/PriceRangeViewStyles';
 
 export default class PriceRangeView extends Component {
