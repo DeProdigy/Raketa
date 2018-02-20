@@ -6,18 +6,27 @@ import Colors from './Colors';
 export default coinListCellStyles = StyleSheet.create({
   mainContainer: {
     backgroundColor: Colors.rkLightBlue,
+    marginBottom: 4,
+  },
+  highlightContainer: {
+    padding: 16,
+  },
+  contentContainer: {
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    alignItems: 'stretch',
+  },
+  collapsedContainer: {
     flexDirection:'row',
     alignItems: 'center',
-    justifyContent:'flex-end',
-    marginBottom: 4,
-    padding: 16,
+    justifyContent:'flex-end'
   },
   nameSymbolContainer: {
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
     marginRight: 32,
-    flex: 1
+    flex: 1,
   },
   nameContainer: {
     flexDirection: 'column',
@@ -74,5 +83,5 @@ export default coinListCellStyles = StyleSheet.create({
   },
   changeTextNegative: {
     color: Colors.rkRed
-  }
+  },
 });
