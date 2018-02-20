@@ -1,5 +1,4 @@
 // @flow
-
 import React, { Component } from 'react';
 import {View, FlatList} from 'react-native';
 import propTypes from 'prop-types';
@@ -8,6 +7,7 @@ import CoinListHeader from './CoinListHeader';
 import coinListStyles from '../styles/CoinListStyles';
 
 export default class CoinList extends Component {
+
   constructor(props) {
     super(props);
 
@@ -17,16 +17,7 @@ export default class CoinList extends Component {
       sortByMarketCapAscending: true,
       sortByChangeAscending: false,
       sortByVolumeAscending: false,
-      buttons: [
-        { title: "M.CAP" },
-        { title: "CHANGE" },
-        { title: "VOLUME" },
-      ],
     };
-
-    this.sortByChange = this.sortByChange.bind(this);
-    this.sortByMarketCap = this.sortByMarketCap.bind(this);
-    this.sortByVolume = this.sortByVolume.bind(this);
   }
 
   sortByMarketCap() {
@@ -80,6 +71,26 @@ export default class CoinList extends Component {
     });
   }
 
+  buttons() {
+    return [
+      {
+        title: "M.CAP",
+        sortFunction: this.sortByMarketCap.bind(this),
+        isAscending: this.state.sortByMarketCapAscending,
+      },
+      {
+        title: "CHANGE",
+        sortFunction: this.sortByChange.bind(this),
+        isAscending: this.state.sortByChangeAscending,
+      },
+      {
+        title: "VOLUME",
+        sortFunction: this.sortByVolume.bind(this),
+        isAscending: this.state.sortByVolumeAscending,
+      },
+    ]
+  }
+
   render() {
     return (
       <View>
@@ -89,13 +100,7 @@ export default class CoinList extends Component {
           extraData={this.state}
           ListHeaderComponent={(
             <CoinListHeader
-              sortByMarketCap={this.sortByMarketCap}
-              sortByChange={this.sortByChange}
-              sortByVolume={this.sortByVolume}
-              sortByMarketCapAscending={this.state.sortByMarketCapAscending}
-              sortByChangeAscending={this.state.sortByChangeAscending}
-              sortByVolumeAscending={this.state.sortByVolumeAscending}
-              buttons={this.state.buttons}
+              buttons={this.buttons()}
             />
         )}
           renderItem={({ item, index }) =>

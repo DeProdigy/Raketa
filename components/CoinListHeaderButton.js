@@ -13,6 +13,7 @@ export default class CoinListHeaderButton extends Component {
 
   handleOnPress() {
     this.props.onPress(this.props.index);
+    this.props.sortCallback();
   }
 
 
@@ -48,9 +49,3 @@ export default class CoinListHeaderButton extends Component {
     );
   }
 }
-
-// CoinListHeaderButton.propTypes = {
-//   sortByMarketCap: propTypes.arrayOf(propTypes.any).isRequired,
-//   sortByChange: propTypes.arrayOf(propTypes.any).isRequired,
-//   sortByVolume: propTypes.arrayOf(propTypes.any).isRequired
-// };
