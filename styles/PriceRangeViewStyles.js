@@ -9,7 +9,7 @@ export default priceRangeViewStyles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'flex-start',
     alignItems: 'stretch',
-    marginTop: 16
+    marginTop: 16,
   },
   headerContainer: {
     flexDirection: 'column',
@@ -22,23 +22,11 @@ export default priceRangeViewStyles = StyleSheet.create({
     fontSize: 12,
     textAlign: 'left'
   },
-  headerButtonsContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginTop: 16
-  },
-  headerButtonText: {
-    ...sanFranciscoWeights.semibold,
-    color: Colors.rkDarkGray,
-    fontSize: 12,
-    textAlign: 'left'
-  },
   priceRangeView: {
     flexDirection: 'column',
     justifyContent: 'flex-start',
     alignItems: 'stretch',
-    marginTop: 40,
+    marginTop: 20,
   },
   priceRangeCurrentContainer: {
     flexDirection: 'column',

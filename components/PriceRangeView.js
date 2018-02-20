@@ -46,19 +46,7 @@ export default class PriceRangeView extends Component {
     return(
       <View style={s.mainContainer}>
         <View style={s.headerContainer}>
-          <Text style={s.headerText}>
-            {'PRICE RANGE'}
-          </Text>
-          <View style={s.headerButtonsContainer}>
 
-            {['1h','3h','6h', '12h','24h','1y','YTD'].map( text =>
-              (
-                <TouchableOpacity key={text}>
-                  <Text style={s.headerButtonText}>{text}</Text>
-                </TouchableOpacity>
-              )
-            )}
-          </View>
           <View style={s.priceRangeView}>
 
             <View style={s.priceRangeCurrentContainer}>

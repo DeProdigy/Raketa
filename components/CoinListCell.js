@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { View, Text, Image, LayoutAnimation, TouchableOpacity } from 'react-native';
 import coinListCellStyles from '../styles/CoinListCellStyles';
 import PriceRangeView from './PriceRangeView'
+import CoinListCellHeader from './CoinListCellHeader';
 
 
 export default class CoinListCell extends Component {
@@ -44,8 +45,10 @@ export default class CoinListCell extends Component {
   const isPercentChangeNegative = this.props.item.percent_change_24h < 0;
 
   let expandedView = <View />;
-  if (this.state.isExpanded) {
+  let cellHeader = <View />;
 
+  if (this.state.isExpanded) {
+    cellHeader = <CoinListCellHeader />;
     expandedView =  <PriceRangeView item={this.props.item} />;
   }
 
@@ -56,6 +59,7 @@ export default class CoinListCell extends Component {
         onPress={this.handleCellPress}
       >
         <View style={coinListCellStyles.contentContainer}>
+          {cellHeader}
           <View style={coinListCellStyles.collapsedContainer}>
             <View style={coinListCellStyles.nameSymbolContainer}>
               <Image
