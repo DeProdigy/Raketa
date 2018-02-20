@@ -49,9 +49,3 @@ export default class CoinListHeaderButton extends Component {
     );
   }
 }
-
-// CoinListHeaderButton.propTypes = {
-//   sortByMarketCap: propTypes.arrayOf(propTypes.any).isRequired,
-//   sortByChange: propTypes.arrayOf(propTypes.any).isRequired,
-//   sortByVolume: propTypes.arrayOf(propTypes.any).isRequired
-// };
