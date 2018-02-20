@@ -37,6 +37,7 @@ Navigation.startTabBasedApp({
       icon: require('./images/icon-top100.png'),
       selectedIcon: require('./images/icon-top100-selected.png'),
       titleImage: require('./images/logo-navbar.png'),
+      label: 'Top 100',
       navigatorStyle,
       navigatorButtons
     },
@@ -45,6 +46,7 @@ Navigation.startTabBasedApp({
       icon: require('./images/icon-movers.png'),
       selectedIcon: require('./images/icon-movers-selected.png'),
       title: 'Movers',
+      label: 'Movers',
       navigatorStyle,
       navigatorButtons
 
@@ -54,6 +56,7 @@ Navigation.startTabBasedApp({
       icon: require('./images/icon-favorites.png'),
       selectedIcon: require('./images/icon-favorites-selected.png'),
       title: 'Favorites',
+      label: 'Favorites',
       navigatorStyle,
       navigatorButtons
     }
