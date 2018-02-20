@@ -1,5 +1,4 @@
 //@flow
-
 import React, { Component } from 'react';
 import { View } from 'react-native';
 import coinListHeaderStyles from '../styles/CoinListHeaderStyles';
@@ -29,16 +28,6 @@ export default class CoinListHeader extends Component {
     }
   }
 
-  isAscending(index) {
-    if (index === 0) {
-      return this.props.sortByMarketCapAscending;
-    } else if (index === 1) {
-      return this.props.sortByChangeAscending;
-    } else if (index === 2) {
-      return this.props.sortByVolumeAscending;
-    }
-  }
-
   render() {
     const selectedIndex = this.state.selectedButton.index;
 
@@ -50,7 +39,7 @@ export default class CoinListHeader extends Component {
             onPress={this.handleHeaderButtonPress}
             title={button.title}
             isSelected={selectedIndex === index}
-            isAscending={this.isAscending(index)}
+            isAscending={button.isAscending}
             key={button.title}
           />)
         )}

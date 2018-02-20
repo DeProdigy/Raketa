@@ -5,6 +5,7 @@ import coinListStyles from '../styles/CoinListStyles';
 import CoinList from '../components/CoinList';
 
 export default class Top100Screen extends Component {
+
   constructor(props) {
     super(props);
 
