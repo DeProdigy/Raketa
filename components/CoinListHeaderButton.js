@@ -13,6 +13,7 @@ export default class CoinListHeaderButton extends Component {
 
   handleOnPress() {
     this.props.onPress(this.props.index);
+    this.props.sortCallback();
   }
 
 

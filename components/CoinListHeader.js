@@ -18,14 +18,6 @@ export default class CoinListHeader extends Component {
     this.setState({
       selectedButton: {index}
     });
-
-    if (index === 0) {
-      this.props.sortByMarketCap();
-    } else if (index === 1) {
-      this.props.sortByChange();
-    } else if (index === 2) {
-      this.props.sortByVolume();
-    }
   }
 
   render() {
@@ -37,6 +29,7 @@ export default class CoinListHeader extends Component {
           (<CoinListHeaderButton
             index={index}
             onPress={this.handleHeaderButtonPress}
+            sortCallback={button.sortFunction}
             title={button.title}
             isSelected={selectedIndex === index}
             isAscending={button.isAscending}

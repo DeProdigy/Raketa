@@ -18,10 +18,6 @@ export default class CoinList extends Component {
       sortByChangeAscending: false,
       sortByVolumeAscending: false,
     };
-
-    this.sortByChange = this.sortByChange.bind(this);
-    this.sortByMarketCap = this.sortByMarketCap.bind(this);
-    this.sortByVolume = this.sortByVolume.bind(this);
   }
 
   sortByMarketCap() {
@@ -79,14 +75,17 @@ export default class CoinList extends Component {
     return [
       {
         title: "M.CAP",
+        sortFunction: this.sortByMarketCap.bind(this),
         isAscending: this.state.sortByMarketCapAscending,
       },
       {
         title: "CHANGE",
+        sortFunction: this.sortByChange.bind(this),
         isAscending: this.state.sortByChangeAscending,
       },
       {
         title: "VOLUME",
+        sortFunction: this.sortByVolume.bind(this),
         isAscending: this.state.sortByVolumeAscending,
       },
     ]
@@ -101,9 +100,6 @@ export default class CoinList extends Component {
           extraData={this.state}
           ListHeaderComponent={(
             <CoinListHeader
-              sortByMarketCap={this.sortByMarketCap}
-              sortByChange={this.sortByChange}
-              sortByVolume={this.sortByVolume}
               buttons={this.buttons()}
             />
         )}
