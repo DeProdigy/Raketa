@@ -1,28 +1,32 @@
 {
   "parser": "babel-eslint",
-  "env": {
-    "react-native/react-native": true
-  },
-  "rules": {
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-    "react-native/no-unused-styles": 2,
-    "react-native/split-platform-components": 2,
-    "react-native/no-inline-styles": 2,
-    "react-native/no-color-literals": 2,
-    "import/no-unresolved": [
-      2, { "caseSensitive": false }
-    ],
-    "no-console": 0
-  },
+  "extends": "airbnb",
   "plugins": [
     "react",
-    "react-native"
+    "flowtype",
+    "jsx-a11y",
+    "import"
   ],
-  "parserOptions": {
-    "ecmaFeatures": {
-      "jsx": true,
-      "modules": true
-    }
+  "rules": {
+    "react/jsx-filename-extension": [
+      1, { "extensions": [".js", ".jsx"] }
+    ],
+    "react/prefer-stateless-function": [
+      2, { "ignorePureComponents": true }
+    ],
+    "react/forbid-prop-types": [0, { "forbid": [] }],
+    "import/extensions": [1, "never", { "svg": "always" }],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": true,
+        "optionalDependencies": false,
+        "peerDependencies": false
+      }
+    ],
+    "semi": ["error", "never"]
   },
-  "extends": ["airbnb","react-native"]
+  "env": {
+    "jest": true
+  }
 }
