@@ -4,8 +4,11 @@ import coinListCellHeaderButtonStyles from '../styles/CoinListCellHeaderButtonSt
 
 export default class CoinListCellHeaderButton extends Component {
 
-  render() {
+  handleOnPress = () => {
+    this.props.onPress(this.props.index);
+  }
 
+  render() {
     const s = coinListCellHeaderButtonStyles;
     const isSelected = this.props.isSelected;
     const text = this.props.text;
@@ -17,7 +20,7 @@ export default class CoinListCellHeaderButton extends Component {
           style={isSelected ?
             [s.unselected, s.selected] :
             s.unselected}
-          onPress={this.handleHeaderButtonPress}
+          onPress={this.handleOnPress}
         >
           <Text style={isSelected ?
             [s.buttonTextUnselected, s.buttonTextSelected] : s.buttonTextUnselected}

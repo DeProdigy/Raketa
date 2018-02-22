@@ -6,15 +6,10 @@ import coinListHeaderButtonStyles from '../styles/CoinListHeaderButtonStyles';
 
 export default class CoinListHeaderButton extends Component {
 
-  constructor(props) {
-    super(props);
-  }
-
-  handleOnPress() {
+  handleOnPress = () => {
     this.props.onPress(this.props.index);
     this.props.sortCallback();
   }
-
 
   render() {
     const title = this.props.title;
@@ -27,7 +22,7 @@ export default class CoinListHeaderButton extends Component {
         coinListHeaderButtonStyles.selected :
         coinListHeaderButtonStyles.unselected}
       >
-        <TouchableOpacity onPress={this.handleOnPress.bind(this)}>
+        <TouchableOpacity onPress={this.handleOnPress}>
           <View style={coinListHeaderButtonStyles.textContainer}>
             <Text style={coinListHeaderButtonStyles.title}>{title}</Text>
             { isSelected ?
