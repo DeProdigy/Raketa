@@ -6,17 +6,12 @@ import CoinListHeaderButton from './CoinListHeaderButton';
 
 export default class CoinListHeader extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      selectedButton: {index: 0}
-    }
+  state = {
+    selectedButton: {index: 0}
   }
 
-  handleHeaderButtonPress(index) {
-    this.setState({
-      selectedButton: {index}
-    });
+  handleHeaderButtonPress = (index) => {
+    this.setState({ selectedButton: {index} });
   }
 
   render() {
@@ -27,7 +22,7 @@ export default class CoinListHeader extends Component {
         {this.props.buttons.map((button, index) =>
           (<CoinListHeaderButton
             index={index}
-            onPress={this.handleHeaderButtonPress.bind(this)}
+            onPress={this.handleHeaderButtonPress}
             sortCallback={button.sortFunction}
             title={button.title}
             isSelected={selectedIndex === index}
