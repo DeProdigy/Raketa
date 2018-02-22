@@ -10,8 +10,8 @@ export default class CoinListCellHeader extends Component {
     selectedButtonIndex: 1
   }
 
-  handleHeaderButtonPress(index) {
-    this.setState({ selectedButtonIndex: {index} });
+  handleHeaderButtonPress = (index) => {
+    this.setState({ selectedButtonIndex: index });
   }
 
   render() {
@@ -26,6 +26,8 @@ export default class CoinListCellHeader extends Component {
             key={text}
             isSelected={selectedIndex === index}
             text={text}
+            onPress={this.handleHeaderButtonPress}
+            index={index}
           />
           )
         )}
