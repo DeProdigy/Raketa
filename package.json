@@ -12,7 +12,6 @@
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.7.0",
     "flow-bin": "^0.63.0",
-    "jest-expo": "23.0.0",
     "react-devtools": "^3.0.0",
     "react-test-renderer": "16.0.0"
   },
@@ -22,9 +21,6 @@
     "ios": "react-native run-ios --simulator \"iPhone X\"",
     "test": "node node_modules/jest/bin/jest.js --watch",
     "react-devtools": "react-devtools"
-  },
-  "jest": {
-    "preset": "jest-expo"
   },
   "env": {
     "react-native/react-native": true
@@ -38,7 +34,6 @@
     "react": "16.0.0",
     "react-native": "0.50.3",
     "react-native-navigation": "^1.1.335",
-    "react-native-svg": "^6.1.4",
     "react-native-typography": "^1.2.1"
   }
 }
