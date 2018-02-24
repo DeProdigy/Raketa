@@ -8,27 +8,13 @@ export default class Top100Screen extends Component {
     super(props)
 
     this.state = {
-      cryptoCompareDataFetched: false,
       coinMarketcapDataFetched: false,
-      cryptoCompareData: {},
       coinMarketcapData: [],
     }
   }
 
   componentDidMount() {
-    this.fetchCryptoCompareData()
     this.fetchCoinMarketData()
-  }
-
-  fetchCryptoCompareData() {
-    return fetch('https://www.cryptocompare.com/api/data/coinlist/')
-      .then(response => response.json())
-      .then((responseJson) => {
-        this.setState({ cryptoCompareData: responseJson, cryptoCompareDataFetched: true })
-      })
-      .catch((error) => {
-        console.error(error)
-      })
   }
 
   fetchCoinMarketData() {
@@ -44,12 +30,10 @@ export default class Top100Screen extends Component {
 
   render() {
     let containerView
-    const isDataFetched = this.state.cryptoCompareDataFetched && this.state.coinMarketcapDataFetched
 
-    if (isDataFetched) {
+    if (this.state.coinMarketcapDataFetched) {
       containerView = (
         <CoinList
-          cryptoCompareData={this.state.cryptoCompareData}
           coinMarketcapData={this.state.coinMarketcapData}
         />)
     } else {

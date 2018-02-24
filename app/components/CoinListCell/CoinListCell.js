@@ -7,28 +7,11 @@ import CoinListCellHeader from './CoinListCellHeader/CoinListCellHeader'
 
 
 export default class CoinListCell extends Component {
-  constructor(props) {
-    super(props)
-    this.handleCellPress = this.handleCellPress.bind(this)
-  }
-
   state = {
     isExpanded: false,
-  };
-
-  coinImage(coin) {
-    if (coin.symbol == 'MIOTA') {
-      return 'https://www.cryptocompare.com/media/1383540/iota_logo.png';
-    } else if (coin.symbol == 'BCC') {
-      return 'https://www.cryptocompare.com/media/9350709/bccoin1.png';
-    } else if (this.props.cryptoCompareData['Data'][coin.symbol]) {
-      return 'https://www.cryptocompare.com' + this.props.cryptoCompareData.Data[coin.symbol]['ImageUrl'];
-    } else {
-      return 'https://www.moneymetals.com/images/products/10-dollar-liberty-gold-coin-20140321124620.jpg';
-    }
   }
 
-  handleCellPress() {
+  handleCellPress = () => {
     LayoutAnimation.easeInEaseOut();
     this.setState(
       {
@@ -61,7 +44,7 @@ export default class CoinListCell extends Component {
             <View style={coinListCellStyles.nameSymbolContainer}>
               <Image
                 style={coinListCellStyles.symbolImage}
-                source={{uri: this.coinImage(this.props.item)}}
+                source={{uri: "https://chasing-coins.com/api/v1/std/logo/" + this.props.item.symbol}}
               />
 
               <View style={coinListCellStyles.nameContainer}>

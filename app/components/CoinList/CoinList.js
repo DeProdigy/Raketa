@@ -7,16 +7,11 @@ import CoinListHeader from '../CoinListHeader/CoinListHeader'
 import coinListStyles from './CoinListStyles'
 
 export default class CoinList extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      cryptoCompareData: this.props.cryptoCompareData,
-      coinMarketcapData: this.props.coinMarketcapData,
-      sortByMarketCapAscending: true,
-      sortByChangeAscending: false,
-      sortByVolumeAscending: false,
-    }
+  state = {
+    coinMarketcapData: this.props.coinMarketcapData,
+    sortByMarketCapAscending: true,
+    sortByChangeAscending: false,
+    sortByVolumeAscending: false,
   }
 
   sortByMarketCap() {
@@ -106,7 +101,6 @@ export default class CoinList extends Component {
             (<CoinListCell
               item={item}
               coinMarketcapData={this.state.coinMarketcapData}
-              cryptoCompareData={this.state.cryptoCompareData}
             />)
                 }
           keyExtractor={(item, index) => item.id}
@@ -117,6 +111,5 @@ export default class CoinList extends Component {
 }
 
 CoinList.propTypes = {
-  cryptoCompareData: propTypes.objectOf(propTypes.any).isRequired,
-  coinMarketcapData: propTypes.arrayOf(propTypes.any).isRequired,
+  coinMarketcapData: propTypes.arrayOf(propTypes.any).isRequired
 }
