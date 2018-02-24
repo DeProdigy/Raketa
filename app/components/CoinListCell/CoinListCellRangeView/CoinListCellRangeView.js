@@ -21,7 +21,6 @@ export default class CoinListCellRangeView extends Component {
   //   //   h: 80
   //   //   // item: this.props.item,
   //   //   // coinMarketcapData: this.props.coinMarketcapData,
-  //   //   // cryptoCompareData: this.props.cryptoCompareData,
   //   // };
   //
   //   this.handleCellPress = this.handleCellPress.bind(this);
