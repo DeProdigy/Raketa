@@ -24,7 +24,7 @@ const navigatorButtons = {
       buttonColor: 'red',
     },
     {
-      icon: require('../images/icon-settings.png'),
+      icon: require('../config/images/icon-settings.png'),
       id: 'settings',
     },
   ],
@@ -34,17 +34,17 @@ Navigation.startTabBasedApp({
   tabs: [
     {
       screen: 'Top100Screen', // this is a registered name for a screen
-      icon: require('../images/icon-top100.png'),
-      selectedIcon: require('../images/icon-top100-selected.png'),
-      titleImage: require('../images/logo-navbar.png'),
+      icon: require('../config/images/icon-top100.png'),
+      selectedIcon: require('../config/images/icon-top100-selected.png'),
+      titleImage: require('../config/images/logo-navbar.png'),
       label: 'Top 100',
       navigatorStyle,
       navigatorButtons,
     },
     {
       screen: 'MoversScreen',
-      icon: require('../images/icon-movers.png'),
-      selectedIcon: require('../images/icon-movers-selected.png'),
+      icon: require('../config/images/icon-movers.png'),
+      selectedIcon: require('../config/images/icon-movers-selected.png'),
       title: 'Movers',
       label: 'Movers',
       navigatorStyle,
@@ -53,8 +53,8 @@ Navigation.startTabBasedApp({
     },
     {
       screen: 'FavoritesScreen',
-      icon: require('../images/icon-favorites.png'),
-      selectedIcon: require('../images/icon-favorites-selected.png'),
+      icon: require('../config/images/icon-favorites.png'),
+      selectedIcon: require('../config/images/icon-favorites-selected.png'),
       title: 'Favorites',
       label: 'Favorites',
       navigatorStyle,

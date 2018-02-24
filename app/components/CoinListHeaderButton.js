@@ -30,8 +30,8 @@ export default class CoinListHeaderButton extends Component {
                 <Image
                   source={
                     isAscending ?
-                    require('../images/icon-up-sort.png') :
-                    require('../images/icon-down-sort.png')
+                    require('../config/images/icon-up-sort.png') :
+                    require('../config/images/icon-down-sort.png')
                   }
                 />
               </View> :

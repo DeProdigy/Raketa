@@ -136,7 +136,7 @@ export default class PriceRangeView extends Component {
             <View style={s.favoritesButtonImageText}>
               <Image
                 style={s.favoritesButtonIcon}
-                source={require('../images/icon-addfavorites.png')}
+                source={require('../config/images/icon-addfavorites.png')}
               />
               <Text style={s.favoritesButtonText}>Add to Favorites</Text>
             </View>
