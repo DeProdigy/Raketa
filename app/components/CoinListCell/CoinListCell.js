@@ -1,19 +1,19 @@
 // @flow
-import React, { Component } from 'react';
-import { View, Text, Image, LayoutAnimation, TouchableOpacity } from 'react-native';
-import coinListCellStyles from '../styles/CoinListCellStyles';
-import PriceRangeView from './PriceRangeView'
-import CoinListCellHeader from './CoinListCellHeader';
+import React, { Component } from 'react'
+import { View, Text, Image, LayoutAnimation, TouchableOpacity } from 'react-native'
+import coinListCellStyles from './CoinListCellStyles'
+import CoinListCellRangeView from './CoinListCellRangeView/CoinListCellRangeView'
+import CoinListCellHeader from './CoinListCellHeader/CoinListCellHeader'
 
 
 export default class CoinListCell extends Component {
   constructor(props) {
-    super(props);
-    this.handleCellPress = this.handleCellPress.bind(this);
+    super(props)
+    this.handleCellPress = this.handleCellPress.bind(this)
   }
 
   state = {
-    isExpanded: false
+    isExpanded: false,
   };
 
   coinImage(coin) {
@@ -46,7 +46,7 @@ export default class CoinListCell extends Component {
 
   if (this.state.isExpanded) {
     cellHeader = <CoinListCellHeader />;
-    expandedView =  <PriceRangeView item={this.props.item} />;
+    expandedView =  <CoinListCellRangeView item={this.props.item} />;
   }
 
   return (

@@ -1,19 +1,18 @@
-import React, { Component } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
-import coinListCellHeaderButtonStyles from '../styles/CoinListCellHeaderButtonStyles';
+import React, { Component } from 'react'
+import { View, Text, TouchableOpacity } from 'react-native'
+import coinListCellHeaderButtonStyles from './CoinListCellHeaderButtonStyles'
 
 export default class CoinListCellHeaderButton extends Component {
-
   handleOnPress = () => {
-    this.props.onPress(this.props.index);
+    this.props.onPress(this.props.index)
   }
 
   render() {
-    const s = coinListCellHeaderButtonStyles;
-    const isSelected = this.props.isSelected;
-    const text = this.props.text;
+    const s = coinListCellHeaderButtonStyles
+    const isSelected = this.props.isSelected
+    const text = this.props.text
 
-    return(
+    return (
       <View>
         <TouchableOpacity
           key={text}
@@ -28,6 +27,6 @@ export default class CoinListCellHeaderButton extends Component {
           </Text>
         </TouchableOpacity>
       </View>
-    );
+    )
   }
 }

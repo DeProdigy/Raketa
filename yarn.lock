@@ -1363,9 +1363,9 @@ concat-stream@1.6.0, concat-stream@^1.6.0:
     readable-stream "^2.2.2"
     typedarray "^0.0.6"
 
-configstore@^3.0.0:
+assetsstore@^3.0.0:
   version "3.1.1"
-  resolved "https://registry.yarnpkg.com/configstore/-/configstore-3.1.1.tgz#094ee662ab83fad9917678de114faaea8fcdca90"
+  resolved "https://registry.yarnpkg.com/assetsstore/-/assetsstore-3.1.1.tgz#094ee662ab83fad9917678de114faaea8fcdca90"
   dependencies:
     dot-prop "^4.1.0"
     graceful-fs "^4.1.2"
@@ -1781,17 +1781,17 @@ escape-string-regexp@^1.0.2, escape-string-regexp@^1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-1.0.5.tgz#1b61c0562190a8dff6ae3bb2cf0200ca130b86d4"
 
-eslint-config-airbnb-base@^12.1.0:
+eslint-assets-airbnb-base@^12.1.0:
   version "12.1.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-airbnb-base/-/eslint-config-airbnb-base-12.1.0.tgz#386441e54a12ccd957b0a92564a4bafebd747944"
+  resolved "https://registry.yarnpkg.com/eslint-assets-airbnb-base/-/eslint-assets-airbnb-base-12.1.0.tgz#386441e54a12ccd957b0a92564a4bafebd747944"
   dependencies:
     eslint-restricted-globals "^0.1.1"
 
-eslint-config-airbnb@^16.1.0:
+eslint-assets-airbnb@^16.1.0:
   version "16.1.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-airbnb/-/eslint-config-airbnb-16.1.0.tgz#2546bfb02cc9fe92284bf1723ccf2e87bc45ca46"
+  resolved "https://registry.yarnpkg.com/eslint-assets-airbnb/-/eslint-assets-airbnb-16.1.0.tgz#2546bfb02cc9fe92284bf1723ccf2e87bc45ca46"
   dependencies:
-    eslint-config-airbnb-base "^12.1.0"
+    eslint-assets-airbnb-base "^12.1.0"
 
 eslint-import-resolver-node@^0.3.1:
   version "0.3.2"
@@ -4820,7 +4820,7 @@ update-notifier@^2.1.0:
   dependencies:
     boxen "^1.2.1"
     chalk "^2.0.1"
-    configstore "^3.0.0"
+    assetsstore "^3.0.0"
     import-lazy "^2.1.0"
     is-installed-globally "^0.1.0"
     is-npm "^1.0.0"

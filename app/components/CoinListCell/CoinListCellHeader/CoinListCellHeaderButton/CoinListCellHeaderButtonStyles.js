@@ -1,6 +1,6 @@
-import { StyleSheet } from 'react-native';
-import { sanFranciscoWeights } from 'react-native-typography';
-import Colors from './Colors';
+import { StyleSheet } from 'react-native'
+import { sanFranciscoWeights } from 'react-native-typography'
+import Colors from '../../../../shared/styles/Colors'
 
 const coinListCellHeaderButtonStyles = StyleSheet.create({
   unselected: {
@@ -13,18 +13,18 @@ const coinListCellHeaderButtonStyles = StyleSheet.create({
     alignItems: 'center',
   },
   selected: {
-    backgroundColor: Colors.rkWhiteTransparent
+    backgroundColor: Colors.rkWhiteTransparent,
   },
   buttonTextUnselected: {
     ...sanFranciscoWeights.bold,
     color: Colors.rkPureWhite,
     fontSize: 12,
     textAlign: 'center',
-    opacity: 0.5
+    opacity: 0.5,
   },
   buttonTextSelected: {
-    opacity: 1.0
+    opacity: 1.0,
   },
-});
+})
 
-export default coinListCellHeaderButtonStyles;
+export default coinListCellHeaderButtonStyles

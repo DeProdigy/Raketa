@@ -1,6 +1,6 @@
-import { StyleSheet } from 'react-native';
-import { sanFranciscoWeights } from 'react-native-typography';
-import Colors from './Colors';
+import { StyleSheet } from 'react-native'
+import { sanFranciscoWeights } from 'react-native-typography'
+import Colors from '../../shared/styles/Colors'
 
 
 export default coinListCellStyles = StyleSheet.create({
@@ -17,9 +17,9 @@ export default coinListCellStyles = StyleSheet.create({
     alignItems: 'stretch',
   },
   collapsedContainer: {
-    flexDirection:'row',
+    flexDirection: 'row',
     alignItems: 'center',
-    justifyContent:'flex-end'
+    justifyContent: 'flex-end',
   },
   nameSymbolContainer: {
     flexDirection: 'row',
@@ -32,25 +32,25 @@ export default coinListCellStyles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
-    width: 90
+    width: 90,
   },
   symbolImage: {
     width: 27,
     height: 27,
     borderRadius: 13.5,
-    marginRight: 12
+    marginRight: 12,
   },
   symbolText: {
     ...sanFranciscoWeights.semibold,
     color: Colors.rkDarkGray,
     fontSize: 15,
-    textAlign: 'left'
+    textAlign: 'left',
   },
   nameText: {
     ...sanFranciscoWeights.semibold,
     color: Colors.rkPureWhite,
     fontSize: 15,
-    textAlign: 'left'
+    textAlign: 'left',
   },
   priceContainer: {
     flexDirection: 'row',
@@ -61,16 +61,16 @@ export default coinListCellStyles = StyleSheet.create({
     ...sanFranciscoWeights.semibold,
     color: Colors.rkPureWhite,
     fontSize: 15,
-    textAlign: 'right'
+    textAlign: 'right',
   },
   changeContainer: {
     width: 100,
     height: 34,
     borderRadius: 4,
     backgroundColor: Colors.rkGreenTransparent,
-    flexDirection:'row',
+    flexDirection: 'row',
     alignItems: 'center',
-    justifyContent:'space-around',
+    justifyContent: 'space-around',
     marginLeft: 16,
   },
   changeContainerNegative: {
@@ -78,10 +78,10 @@ export default coinListCellStyles = StyleSheet.create({
   },
   changeText: {
     ...sanFranciscoWeights.bold,
-    fontSize:14,
-    color: Colors.rkGreen
+    fontSize: 14,
+    color: Colors.rkGreen,
   },
   changeTextNegative: {
-    color: Colors.rkRed
+    color: Colors.rkRed,
   },
-});
+})

@@ -1,23 +1,21 @@
-//@flow
-import React, { Component } from 'react';
-import { View } from 'react-native';
-import coinListHeaderStyles from '../styles/CoinListHeaderStyles';
-import CoinListHeaderButton from './CoinListHeaderButton';
+import React, { Component } from 'react'
+import { View } from 'react-native'
+import coinListHeaderStyles from './CoinListHeaderStyles'
+import CoinListHeaderButton from './CoinListHeaderButton/CoinListHeaderButton'
 
 export default class CoinListHeader extends Component {
-
   state = {
-    selectedButton: {index: 0}
+    selectedButton: { index: 0 },
   }
 
   handleHeaderButtonPress = (index) => {
-    this.setState({ selectedButton: {index} });
+    this.setState({ selectedButton: { index } })
   }
 
   render() {
-    const selectedIndex = this.state.selectedButton.index;
+    const selectedIndex = this.state.selectedButton.index
 
-    return(
+    return (
       <View style={coinListHeaderStyles.container}>
         {this.props.buttons.map((button, index) =>
           (<CoinListHeaderButton
@@ -28,9 +26,8 @@ export default class CoinListHeader extends Component {
             isSelected={selectedIndex === index}
             isAscending={button.isAscending}
             key={button.title}
-          />)
-        )}
+          />))}
       </View>
-    );
+    )
   }
 }

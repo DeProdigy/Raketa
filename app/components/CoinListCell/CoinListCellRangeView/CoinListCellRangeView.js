@@ -1,21 +1,20 @@
 // @flow
-import React, { Component } from 'react';
-import { View, Text, TouchableOpacity, Image} from 'react-native';
-import Svg,{
-    Circle,
-    G,
-    Rect,
-    LinearGradient,
-    Stop,
-    Defs,
-    ClipPath,
-    Polygon
-} from 'react-native-svg';
-import Colors from '../styles/Colors';
-import priceRangeViewStyles from '../styles/PriceRangeViewStyles';
+import React, { Component } from 'react'
+import { View, Text, TouchableOpacity, Image } from 'react-native'
+import Svg, {
+  Circle,
+  G,
+  Rect,
+  LinearGradient,
+  Stop,
+  Defs,
+  ClipPath,
+  Polygon,
+} from 'react-native-svg'
+import Colors from '../../../shared/styles/Colors'
+import coinListCellRangeViewStyles from './CoinListCellRangeViewStyles'
 
-export default class PriceRangeView extends Component {
-
+export default class CoinListCellRangeView extends Component {
   // constructor(props) {
   //   super(props);
   //   // this.state = {
@@ -34,20 +33,18 @@ export default class PriceRangeView extends Component {
 
 
   render() {
-
-    const s = priceRangeViewStyles;
-
-    const marketCap = this.props.item.market_cap_usd;
-    const circulatingSupply = this.props.item.available_supply;
-    const volume = this.props.item['24h_volume_usd'];
-    const totalSupply = this.props.item.max_supply;
+    const s = coinListCellRangeViewStyles
+    const marketCap = this.props.item.market_cap_usd
+    const circulatingSupply = this.props.item.available_supply
+    const volume = this.props.item['24h_volume_usd']
+    const totalSupply = this.props.item.max_supply
 
 
-    return(
+    return (
       <View style={s.mainContainer}>
         <View style={s.headerContainer}>
 
-          <View style={s.priceRangeView}>
+          <View style={s.CoinListCellRangeView}>
 
             <View style={s.priceRangeCurrentContainer}>
               <Text style={s.priceRangeCurrentText}>$11325.10</Text>
@@ -136,7 +133,7 @@ export default class PriceRangeView extends Component {
             <View style={s.favoritesButtonImageText}>
               <Image
                 style={s.favoritesButtonIcon}
-                source={require('../config/images/icon-addfavorites.png')}
+                source={require('../../../assets/images/icon-addfavorites.png')}
               />
               <Text style={s.favoritesButtonText}>Add to Favorites</Text>
             </View>
@@ -144,7 +141,6 @@ export default class PriceRangeView extends Component {
 
         </View>
       </View>
-
-    );
+    )
   }
 }

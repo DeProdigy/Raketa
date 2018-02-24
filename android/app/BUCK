@@ -38,13 +38,13 @@ android_library(
     ]),
     deps = [
         ":all-libs",
-        ":build_config",
+        ":build_assets",
         ":res",
     ],
 )
 
-android_build_config(
-    name = "build_config",
+android_build_assets(
+    name = "build_assets",
     package = "com.raketa",
 )
 

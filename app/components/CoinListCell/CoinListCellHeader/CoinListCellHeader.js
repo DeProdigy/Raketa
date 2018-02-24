@@ -1,8 +1,8 @@
 // @flow
 import React, { Component } from 'react'
 import { View } from 'react-native'
-import CoinListCellHeaderButton from './CoinListCellHeaderButton'
-import coinListCellHeaderStyles from '../styles/CoinListCellHeaderStyles'
+import CoinListCellHeaderButton from './CoinListCellHeaderButton/CoinListCellHeaderButton'
+import coinListCellHeaderStyles from './CoinListCellHeaderStyles'
 
 class CoinListCellHeader extends Component {
   state = {

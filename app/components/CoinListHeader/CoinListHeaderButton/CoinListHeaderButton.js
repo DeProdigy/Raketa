@@ -1,22 +1,22 @@
-import React, { Component } from 'react';
-import { View, TouchableOpacity, Text, Image } from 'react-native';
+import React, { Component } from 'react'
+import { View, TouchableOpacity, Text, Image } from 'react-native'
 // import propTypes from 'prop-types';
-import coinListHeaderButtonStyles from '../styles/CoinListHeaderButtonStyles';
+import coinListHeaderButtonStyles from './CoinListHeaderButtonStyles'
 
 
 export default class CoinListHeaderButton extends Component {
 
   handleOnPress = () => {
-    this.props.onPress(this.props.index);
-    this.props.sortCallback();
+    this.props.onPress(this.props.index)
+    this.props.sortCallback()
   }
 
   render() {
-    const title = this.props.title;
-    const isSelected = this.props.isSelected;
-    const isAscending = this.props.isAscending;
+    const title = this.props.title
+    const isSelected = this.props.isSelected
+    const isAscending = this.props.isAscending
 
-    return(
+    return (
       <View style={
         isSelected ?
         coinListHeaderButtonStyles.selected :
@@ -30,8 +30,8 @@ export default class CoinListHeaderButton extends Component {
                 <Image
                   source={
                     isAscending ?
-                    require('../config/images/icon-up-sort.png') :
-                    require('../config/images/icon-down-sort.png')
+                    require('../../../assets/images/icon-up-sort.png') :
+                    require('../../../assets/images/icon-down-sort.png')
                   }
                 />
               </View> :
@@ -40,6 +40,6 @@ export default class CoinListHeaderButton extends Component {
           </View>
         </TouchableOpacity>
       </View>
-    );
+    )
   }
 }

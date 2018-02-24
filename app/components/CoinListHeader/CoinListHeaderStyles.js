@@ -1,5 +1,5 @@
-import { StyleSheet, Dimensions } from 'react-native';
-import Colors from './Colors';
+import { StyleSheet, Dimensions } from 'react-native'
+import Colors from '../../shared/styles/Colors'
 
 const coinListHeaderStyles = StyleSheet.create({
   container: {
@@ -12,7 +12,7 @@ const coinListHeaderStyles = StyleSheet.create({
     paddingLeft: 16,
     paddingRight: 16,
     backgroundColor: Colors.rkDarkBlue,
-  }
-});
+  },
+})
 
-export default coinListHeaderStyles;
+export default coinListHeaderStyles
