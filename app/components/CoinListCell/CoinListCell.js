@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { View, Text, Image, LayoutAnimation, TouchableOpacity } from 'react-native'
 import coinListCellStyles from './CoinListCellStyles'
 import CoinListCellRangeView from './CoinListCellRangeView/CoinListCellRangeView'
+import CoinListCellFavoritesButton from './CoinListCellFavoritesButton/CoinListCellFavoritesButton'
+import CoinListCellChangeButton from './CoinListCellChangeButton/CoinListCellChangeButton'
 
 
 export default class CoinListCell extends Component {
@@ -17,58 +19,58 @@ export default class CoinListCell extends Component {
   }
 
   render() {
-    const isPercentChangeNegative = this.props.item.percent_change_24h < 0
+    const {
+      item: {
+        percent_change_24h,
+        name,
+        symbol,
+        price_usd,
+      },
+    } = this.props
 
-    let expandedView = <View />
-
-    if (this.state.isExpanded) {
-      expandedView = <CoinListCellRangeView item={this.props.item} />
-    }
+    const isNegative = percent_change_24h < 0
 
     return (
       <View style={coinListCellStyles.mainContainer}>
-        <TouchableOpacity
-          style={coinListCellStyles.highlightContainer}
-          onPress={this.handleCellPress}
-        >
+        <TouchableOpacity onPress={this.handleCellPress}>
           <View style={coinListCellStyles.contentContainer}>
             <View style={coinListCellStyles.collapsedContainer}>
               <View style={coinListCellStyles.nameSymbolContainer}>
                 <Image
                   style={coinListCellStyles.symbolImage}
-                  source={{ uri: `https://chasing-coins.com/api/v1/std/logo/${this.props.item.symbol}` }}
+                  source={{ uri: `https://chasing-coins.com/api/v1/std/logo/${symbol}` }}
                 />
 
                 <View style={coinListCellStyles.nameContainer}>
                   <Text style={coinListCellStyles.nameText}>
-                    {this.props.item.name}
+                    {name}
                   </Text>
                   <Text style={coinListCellStyles.symbolText}>
-                    {this.props.item.symbol}
+                    {symbol}
                   </Text>
                 </View>
               </View>
-
-              <View style={coinListCellStyles.priceContainer}>
-                <Text style={coinListCellStyles.priceText}>
-                    ${this.props.item.price_usd}
-                </Text>
-                <View style={isPercentChangeNegative ?
-                  [coinListCellStyles.changeContainer, coinListCellStyles.changeContainerNegative] :
-                coinListCellStyles.changeContainer
-                }
-                >
-                  <Text style={
-                    isPercentChangeNegative ?
-                    [coinListCellStyles.changeText, coinListCellStyles.changeTextNegative] :
-                    coinListCellStyles.changeText}
-                  >
-                    {this.props.item.percent_change_24h}%
-                  </Text>
-                </View>
-              </View>
+              {
+                this.state.isExpanded === false ?
+                  <View style={coinListCellStyles.priceContainer}>
+                    <Text style={isNegative ?
+                    [coinListCellStyles.priceText,
+                    coinListCellStyles.priceTextNegative] :
+                    coinListCellStyles.priceText}
+                    >
+                      ${price_usd}
+                    </Text>
+                    <CoinListCellChangeButton
+                      isNegative={isNegative}
+                      percentChange={percent_change_24h}
+                    />
+                  </View> :
+                  <CoinListCellFavoritesButton />
+              }
             </View>
-            {expandedView}
+            { this.state.isExpanded &&
+              <CoinListCellRangeView item={this.props.item} />
+            }
           </View>
         </TouchableOpacity>
       </View>

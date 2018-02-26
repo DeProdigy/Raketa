@@ -1,6 +1,5 @@
-// @flow
 import React, { Component } from 'react'
-import { View, Text, TouchableOpacity, Image } from 'react-native'
+import { View, Text } from 'react-native'
 import Svg, {
   Circle,
   G,
@@ -15,17 +14,6 @@ import Colors from '../../../shared/styles/Colors'
 import coinListCellRangeViewStyles from './CoinListCellRangeViewStyles'
 
 export default class CoinListCellRangeView extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   // this.state = {
-  //   //   h: 80
-  //   //   // item: this.props.item,
-  //   //   // coinMarketcapData: this.props.coinMarketcapData,
-  //   // };
-  //
-  //   this.handleCellPress = this.handleCellPress.bind(this);
-  // }
-
   state = {
 
   }
@@ -127,17 +115,6 @@ export default class CoinListCellRangeView extends Component {
               <Text style={[s.statText, s.statTextRight]}>{totalSupply}</Text>
             </View>
           </View>
-
-          <TouchableOpacity style={s.favoritesButton}>
-            <View style={s.favoritesButtonImageText}>
-              <Image
-                style={s.favoritesButtonIcon}
-                source={require('../../../assets/images/icon-addfavorites.png')}
-              />
-              <Text style={s.favoritesButtonText}>Add to Favorites</Text>
-            </View>
-          </TouchableOpacity>
-
         </View>
       </View>
     )

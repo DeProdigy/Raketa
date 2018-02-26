@@ -99,30 +99,4 @@ export default coinListCellRangeViewStyles = StyleSheet.create({
   statTextRight: {
     textAlign: 'right',
   },
-  favoritesButton: {
-    height: 44,
-    borderRadius: 22,
-    marginTop: 32,
-    backgroundColor: 'rgba(255,255,255,0.05)',
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  favoritesButtonImageText: {
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-  },
-  favoritesButtonIcon: {
-    width: 16,
-    height: 14,
-    marginRight: 9,
-  },
-  favoritesButtonText: {
-    ...sanFranciscoWeights.semibold,
-    color: Colors.rkPureWhite,
-    fontSize: 12,
-    textAlign: 'left',
-  },
-
 })
