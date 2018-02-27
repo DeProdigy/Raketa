@@ -92,29 +92,6 @@ export default class CoinListCellRangeView extends Component {
 
           </View>
           <View style={s.dividerLine} />
-          <View style={s.mainStatContainer}>
-
-            <View style={s.leftAlignedStatContainer}>
-              <Text style={s.headerText}>MARKET CAP</Text>
-              <Text style={s.statText}>${marketCap}</Text>
-            </View>
-            <View style={s.rightAlignedStatContainer}>
-              <Text style={s.headerText}>VOLUME(24H)</Text>
-              <Text style={[s.statText, s.statTextRight]}>${volume}</Text>
-            </View>
-
-          </View>
-
-          <View style={s.mainStatContainer}>
-            <View style={s.leftAlignedStatContainer}>
-              <Text style={s.headerText}>CIRCULATING SUPPLY</Text>
-              <Text style={s.statText}>{circulatingSupply}</Text>
-            </View>
-            <View style={s.rightAlignedStatContainer}>
-              <Text style={s.headerText}>MAX SUPPLY</Text>
-              <Text style={[s.statText, s.statTextRight]}>{totalSupply}</Text>
-            </View>
-          </View>
         </View>
       </View>
     )

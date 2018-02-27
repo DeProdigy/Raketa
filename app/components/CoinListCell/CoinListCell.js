@@ -4,6 +4,7 @@ import coinListCellStyles from './CoinListCellStyles'
 import CoinListCellRangeView from './CoinListCellRangeView/CoinListCellRangeView'
 import CoinListCellFavoritesButton from './CoinListCellFavoritesButton/CoinListCellFavoritesButton'
 import CoinListCellChangeButton from './CoinListCellChangeButton/CoinListCellChangeButton'
+import CoinListCellStatsView from './CoinListCellStatsView/CoinListCellStatsView'
 
 
 export default class CoinListCell extends Component {
@@ -75,6 +76,9 @@ export default class CoinListCell extends Component {
             }
             { this.state.isExpanded &&
               <CoinListCellRangeView item={this.props.item} />
+            }
+            { this.state.isExpanded &&
+              <CoinListCellStatsView item={this.props.item} />
             }
           </View>
         </TouchableOpacity>

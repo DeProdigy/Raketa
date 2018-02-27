@@ -16,12 +16,6 @@ export default coinListCellRangeViewStyles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'stretch',
   },
-  headerText: {
-    ...sanFranciscoWeights.bold,
-    color: Colors.rkDarkGray,
-    fontSize: 12,
-    textAlign: 'left',
-  },
   CoinListCellRangeView: {
     flexDirection: 'column',
     justifyContent: 'flex-start',
@@ -72,31 +66,5 @@ export default coinListCellRangeViewStyles = StyleSheet.create({
     backgroundColor: Colors.rkDarkGray,
     height: 0.5,
     marginTop: 16,
-  },
-  mainStatContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginTop: 16,
-  },
-  leftAlignedStatContainer: {
-    flexDirection: 'column',
-    justifyContent: 'flex-start',
-    alignItems: 'flex-start',
-  },
-  rightAlignedStatContainer: {
-    flexDirection: 'column',
-    justifyContent: 'flex-end',
-    alignItems: 'flex-end',
-  },
-  statText: {
-    ...sanFranciscoWeights.semibold,
-    color: Colors.rkPureWhite,
-    fontSize: 12,
-    textAlign: 'left',
-    marginTop: 8,
-  },
-  statTextRight: {
-    textAlign: 'right',
   },
 })
