@@ -1,4 +1,3 @@
-// @flow
 import { StyleSheet } from 'react-native'
 import { sanFranciscoWeights } from 'react-native-typography'
 import Colors from '../../../shared/styles/Colors'
@@ -11,12 +10,13 @@ export default coinListCellRangeViewStyles = StyleSheet.create({
     alignItems: 'stretch',
     marginTop: 16,
   },
-  headerContainer: {
-    flexDirection: 'column',
-    justifyContent: 'flex-start',
-    alignItems: 'stretch',
+  headerText: {
+    ...sanFranciscoWeights.bold,
+    color: Colors.rkDarkGray,
+    fontSize: 12,
+    textAlign: 'left',
   },
-  CoinListCellRangeView: {
+  rangeView: {
     flexDirection: 'column',
     justifyContent: 'flex-start',
     alignItems: 'stretch',
