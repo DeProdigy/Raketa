@@ -60,6 +60,7 @@ const coinListCellStyles = StyleSheet.create({
     color: Colors.rkGreen,
     fontSize: 15,
     textAlign: 'right',
+    marginRight: 12,
   },
   priceTextNegative: {
     color: Colors.rkRed,

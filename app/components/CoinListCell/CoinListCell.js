@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import { View, Text, Image, LayoutAnimation, TouchableOpacity } from 'react-native'
+import PropTypes from 'prop-types'
 import coinListCellStyles from './CoinListCellStyles'
 import CoinListCellRangeView from './CoinListCellRangeView/CoinListCellRangeView'
 import CoinListCellFavoritesButton from './CoinListCellFavoritesButton/CoinListCellFavoritesButton'
 import CoinListCellChangeButton from './CoinListCellChangeButton/CoinListCellChangeButton'
 import CoinListCellStatsView from './CoinListCellStatsView/CoinListCellStatsView'
+import CoinListCellChangeView from './CoinListCellChangeView/CoinListCellChangeView'
 
 
 export default class CoinListCell extends Component {
@@ -24,14 +26,14 @@ export default class CoinListCell extends Component {
 
     const {
       item: {
-        percent_change_24h,
+        percent_change_24h: percentChange24,
         name,
         symbol,
-        price_usd,
+        price_usd: price,
       },
     } = this.props
 
-    const isNegative = percent_change_24h < 0
+    const isNegative = percentChange24 < 0
 
     return (
       <View style={s.mainContainer}>
@@ -61,11 +63,11 @@ export default class CoinListCell extends Component {
                     s.priceTextNegative] :
                     s.priceText}
                     >
-                      ${price_usd}
+                      ${price}
                     </Text>
                     <CoinListCellChangeButton
                       isNegative={isNegative}
-                      percentChange={percent_change_24h}
+                      percentChange={percentChange24}
                     />
                   </View> :
                   <CoinListCellFavoritesButton />
@@ -77,6 +79,10 @@ export default class CoinListCell extends Component {
             { this.state.isExpanded &&
               <CoinListCellRangeView item={this.props.item} />
             }
+            {
+              this.state.isExpanded &&
+              <CoinListCellChangeView />
+            }
             { this.state.isExpanded &&
               <CoinListCellStatsView item={this.props.item} />
             }
@@ -85,4 +91,23 @@ export default class CoinListCell extends Component {
       </View>
     )
   }
+}
+
+
+CoinListCell.defaultProps = {
+  item: {
+    percent_change_24h: '-',
+    name: '-',
+    symbol: '-',
+    price_usd: '-',
+  },
+}
+
+CoinListCell.propTypes = {
+  item: PropTypes.shape({
+    percent_change_24h: PropTypes.string,
+    name: PropTypes.string,
+    symbol: PropTypes.string,
+    price_usd: PropTypes.string,
+  }),
 }
