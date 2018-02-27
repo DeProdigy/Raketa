@@ -19,6 +19,8 @@ export default class CoinListCell extends Component {
   }
 
   render() {
+    const s = coinListCellStyles
+
     const {
       item: {
         percent_change_24h,
@@ -31,32 +33,32 @@ export default class CoinListCell extends Component {
     const isNegative = percent_change_24h < 0
 
     return (
-      <View style={coinListCellStyles.mainContainer}>
+      <View style={s.mainContainer}>
         <TouchableOpacity onPress={this.handleCellPress}>
-          <View style={coinListCellStyles.contentContainer}>
-            <View style={coinListCellStyles.collapsedContainer}>
-              <View style={coinListCellStyles.nameSymbolContainer}>
+          <View style={s.contentContainer}>
+            <View style={s.collapsedContainer}>
+              <View style={s.nameSymbolContainer}>
                 <Image
-                  style={coinListCellStyles.symbolImage}
+                  style={s.symbolImage}
                   source={{ uri: `https://chasing-coins.com/api/v1/std/logo/${symbol}` }}
                 />
 
-                <View style={coinListCellStyles.nameContainer}>
-                  <Text style={coinListCellStyles.nameText}>
+                <View style={s.nameContainer}>
+                  <Text style={s.nameText}>
                     {name}
                   </Text>
-                  <Text style={coinListCellStyles.symbolText}>
+                  <Text style={s.symbolText}>
                     {symbol}
                   </Text>
                 </View>
               </View>
               {
                 this.state.isExpanded === false ?
-                  <View style={coinListCellStyles.priceContainer}>
+                  <View style={s.priceContainer}>
                     <Text style={isNegative ?
-                    [coinListCellStyles.priceText,
-                    coinListCellStyles.priceTextNegative] :
-                    coinListCellStyles.priceText}
+                    [s.priceText,
+                    s.priceTextNegative] :
+                    s.priceText}
                     >
                       ${price_usd}
                     </Text>
@@ -68,6 +70,9 @@ export default class CoinListCell extends Component {
                   <CoinListCellFavoritesButton />
               }
             </View>
+            { this.state.isExpanded &&
+              <View style={s.dividerLine} />
+            }
             { this.state.isExpanded &&
               <CoinListCellRangeView item={this.props.item} />
             }
