@@ -11,7 +11,6 @@ const coinListCellChangeButtonStyles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-around',
-    marginLeft: 16,
   },
   containerNegative: {
     backgroundColor: Colors.rkRedTransparent,
