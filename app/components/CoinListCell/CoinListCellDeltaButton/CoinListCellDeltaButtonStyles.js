@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native'
 import { sanFranciscoWeights } from 'react-native-typography'
 import Colors from '../../../shared/styles/Colors'
 
-const coinListCellChangeButtonStyles = StyleSheet.create({
+const CoinListCellDeltaButtonStyles = StyleSheet.create({
   container: {
     width: 100,
     height: 34,
@@ -25,4 +25,4 @@ const coinListCellChangeButtonStyles = StyleSheet.create({
   },
 })
 
-export default coinListCellChangeButtonStyles
+export default CoinListCellDeltaButtonStyles

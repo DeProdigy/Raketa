@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
 import PropTypes from 'prop-types'
-import coinListCellChangeButtonStyles from './CoinListCellChangeButtonStyles'
+import CoinListCellDeltaButtonStyles from './CoinListCellDeltaButtonStyles'
 
-export default class CoinListCellChangeButton extends Component {
+export default class CoinListCellDeltaButton extends Component {
   state = {
     isShowingPercentage: true,
   }
@@ -21,7 +21,7 @@ export default class CoinListCellChangeButton extends Component {
       priceChange,
     } = this.props
 
-    const s = coinListCellChangeButtonStyles
+    const s = CoinListCellDeltaButtonStyles
 
     return (
       <TouchableOpacity
@@ -45,13 +45,13 @@ export default class CoinListCellChangeButton extends Component {
   }
 }
 
-CoinListCellChangeButton.defaultProps = {
+CoinListCellDeltaButton.defaultProps = {
   isNegative: false,
   percentChange: '0.00%',
   priceChange: 0,
 }
 
-CoinListCellChangeButton.propTypes = {
+CoinListCellDeltaButton.propTypes = {
   isNegative: PropTypes.bool,
   percentChange: PropTypes.string,
   priceChange: PropTypes.number,

@@ -1,13 +1,13 @@
 import React from 'react'
 import { View, Text } from 'react-native'
-import coinListCellChangeViewStyles from './CoinListCellChangeViewStyles'
-import CoinListCellChangeButton from '../CoinListCellChangeButton/CoinListCellChangeButton'
+import coinListCellDeltaViewStyles from './CoinListCellDeltaViewStyles'
+import CoinListCellDeltaButton from '../CoinListCellDeltaButton/CoinListCellDeltaButton'
 import formulaHelper from '../../../shared/utils/formulaHelper'
 
 
-const s = coinListCellChangeViewStyles
+const s = coinListCellDeltaViewStyles
 
-const CoinListCellChangeView = ({
+const CoinListCellDeltaView = ({
   item: {
     percent_change_1h: percentChange1h,
     percent_change_24h: percentChange24h,
@@ -19,7 +19,7 @@ const CoinListCellChangeView = ({
     <View style={s.buttonsContainer}>
       <View style={s.buttonContainer}>
         <Text style={s.buttonLabelText}>1H</Text>
-        <CoinListCellChangeButton
+        <CoinListCellDeltaButton
           isNegative={percentChange1h < 0}
           percentChange={percentChange1h}
           priceChange={formulaHelper.getChangeAmount(priceUSD, percentChange1h)}
@@ -27,7 +27,7 @@ const CoinListCellChangeView = ({
       </View>
       <View style={s.buttonContainer}>
         <Text style={s.buttonLabelText}>24H</Text>
-        <CoinListCellChangeButton
+        <CoinListCellDeltaButton
           isNegative={percentChange24h < 0}
           percentChange={percentChange24h}
           priceChange={formulaHelper.getChangeAmount(priceUSD, percentChange24h)}
@@ -35,7 +35,7 @@ const CoinListCellChangeView = ({
       </View>
       <View style={s.buttonContainer}>
         <Text style={s.buttonLabelText}>7D</Text>
-        <CoinListCellChangeButton
+        <CoinListCellDeltaButton
           isNegative={percentChange7d < 0}
           percentChange={percentChange7d}
           priceChange={formulaHelper.getChangeAmount(priceUSD, percentChange7d)}
@@ -46,4 +46,4 @@ const CoinListCellChangeView = ({
   </View>
 )
 
-export default CoinListCellChangeView
+export default CoinListCellDeltaView

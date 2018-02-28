@@ -4,9 +4,9 @@ import PropTypes from 'prop-types'
 import coinListCellStyles from './CoinListCellStyles'
 import CoinListCellRangeView from './CoinListCellRangeView/CoinListCellRangeView'
 import CoinListCellFavoritesButton from './CoinListCellFavoritesButton/CoinListCellFavoritesButton'
-import CoinListCellChangeButton from './CoinListCellChangeButton/CoinListCellChangeButton'
+import CoinListCellDeltaButton from './CoinListCellDeltaButton/CoinListCellDeltaButton'
 import CoinListCellStatsView from './CoinListCellStatsView/CoinListCellStatsView'
-import CoinListCellChangeView from './CoinListCellChangeView/CoinListCellChangeView'
+import CoinListCellDeltaView from './CoinListCellDeltaView/CoinListCellDeltaView'
 import formulaHelper from '../../shared/utils/formulaHelper'
 
 
@@ -67,7 +67,7 @@ export default class CoinListCell extends Component {
                     >
                       ${priceUSD}
                     </Text>
-                    <CoinListCellChangeButton
+                    <CoinListCellDeltaButton
                       isNegative={isNegative}
                       percentChange={percentChange24h}
                       priceChange={priceChange}
@@ -84,7 +84,7 @@ export default class CoinListCell extends Component {
             }
             {
               this.state.isExpanded &&
-              <CoinListCellChangeView item={this.props.item} />
+              <CoinListCellDeltaView item={this.props.item} />
             }
             { this.state.isExpanded &&
               <CoinListCellStatsView item={this.props.item} />
