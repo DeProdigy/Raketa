@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native'
 import { sanFranciscoWeights } from 'react-native-typography'
 import Colors from '../../../shared/styles/Colors'
 
-export default coinListCellRangeViewStyles = StyleSheet.create({
+const coinListCellRangeViewStyles = StyleSheet.create({
 
   mainContainer: {
     flexDirection: 'column',
@@ -22,25 +22,13 @@ export default coinListCellRangeViewStyles = StyleSheet.create({
     alignItems: 'stretch',
     marginTop: 20,
   },
-  priceRangeCurrentContainer: {
-    flexDirection: 'column',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-  },
-  priceRangeCurrentText: {
+  currentPrice: {
     ...sanFranciscoWeights.semibold,
     color: Colors.rkPureWhite,
     fontSize: 15,
     textAlign: 'center',
   },
-  priceRangeCurrentChangeText: {
-    ...sanFranciscoWeights.semibold,
-    color: Colors.rkRed,
-    fontSize: 12,
-    textAlign: 'center',
-    marginTop: 6,
-  },
-  priceRangeSVGContainer: {
+  rangeSVGContainer: {
     height: 18,
     marginTop: 8,
     flex: 1,
@@ -68,3 +56,5 @@ export default coinListCellRangeViewStyles = StyleSheet.create({
     marginTop: 16,
   },
 })
+
+export default coinListCellRangeViewStyles
