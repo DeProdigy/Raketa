@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
+import PropTypes from 'prop-types'
 import coinListCellChangeButtonStyles from './CoinListCellChangeButtonStyles'
 
 export default class CoinListCellChangeButton extends Component {
@@ -17,6 +18,7 @@ export default class CoinListCellChangeButton extends Component {
     const {
       isNegative,
       percentChange,
+      priceChange,
     } = this.props
 
     const s = coinListCellChangeButtonStyles
@@ -33,10 +35,24 @@ export default class CoinListCellChangeButton extends Component {
             isNegative ?
             [s.changeText, s.changeTextNegative] : s.changeText}
           >
-            {this.state.isShowingPercentage ? (isNegative === false ? '+' : '') + percentChange + '%' : '$850.55' }
+            {this.state.isShowingPercentage ?
+              `${(isNegative === false ? '+' : '') + percentChange}%` :
+              `$ ${isNegative === false ? '+' : ''}${priceChange}` }
           </Text>
         </View>
       </TouchableOpacity>
     )
   }
+}
+
+CoinListCellChangeButton.defaultProps = {
+  isNegative: false,
+  percentChange: '0.00%',
+  priceChange: 0,
+}
+
+CoinListCellChangeButton.propTypes = {
+  isNegative: PropTypes.bool,
+  percentChange: PropTypes.string,
+  priceChange: PropTypes.number,
 }
