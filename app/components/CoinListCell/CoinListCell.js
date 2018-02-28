@@ -7,6 +7,7 @@ import CoinListCellFavoritesButton from './CoinListCellFavoritesButton/CoinListC
 import CoinListCellChangeButton from './CoinListCellChangeButton/CoinListCellChangeButton'
 import CoinListCellStatsView from './CoinListCellStatsView/CoinListCellStatsView'
 import CoinListCellChangeView from './CoinListCellChangeView/CoinListCellChangeView'
+import formulaHelper from '../../shared/utils/formulaHelper'
 
 
 export default class CoinListCell extends Component {
@@ -26,14 +27,15 @@ export default class CoinListCell extends Component {
 
     const {
       item: {
-        percent_change_24h: percentChange24,
+        percent_change_24h: percentChange24h,
         name,
         symbol,
-        price_usd: price,
+        price_usd: priceUSD,
       },
     } = this.props
 
-    const isNegative = percentChange24 < 0
+    const isNegative = percentChange24h < 0
+    const priceChange = formulaHelper.getChangeAmount(priceUSD, percentChange24h)
 
     return (
       <View style={s.mainContainer}>
@@ -63,11 +65,12 @@ export default class CoinListCell extends Component {
                     s.priceTextNegative] :
                     s.priceText}
                     >
-                      ${price}
+                      ${priceUSD}
                     </Text>
                     <CoinListCellChangeButton
                       isNegative={isNegative}
-                      percentChange={percentChange24}
+                      percentChange={percentChange24h}
+                      priceChange={priceChange}
                     />
                   </View> :
                   <CoinListCellFavoritesButton />
@@ -81,7 +84,7 @@ export default class CoinListCell extends Component {
             }
             {
               this.state.isExpanded &&
-              <CoinListCellChangeView />
+              <CoinListCellChangeView item={this.props.item} />
             }
             { this.state.isExpanded &&
               <CoinListCellStatsView item={this.props.item} />
@@ -92,7 +95,6 @@ export default class CoinListCell extends Component {
     )
   }
 }
-
 
 CoinListCell.defaultProps = {
   item: {

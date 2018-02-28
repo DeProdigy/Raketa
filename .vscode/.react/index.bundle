@@ -58835,7 +58835,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
       orientation: 'portrait'
     }
   });
-},489,[490,503,506,618,619,620,621,622,623,624,625],"Raketa/app/screens/App.js");
+},489,[490,503,506,623,624,625,626,627,628,629,630],"Raketa/app/screens/App.js");
 __d(function (global, require, module, exports, _dependencyMap) {
   module.exports = require(_dependencyMap[0], './deprecated/indexDeprecated');
 },490,[491],"react-native-navigation/src/index.js");
@@ -68479,7 +68479,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
       return _FavoritesScreen2.default;
     });
   }
-},503,[490,504,616,617],"Raketa/app/screens/index.js");
+},503,[490,504,621,622],"Raketa/app/screens/index.js");
 __d(function (global, require, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -68656,7 +68656,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
     rkPureWhite: '#FFFFFF',
     rkWhiteTransparent: 'rgba(255,255,255,0.05)',
     rkTransparent: 'transparent',
-    rkDarkGray: 'rgba(255, 255, 255, 0.25)',
+    rkDarkGray: 'rgba(255, 255, 255, 0.15)',
     rkGreen: 'rgb(130, 255, 193)',
     rkGreenTransparent: 'rgba(130, 255, 193, 0.15)',
     rkRed: 'rgb(255, 94, 77)',
@@ -68880,7 +68880,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
   CoinList.propTypes = {
     coinMarketcapData: _propTypes2.default.arrayOf(_propTypes2.default.any).isRequired
   };
-},507,[109,128,12,292,508,609,615],"Raketa/app/components/CoinList/CoinList.js");
+},507,[109,128,12,292,508,614,620],"Raketa/app/components/CoinList/CoinList.js");
 __d(function (global, require, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -68900,21 +68900,37 @@ __d(function (global, require, module, exports, _dependencyMap) {
 
   var _reactNative = require(_dependencyMap[2], "react-native");
 
-  var _CoinListCellStyles = require(_dependencyMap[3], "./CoinListCellStyles");
+  var _propTypes = require(_dependencyMap[3], "prop-types");
+
+  var _propTypes2 = _interopRequireDefault(_propTypes);
+
+  var _CoinListCellStyles = require(_dependencyMap[4], "./CoinListCellStyles");
 
   var _CoinListCellStyles2 = _interopRequireDefault(_CoinListCellStyles);
 
-  var _CoinListCellRangeView = require(_dependencyMap[4], "./CoinListCellRangeView/CoinListCellRangeView");
+  var _CoinListCellRangeView = require(_dependencyMap[5], "./CoinListCellRangeView/CoinListCellRangeView");
 
   var _CoinListCellRangeView2 = _interopRequireDefault(_CoinListCellRangeView);
 
-  var _CoinListCellFavoritesButton = require(_dependencyMap[5], "./CoinListCellFavoritesButton/CoinListCellFavoritesButton");
+  var _CoinListCellFavoritesButton = require(_dependencyMap[6], "./CoinListCellFavoritesButton/CoinListCellFavoritesButton");
 
   var _CoinListCellFavoritesButton2 = _interopRequireDefault(_CoinListCellFavoritesButton);
 
-  var _CoinListCellChangeButton = require(_dependencyMap[6], "./CoinListCellChangeButton/CoinListCellChangeButton");
+  var _CoinListCellChangeButton = require(_dependencyMap[7], "./CoinListCellChangeButton/CoinListCellChangeButton");
 
   var _CoinListCellChangeButton2 = _interopRequireDefault(_CoinListCellChangeButton);
+
+  var _CoinListCellStatsView = require(_dependencyMap[8], "./CoinListCellStatsView/CoinListCellStatsView");
+
+  var _CoinListCellStatsView2 = _interopRequireDefault(_CoinListCellStatsView);
+
+  var _CoinListCellChangeView = require(_dependencyMap[9], "./CoinListCellChangeView/CoinListCellChangeView");
+
+  var _CoinListCellChangeView2 = _interopRequireDefault(_CoinListCellChangeView);
+
+  var _formulaHelper = require(_dependencyMap[10], "../../shared/utils/formulaHelper");
+
+  var _formulaHelper2 = _interopRequireDefault(_formulaHelper);
 
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -68971,18 +68987,23 @@ __d(function (global, require, module, exports, _dependencyMap) {
     _createClass(CoinListCell, [{
       key: "render",
       value: function render() {
+        var s = _CoinListCellStyles2.default;
         var _props$item = this.props.item,
-            percent_change_24h = _props$item.percent_change_24h,
+            percentChange24h = _props$item.percent_change_24h,
             name = _props$item.name,
             symbol = _props$item.symbol,
-            price_usd = _props$item.price_usd;
+            priceUSD = _props$item.price_usd;
+        var isNegative = percentChange24h < 0;
+
+        var priceChange = _formulaHelper2.default.getChangeAmount(priceUSD, percentChange24h);
+
         return _react3.default.createElement(
           _reactNative.View,
           {
-            style: _CoinListCellStyles2.default.mainContainer,
+            style: s.mainContainer,
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 33
+              lineNumber: 41
             }
           },
           _react3.default.createElement(
@@ -68991,62 +69012,62 @@ __d(function (global, require, module, exports, _dependencyMap) {
               onPress: this.handleCellPress,
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 34
+                lineNumber: 42
               }
             },
             _react3.default.createElement(
               _reactNative.View,
               {
-                style: _CoinListCellStyles2.default.contentContainer,
+                style: s.contentContainer,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 35
+                  lineNumber: 43
                 }
               },
               _react3.default.createElement(
                 _reactNative.View,
                 {
-                  style: _CoinListCellStyles2.default.collapsedContainer,
+                  style: s.collapsedContainer,
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 36
+                    lineNumber: 44
                   }
                 },
                 _react3.default.createElement(
                   _reactNative.View,
                   {
-                    style: _CoinListCellStyles2.default.nameSymbolContainer,
+                    style: s.nameSymbolContainer,
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 37
+                      lineNumber: 45
                     }
                   },
                   _react3.default.createElement(_reactNative.Image, {
-                    style: _CoinListCellStyles2.default.symbolImage,
+                    style: s.symbolImage,
                     source: {
                       uri: "https://chasing-coins.com/api/v1/std/logo/" + symbol
                     },
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 38
+                      lineNumber: 46
                     }
                   }),
                   _react3.default.createElement(
                     _reactNative.View,
                     {
-                      style: _CoinListCellStyles2.default.nameContainer,
+                      style: s.nameContainer,
                       __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 43
+                        lineNumber: 51
                       }
                     },
                     _react3.default.createElement(
                       _reactNative.Text,
                       {
-                        style: _CoinListCellStyles2.default.nameText,
+                        style: s.nameText,
                         __source: {
                           fileName: _jsxFileName,
-                          lineNumber: 44
+                          lineNumber: 52
                         }
                       },
                       name
@@ -69054,52 +69075,79 @@ __d(function (global, require, module, exports, _dependencyMap) {
                     _react3.default.createElement(
                       _reactNative.Text,
                       {
-                        style: _CoinListCellStyles2.default.symbolText,
+                        style: s.symbolText,
                         __source: {
                           fileName: _jsxFileName,
-                          lineNumber: 47
+                          lineNumber: 55
                         }
                       },
                       symbol
                     )
                   )
                 ),
-                _react3.default.createElement(
+                this.state.isExpanded === false ? _react3.default.createElement(
                   _reactNative.View,
                   {
-                    style: _CoinListCellStyles2.default.priceContainer,
+                    style: s.priceContainer,
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 53
+                      lineNumber: 62
                     }
                   },
                   _react3.default.createElement(
                     _reactNative.Text,
                     {
-                      style: _CoinListCellStyles2.default.priceText,
+                      style: isNegative ? [s.priceText, s.priceTextNegative] : s.priceText,
                       __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 54
+                        lineNumber: 63
                       }
                     },
                     "$",
-                    price_usd
+                    priceUSD
                   ),
                   _react3.default.createElement(_CoinListCellChangeButton2.default, {
-                    isNegative: percent_change_24h < 0,
-                    percentChange: percent_change_24h,
+                    isNegative: isNegative,
+                    percentChange: percentChange24h,
+                    priceChange: priceChange,
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 57
+                      lineNumber: 70
                     }
                   })
-                )
+                ) : _react3.default.createElement(_CoinListCellFavoritesButton2.default, {
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 76
+                  }
+                })
               ),
+              this.state.isExpanded && _react3.default.createElement(_reactNative.View, {
+                style: s.dividerLine,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 80
+                }
+              }),
               this.state.isExpanded && _react3.default.createElement(_CoinListCellRangeView2.default, {
                 item: this.props.item,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 66
+                  lineNumber: 83
+                }
+              }),
+              this.state.isExpanded && _react3.default.createElement(_CoinListCellChangeView2.default, {
+                item: this.props.item,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 87
+                }
+              }),
+              this.state.isExpanded && _react3.default.createElement(_CoinListCellStatsView2.default, {
+                item: this.props.item,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 90
                 }
               })
             )
@@ -69112,7 +69160,23 @@ __d(function (global, require, module, exports, _dependencyMap) {
   }(_react2.Component));
 
   exports.default = CoinListCell;
-},508,[109,128,12,509,533,605,627],"Raketa/app/components/CoinListCell/CoinListCell.js");
+  CoinListCell.defaultProps = {
+    item: {
+      percent_change_24h: '-',
+      name: '-',
+      symbol: '-',
+      price_usd: '-'
+    }
+  };
+  CoinListCell.propTypes = {
+    item: _propTypes2.default.shape({
+      percent_change_24h: _propTypes2.default.string,
+      name: _propTypes2.default.string,
+      symbol: _propTypes2.default.string,
+      price_usd: _propTypes2.default.string
+    })
+  };
+},508,[109,128,12,292,509,533,605,608,610,612,633],"Raketa/app/components/CoinListCell/CoinListCell.js");
 __d(function (global, require, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -69181,29 +69245,18 @@ __d(function (global, require, module, exports, _dependencyMap) {
       alignItems: 'center'
     },
     priceText: _extends({}, _reactNativeTypography.sanFranciscoWeights.semibold, {
-      color: _Colors2.default.rkPureWhite,
+      color: _Colors2.default.rkGreen,
       fontSize: 15,
-      textAlign: 'right'
+      textAlign: 'right',
+      marginRight: 12
     }),
-    changeContainer: {
-      width: 100,
-      height: 34,
-      borderRadius: 4,
-      backgroundColor: _Colors2.default.rkGreenTransparent,
-      flexDirection: 'row',
-      alignItems: 'center',
-      justifyContent: 'space-around',
-      marginLeft: 16
-    },
-    changeContainerNegative: {
-      backgroundColor: _Colors2.default.rkRedTransparent
-    },
-    changeText: _extends({}, _reactNativeTypography.sanFranciscoWeights.bold, {
-      fontSize: 14,
-      color: _Colors2.default.rkGreen
-    }),
-    changeTextNegative: {
+    priceTextNegative: {
       color: _Colors2.default.rkRed
+    },
+    dividerLine: {
+      backgroundColor: _Colors2.default.rkDarkGray,
+      height: 0.5,
+      marginTop: 16
     }
   });
 
@@ -70551,467 +70604,240 @@ __d(function (global, require, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
   });
-
-  var _react2 = require(_dependencyMap[0], "react");
-
-  var _react3 = _interopRequireDefault(_react2);
-
-  var _index = require(_dependencyMap[1], "./../../../../node_modules/react-transform-hmr/lib/index.js");
-
-  var _index2 = _interopRequireDefault(_index);
-
   var _jsxFileName = "/Users/drak/Documents/Raketa/app/components/CoinListCell/CoinListCellRangeView/CoinListCellRangeView.js";
 
-  var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+  var _react = require(_dependencyMap[0], "react");
 
-  var _reactNative = require(_dependencyMap[2], "react-native");
+  var _react2 = _interopRequireDefault(_react);
 
-  var _reactNativeSvg = require(_dependencyMap[3], "react-native-svg");
+  var _reactNative = require(_dependencyMap[1], "react-native");
+
+  var _reactNativeSvg = require(_dependencyMap[2], "react-native-svg");
 
   var _reactNativeSvg2 = _interopRequireDefault(_reactNativeSvg);
 
-  var _Colors = require(_dependencyMap[4], "../../../shared/styles/Colors");
+  var _Colors = require(_dependencyMap[3], "../../../shared/styles/Colors");
 
   var _Colors2 = _interopRequireDefault(_Colors);
 
-  var _CoinListCellRangeViewStyles = require(_dependencyMap[5], "./CoinListCellRangeViewStyles");
+  var _CoinListCellRangeViewStyles = require(_dependencyMap[4], "./CoinListCellRangeViewStyles");
 
   var _CoinListCellRangeViewStyles2 = _interopRequireDefault(_CoinListCellRangeViewStyles);
 
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+  var s = _CoinListCellRangeViewStyles2.default;
 
-  function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-  function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-  var _components = {
-    CoinListCellRangeView: {
-      displayName: "CoinListCellRangeView"
-    }
-  };
-
-  var _node_modulesReactTransformHmrLibIndexJs2 = (0, _index2.default)({
-    filename: "/Users/drak/Documents/Raketa/app/components/CoinListCell/CoinListCellRangeView/CoinListCellRangeView.js",
-    components: _components,
-    locals: [module],
-    imports: [_react3.default]
-  });
-
-  function _wrapComponent(id) {
-    return function (Component) {
-      return _node_modulesReactTransformHmrLibIndexJs2(Component, id);
-    };
-  }
-
-  var CoinListCellRangeView = _wrapComponent("CoinListCellRangeView")(function (_Component) {
-    _inherits(CoinListCellRangeView, _Component);
-
-    function CoinListCellRangeView() {
-      var _ref;
-
-      var _temp, _this, _ret;
-
-      _classCallCheck(this, CoinListCellRangeView);
-
-      for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-        args[_key] = arguments[_key];
-      }
-
-      return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = CoinListCellRangeView.__proto__ || Object.getPrototypeOf(CoinListCellRangeView)).call.apply(_ref, [this].concat(args))), _this), _this.state = {}, _temp), _possibleConstructorReturn(_this, _ret);
-    }
-
-    _createClass(CoinListCellRangeView, [{
-      key: "render",
-      value: function render() {
-        var s = _CoinListCellRangeViewStyles2.default;
-        var marketCap = this.props.item.market_cap_usd;
-        var circulatingSupply = this.props.item.available_supply;
-        var volume = this.props.item['24h_volume_usd'];
-        var totalSupply = this.props.item.max_supply;
-        return _react3.default.createElement(
-          _reactNative.View,
+  var CoinListCellRangeView = function CoinListCellRangeView(_ref) {
+    var priceUSD = _ref.item.price_usd;
+    return _react2.default.createElement(
+      _reactNative.View,
+      {
+        style: s.mainContainer,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 24
+        }
+      },
+      _react2.default.createElement(
+        _reactNative.Text,
+        {
+          style: s.headerText,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 25
+          }
+        },
+        "24H PRICE RANGE"
+      ),
+      _react2.default.createElement(
+        _reactNative.View,
+        {
+          style: s.rangeView,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 26
+          }
+        },
+        _react2.default.createElement(
+          _reactNative.Text,
           {
-            style: s.mainContainer,
+            style: s.currentPrice,
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 31
+              lineNumber: 27
             }
           },
-          _react3.default.createElement(
-            _reactNative.View,
+          priceUSD
+        ),
+        _react2.default.createElement(
+          _reactNativeSvg2.default,
+          {
+            style: s.rangeSVGContainer,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 28
+            }
+          },
+          _react2.default.createElement(
+            _reactNativeSvg.Defs,
             {
-              style: s.headerContainer,
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 32
+                lineNumber: 31
               }
             },
-            _react3.default.createElement(
-              _reactNative.View,
+            _react2.default.createElement(
+              _reactNativeSvg.LinearGradient,
               {
-                style: s.CoinListCellRangeView,
+                id: "grad",
+                x1: "0%",
+                y1: "0",
+                x2: "100%",
+                y2: "0",
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 32
+                }
+              },
+              _react2.default.createElement(_reactNativeSvg.Stop, {
+                offset: "0",
+                stopColor: _Colors2.default.rkRed,
+                stopOpacity: "1",
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 33
+                }
+              }),
+              _react2.default.createElement(_reactNativeSvg.Stop, {
+                offset: "1",
+                stopColor: _Colors2.default.rkGreen,
+                stopOpacity: "1",
                 __source: {
                   fileName: _jsxFileName,
                   lineNumber: 34
                 }
+              })
+            ),
+            _react2.default.createElement(
+              _reactNativeSvg.ClipPath,
+              {
+                id: "clip",
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 36
+                }
               },
-              _react3.default.createElement(
-                _reactNative.View,
+              _react2.default.createElement(
+                _reactNativeSvg.G,
                 {
-                  style: s.priceRangeCurrentContainer,
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 36
+                    lineNumber: 37
                   }
                 },
-                _react3.default.createElement(
-                  _reactNative.Text,
-                  {
-                    style: s.priceRangeCurrentText,
-                    __source: {
-                      fileName: _jsxFileName,
-                      lineNumber: 37
-                    }
-                  },
-                  "$11325.10"
-                ),
-                _react3.default.createElement(
-                  _reactNative.Text,
-                  {
-                    style: s.priceRangeCurrentChangeText,
-                    __source: {
-                      fileName: _jsxFileName,
-                      lineNumber: 38
-                    }
-                  },
-                  "-7.53%($20.50)"
-                )
-              ),
-              _react3.default.createElement(
-                _reactNativeSvg2.default,
-                {
-                  style: s.priceRangeSVGContainer,
+                _react2.default.createElement(_reactNativeSvg.Rect, {
+                  y: "40%",
+                  x: "7%",
+                  width: "85%",
+                  height: "4",
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 41
+                    lineNumber: 38
                   }
-                },
-                _react3.default.createElement(
-                  _reactNativeSvg.Defs,
-                  {
-                    __source: {
-                      fileName: _jsxFileName,
-                      lineNumber: 44
-                    }
-                  },
-                  _react3.default.createElement(
-                    _reactNativeSvg.LinearGradient,
-                    {
-                      id: "grad",
-                      x1: "0%",
-                      y1: "0",
-                      x2: "100%",
-                      y2: "0",
-                      __source: {
-                        fileName: _jsxFileName,
-                        lineNumber: 45
-                      }
-                    },
-                    _react3.default.createElement(_reactNativeSvg.Stop, {
-                      offset: "0",
-                      stopColor: _Colors2.default.rkRed,
-                      stopOpacity: "1",
-                      __source: {
-                        fileName: _jsxFileName,
-                        lineNumber: 46
-                      }
-                    }),
-                    _react3.default.createElement(_reactNativeSvg.Stop, {
-                      offset: "1",
-                      stopColor: _Colors2.default.rkGreen,
-                      stopOpacity: "1",
-                      __source: {
-                        fileName: _jsxFileName,
-                        lineNumber: 47
-                      }
-                    })
-                  ),
-                  _react3.default.createElement(
-                    _reactNativeSvg.ClipPath,
-                    {
-                      id: "clip",
-                      __source: {
-                        fileName: _jsxFileName,
-                        lineNumber: 49
-                      }
-                    },
-                    _react3.default.createElement(
-                      _reactNativeSvg.G,
-                      {
-                        __source: {
-                          fileName: _jsxFileName,
-                          lineNumber: 50
-                        }
-                      },
-                      _react3.default.createElement(_reactNativeSvg.Rect, {
-                        y: "40%",
-                        x: "7%",
-                        width: "85%",
-                        height: "4",
-                        __source: {
-                          fileName: _jsxFileName,
-                          lineNumber: 51
-                        }
-                      }),
-                      _react3.default.createElement(_reactNativeSvg.Circle, {
-                        cx: "7%",
-                        cy: "50%",
-                        r: "5",
-                        __source: {
-                          fileName: _jsxFileName,
-                          lineNumber: 57
-                        }
-                      }),
-                      _react3.default.createElement(_reactNativeSvg.Circle, {
-                        cx: "93%",
-                        cy: "50%",
-                        r: "5",
-                        __source: {
-                          fileName: _jsxFileName,
-                          lineNumber: 62
-                        }
-                      }),
-                      _react3.default.createElement(_reactNativeSvg.Polygon, {
-                        x: "150",
-                        y: "11",
-                        rotation: "180",
-                        points: "0,2 20,2 10,10",
-                        fill: "lime",
-                        stroke: "purple",
-                        strokeWidth: "1",
-                        __source: {
-                          fileName: _jsxFileName,
-                          lineNumber: 67
-                        }
-                      })
-                    )
-                  )
-                ),
-                _react3.default.createElement(_reactNativeSvg.Rect, {
-                  x: "0",
-                  y: "0",
-                  width: "100%",
-                  height: "100%",
-                  fill: "url(#grad)",
-                  clipPath: "url(#clip)",
+                }),
+                _react2.default.createElement(_reactNativeSvg.Circle, {
+                  cx: "7%",
+                  cy: "50%",
+                  r: "5",
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 79
+                    lineNumber: 44
+                  }
+                }),
+                _react2.default.createElement(_reactNativeSvg.Circle, {
+                  cx: "93%",
+                  cy: "50%",
+                  r: "5",
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 49
+                  }
+                }),
+                _react2.default.createElement(_reactNativeSvg.Polygon, {
+                  x: "150",
+                  y: "11",
+                  rotation: "180",
+                  points: "0,2 20,2 10,10",
+                  fill: "lime",
+                  stroke: "purple",
+                  strokeWidth: "1",
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 54
                   }
                 })
-              ),
-              _react3.default.createElement(
-                _reactNative.View,
-                {
-                  style: s.priceRangeBottomContainer,
-                  __source: {
-                    fileName: _jsxFileName,
-                    lineNumber: 88
-                  }
-                },
-                _react3.default.createElement(
-                  _reactNative.Text,
-                  {
-                    style: [s.priceRangeText, s.leftAlign],
-                    __source: {
-                      fileName: _jsxFileName,
-                      lineNumber: 89
-                    }
-                  },
-                  "$653.50"
-                ),
-                _react3.default.createElement(
-                  _reactNative.Text,
-                  {
-                    style: [s.priceRangeText, s.rightAlign],
-                    __source: {
-                      fileName: _jsxFileName,
-                      lineNumber: 90
-                    }
-                  },
-                  "$873.50"
-                )
-              )
-            ),
-            _react3.default.createElement(_reactNative.View, {
-              style: s.dividerLine,
-              __source: {
-                fileName: _jsxFileName,
-                lineNumber: 94
-              }
-            }),
-            _react3.default.createElement(
-              _reactNative.View,
-              {
-                style: s.mainStatContainer,
-                __source: {
-                  fileName: _jsxFileName,
-                  lineNumber: 95
-                }
-              },
-              _react3.default.createElement(
-                _reactNative.View,
-                {
-                  style: s.leftAlignedStatContainer,
-                  __source: {
-                    fileName: _jsxFileName,
-                    lineNumber: 97
-                  }
-                },
-                _react3.default.createElement(
-                  _reactNative.Text,
-                  {
-                    style: s.headerText,
-                    __source: {
-                      fileName: _jsxFileName,
-                      lineNumber: 98
-                    }
-                  },
-                  "MARKET CAP"
-                ),
-                _react3.default.createElement(
-                  _reactNative.Text,
-                  {
-                    style: s.statText,
-                    __source: {
-                      fileName: _jsxFileName,
-                      lineNumber: 99
-                    }
-                  },
-                  "$",
-                  marketCap
-                )
-              ),
-              _react3.default.createElement(
-                _reactNative.View,
-                {
-                  style: s.rightAlignedStatContainer,
-                  __source: {
-                    fileName: _jsxFileName,
-                    lineNumber: 101
-                  }
-                },
-                _react3.default.createElement(
-                  _reactNative.Text,
-                  {
-                    style: s.headerText,
-                    __source: {
-                      fileName: _jsxFileName,
-                      lineNumber: 102
-                    }
-                  },
-                  "VOLUME(24H)"
-                ),
-                _react3.default.createElement(
-                  _reactNative.Text,
-                  {
-                    style: [s.statText, s.statTextRight],
-                    __source: {
-                      fileName: _jsxFileName,
-                      lineNumber: 103
-                    }
-                  },
-                  "$",
-                  volume
-                )
-              )
-            ),
-            _react3.default.createElement(
-              _reactNative.View,
-              {
-                style: s.mainStatContainer,
-                __source: {
-                  fileName: _jsxFileName,
-                  lineNumber: 108
-                }
-              },
-              _react3.default.createElement(
-                _reactNative.View,
-                {
-                  style: s.leftAlignedStatContainer,
-                  __source: {
-                    fileName: _jsxFileName,
-                    lineNumber: 109
-                  }
-                },
-                _react3.default.createElement(
-                  _reactNative.Text,
-                  {
-                    style: s.headerText,
-                    __source: {
-                      fileName: _jsxFileName,
-                      lineNumber: 110
-                    }
-                  },
-                  "CIRCULATING SUPPLY"
-                ),
-                _react3.default.createElement(
-                  _reactNative.Text,
-                  {
-                    style: s.statText,
-                    __source: {
-                      fileName: _jsxFileName,
-                      lineNumber: 111
-                    }
-                  },
-                  circulatingSupply
-                )
-              ),
-              _react3.default.createElement(
-                _reactNative.View,
-                {
-                  style: s.rightAlignedStatContainer,
-                  __source: {
-                    fileName: _jsxFileName,
-                    lineNumber: 113
-                  }
-                },
-                _react3.default.createElement(
-                  _reactNative.Text,
-                  {
-                    style: s.headerText,
-                    __source: {
-                      fileName: _jsxFileName,
-                      lineNumber: 114
-                    }
-                  },
-                  "MAX SUPPLY"
-                ),
-                _react3.default.createElement(
-                  _reactNative.Text,
-                  {
-                    style: [s.statText, s.statTextRight],
-                    __source: {
-                      fileName: _jsxFileName,
-                      lineNumber: 115
-                    }
-                  },
-                  totalSupply
-                )
               )
             )
+          ),
+          _react2.default.createElement(_reactNativeSvg.Rect, {
+            x: "0",
+            y: "0",
+            width: "100%",
+            height: "100%",
+            fill: "url(#grad)",
+            clipPath: "url(#clip)",
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 66
+            }
+          })
+        ),
+        _react2.default.createElement(
+          _reactNative.View,
+          {
+            style: s.priceRangeBottomContainer,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 75
+            }
+          },
+          _react2.default.createElement(
+            _reactNative.Text,
+            {
+              style: [s.priceRangeText, s.leftAlign],
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 76
+              }
+            },
+            "$653.50"
+          ),
+          _react2.default.createElement(
+            _reactNative.Text,
+            {
+              style: [s.priceRangeText, s.rightAlign],
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 77
+              }
+            },
+            "$873.50"
           )
-        );
-      }
-    }]);
-
-    return CoinListCellRangeView;
-  }(_react2.Component));
+        )
+      ),
+      _react2.default.createElement(_reactNative.View, {
+        style: s.dividerLine,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 80
+        }
+      })
+    );
+  };
 
   exports.default = CoinListCellRangeView;
-},533,[109,128,12,534,506,604],"Raketa/app/components/CoinListCell/CoinListCellRangeView/CoinListCellRangeView.js");
+},533,[109,12,534,506,604],"Raketa/app/components/CoinListCell/CoinListCellRangeView/CoinListCellRangeView.js");
 __d(function (global, require, module, exports, _dependencyMap) {
     Object.defineProperty(exports, "__esModule", {
         value: true
@@ -84224,46 +84050,30 @@ __d(function (global, require, module, exports, _dependencyMap) {
 
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-  exports.default = coinListCellRangeViewStyles = _reactNative.StyleSheet.create({
+  var coinListCellRangeViewStyles = _reactNative.StyleSheet.create({
     mainContainer: {
       flexDirection: 'column',
       justifyContent: 'flex-start',
       alignItems: 'stretch',
       marginTop: 16
     },
-    headerContainer: {
-      flexDirection: 'column',
-      justifyContent: 'flex-start',
-      alignItems: 'stretch'
-    },
     headerText: _extends({}, _reactNativeTypography.sanFranciscoWeights.bold, {
       color: _Colors2.default.rkDarkGray,
       fontSize: 12,
       textAlign: 'left'
     }),
-    CoinListCellRangeView: {
+    rangeView: {
       flexDirection: 'column',
       justifyContent: 'flex-start',
       alignItems: 'stretch',
       marginTop: 20
     },
-    priceRangeCurrentContainer: {
-      flexDirection: 'column',
-      justifyContent: 'flex-start',
-      alignItems: 'center'
-    },
-    priceRangeCurrentText: _extends({}, _reactNativeTypography.sanFranciscoWeights.semibold, {
+    currentPrice: _extends({}, _reactNativeTypography.sanFranciscoWeights.semibold, {
       color: _Colors2.default.rkPureWhite,
       fontSize: 15,
       textAlign: 'center'
     }),
-    priceRangeCurrentChangeText: _extends({}, _reactNativeTypography.sanFranciscoWeights.semibold, {
-      color: _Colors2.default.rkRed,
-      fontSize: 12,
-      textAlign: 'center',
-      marginTop: 6
-    }),
-    priceRangeSVGContainer: {
+    rangeSVGContainer: {
       height: 18,
       marginTop: 8,
       flex: 1
@@ -84288,33 +84098,10 @@ __d(function (global, require, module, exports, _dependencyMap) {
       backgroundColor: _Colors2.default.rkDarkGray,
       height: 0.5,
       marginTop: 16
-    },
-    mainStatContainer: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      marginTop: 16
-    },
-    leftAlignedStatContainer: {
-      flexDirection: 'column',
-      justifyContent: 'flex-start',
-      alignItems: 'flex-start'
-    },
-    rightAlignedStatContainer: {
-      flexDirection: 'column',
-      justifyContent: 'flex-end',
-      alignItems: 'flex-end'
-    },
-    statText: _extends({}, _reactNativeTypography.sanFranciscoWeights.semibold, {
-      color: _Colors2.default.rkPureWhite,
-      fontSize: 12,
-      textAlign: 'left',
-      marginTop: 8
-    }),
-    statTextRight: {
-      textAlign: 'right'
     }
   });
+
+  exports.default = coinListCellRangeViewStyles;
 },604,[12,510,506],"Raketa/app/components/CoinListCell/CoinListCellRangeView/CoinListCellRangeViewStyles.js");
 __d(function (global, require, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
@@ -84453,13 +84240,13 @@ __d(function (global, require, module, exports, _dependencyMap) {
 
   var coinListCellFavoritesButtonStyles = _reactNative.StyleSheet.create({
     favoritesButton: {
-      height: 44,
-      borderRadius: 22,
-      marginTop: 32,
+      height: 34,
+      borderRadius: 17,
       backgroundColor: 'rgba(255,255,255,0.05)',
       flexDirection: 'row',
       justifyContent: 'center',
-      alignItems: 'center'
+      alignItems: 'center',
+      width: 171
     },
     favoritesButtonImageText: {
       flexDirection: 'row',
@@ -84497,6 +84284,140 @@ __d(function (global, require, module, exports, _dependencyMap) {
     value: true
   });
 
+  var _react2 = require(_dependencyMap[0], "react");
+
+  var _react3 = _interopRequireDefault(_react2);
+
+  var _index = require(_dependencyMap[1], "./../../../../node_modules/react-transform-hmr/lib/index.js");
+
+  var _index2 = _interopRequireDefault(_index);
+
+  var _jsxFileName = "/Users/drak/Documents/Raketa/app/components/CoinListCell/CoinListCellChangeButton/CoinListCellChangeButton.js";
+
+  var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+  var _reactNative = require(_dependencyMap[2], "react-native");
+
+  var _propTypes = require(_dependencyMap[3], "prop-types");
+
+  var _propTypes2 = _interopRequireDefault(_propTypes);
+
+  var _CoinListCellChangeButtonStyles = require(_dependencyMap[4], "./CoinListCellChangeButtonStyles");
+
+  var _CoinListCellChangeButtonStyles2 = _interopRequireDefault(_CoinListCellChangeButtonStyles);
+
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+  function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+  function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+  var _components = {
+    CoinListCellChangeButton: {
+      displayName: "CoinListCellChangeButton"
+    }
+  };
+
+  var _node_modulesReactTransformHmrLibIndexJs2 = (0, _index2.default)({
+    filename: "/Users/drak/Documents/Raketa/app/components/CoinListCell/CoinListCellChangeButton/CoinListCellChangeButton.js",
+    components: _components,
+    locals: [module],
+    imports: [_react3.default]
+  });
+
+  function _wrapComponent(id) {
+    return function (Component) {
+      return _node_modulesReactTransformHmrLibIndexJs2(Component, id);
+    };
+  }
+
+  var CoinListCellChangeButton = _wrapComponent("CoinListCellChangeButton")(function (_Component) {
+    _inherits(CoinListCellChangeButton, _Component);
+
+    function CoinListCellChangeButton() {
+      var _ref;
+
+      var _temp, _this, _ret;
+
+      _classCallCheck(this, CoinListCellChangeButton);
+
+      for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+        args[_key] = arguments[_key];
+      }
+
+      return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = CoinListCellChangeButton.__proto__ || Object.getPrototypeOf(CoinListCellChangeButton)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+        isShowingPercentage: true
+      }, _this.handlePress = function () {
+        _this.setState({
+          isShowingPercentage: !_this.state.isShowingPercentage
+        });
+      }, _temp), _possibleConstructorReturn(_this, _ret);
+    }
+
+    _createClass(CoinListCellChangeButton, [{
+      key: "render",
+      value: function render() {
+        var _props = this.props,
+            isNegative = _props.isNegative,
+            percentChange = _props.percentChange,
+            priceChange = _props.priceChange;
+        var s = _CoinListCellChangeButtonStyles2.default;
+        return _react3.default.createElement(
+          _reactNative.TouchableOpacity,
+          {
+            style: isNegative ? [s.container, s.containerNegative] : s.container,
+            onPress: this.handlePress,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 27
+            }
+          },
+          _react3.default.createElement(
+            _reactNative.View,
+            {
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 33
+              }
+            },
+            _react3.default.createElement(
+              _reactNative.Text,
+              {
+                style: isNegative ? [s.changeText, s.changeTextNegative] : s.changeText,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 34
+                }
+              },
+              this.state.isShowingPercentage ? (isNegative === false ? '+' : '') + percentChange + "%" : "$ " + (isNegative === false ? '+' : '') + priceChange
+            )
+          )
+        );
+      }
+    }]);
+
+    return CoinListCellChangeButton;
+  }(_react2.Component));
+
+  exports.default = CoinListCellChangeButton;
+  CoinListCellChangeButton.defaultProps = {
+    isNegative: false,
+    percentChange: '0.00%',
+    priceChange: 0
+  };
+  CoinListCellChangeButton.propTypes = {
+    isNegative: _propTypes2.default.bool,
+    percentChange: _propTypes2.default.string,
+    priceChange: _propTypes2.default.number
+  };
+},608,[109,128,12,292,609],"Raketa/app/components/CoinListCell/CoinListCellChangeButton/CoinListCellChangeButton.js");
+__d(function (global, require, module, exports, _dependencyMap) {
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+
   var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
   var _reactNative = require(_dependencyMap[0], "react-native");
@@ -84517,8 +84438,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
       backgroundColor: _Colors2.default.rkGreenTransparent,
       flexDirection: 'row',
       alignItems: 'center',
-      justifyContent: 'space-around',
-      marginLeft: 16
+      justifyContent: 'space-around'
     },
     containerNegative: {
       backgroundColor: _Colors2.default.rkRedTransparent
@@ -84533,7 +84453,444 @@ __d(function (global, require, module, exports, _dependencyMap) {
   });
 
   exports.default = coinListCellChangeButtonStyles;
-},608,[12,510,506],"Raketa/app/components/CoinListCell/CoinListCellChangeButton/CoinListCellChangeButtonStyles.js");
+},609,[12,510,506],"Raketa/app/components/CoinListCell/CoinListCellChangeButton/CoinListCellChangeButtonStyles.js");
+__d(function (global, require, module, exports, _dependencyMap) {
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  var _jsxFileName = "/Users/drak/Documents/Raketa/app/components/CoinListCell/CoinListCellStatsView/CoinListCellStatsView.js";
+
+  var _react = require(_dependencyMap[0], "react");
+
+  var _react2 = _interopRequireDefault(_react);
+
+  var _reactNative = require(_dependencyMap[1], "react-native");
+
+  var _CoinListCellStatsViewStyles = require(_dependencyMap[2], "./CoinListCellStatsViewStyles");
+
+  var _CoinListCellStatsViewStyles2 = _interopRequireDefault(_CoinListCellStatsViewStyles);
+
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+  var s = _CoinListCellStatsViewStyles2.default;
+
+  var CoinListCellStatsView = function CoinListCellStatsView(_ref) {
+    var _ref$item = _ref.item,
+        marketCap = _ref$item.market_cap_usd,
+        volume24h = _ref$item['24h_volume_usd'],
+        circulatingSupply = _ref$item.available_supply,
+        maxSupply = _ref$item.max_supply;
+    return [_react2.default.createElement(
+      _reactNative.View,
+      {
+        style: s.container,
+        key: 1,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 16
+        }
+      },
+      _react2.default.createElement(
+        _reactNative.View,
+        {
+          style: s.leftAlignedStatContainer,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 17
+          }
+        },
+        _react2.default.createElement(
+          _reactNative.Text,
+          {
+            style: s.headerText,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 18
+            }
+          },
+          "MARKET CAP"
+        ),
+        _react2.default.createElement(
+          _reactNative.Text,
+          {
+            style: s.statText,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 19
+            }
+          },
+          "$",
+          marketCap
+        )
+      ),
+      _react2.default.createElement(
+        _reactNative.View,
+        {
+          style: s.rightAlignedStatContainer,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 21
+          }
+        },
+        _react2.default.createElement(
+          _reactNative.Text,
+          {
+            style: s.headerText,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 22
+            }
+          },
+          "VOLUME(24H)"
+        ),
+        _react2.default.createElement(
+          _reactNative.Text,
+          {
+            style: [s.statText, s.statTextRight],
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 23
+            }
+          },
+          "$",
+          volume24h
+        )
+      )
+    ), _react2.default.createElement(
+      _reactNative.View,
+      {
+        style: s.container,
+        key: 2,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 26
+        }
+      },
+      _react2.default.createElement(
+        _reactNative.View,
+        {
+          style: s.leftAlignedStatContainer,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 27
+          }
+        },
+        _react2.default.createElement(
+          _reactNative.Text,
+          {
+            style: s.headerText,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 28
+            }
+          },
+          "CIRCULATING SUPPLY"
+        ),
+        _react2.default.createElement(
+          _reactNative.Text,
+          {
+            style: s.statText,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 29
+            }
+          },
+          circulatingSupply
+        )
+      ),
+      _react2.default.createElement(
+        _reactNative.View,
+        {
+          style: s.rightAlignedStatContainer,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 31
+          }
+        },
+        _react2.default.createElement(
+          _reactNative.Text,
+          {
+            style: s.headerText,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 32
+            }
+          },
+          "MAX SUPPLY"
+        ),
+        _react2.default.createElement(
+          _reactNative.Text,
+          {
+            style: [s.statText, s.statTextRight],
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 33
+            }
+          },
+          maxSupply
+        )
+      )
+    )];
+  };
+
+  exports.default = CoinListCellStatsView;
+},610,[109,12,611],"Raketa/app/components/CoinListCell/CoinListCellStatsView/CoinListCellStatsView.js");
+__d(function (global, require, module, exports, _dependencyMap) {
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+
+  var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+  var _reactNative = require(_dependencyMap[0], "react-native");
+
+  var _reactNativeTypography = require(_dependencyMap[1], "react-native-typography");
+
+  var _Colors = require(_dependencyMap[2], "../../../shared/styles/Colors");
+
+  var _Colors2 = _interopRequireDefault(_Colors);
+
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+  var coinListCellStatsViewStyles = _reactNative.StyleSheet.create({
+    container: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      marginTop: 16
+    },
+    headerText: _extends({}, _reactNativeTypography.sanFranciscoWeights.bold, {
+      color: _Colors2.default.rkDarkGray,
+      fontSize: 12,
+      textAlign: 'left'
+    }),
+    leftAlignedStatContainer: {
+      flexDirection: 'column',
+      justifyContent: 'flex-start',
+      alignItems: 'flex-start'
+    },
+    rightAlignedStatContainer: {
+      flexDirection: 'column',
+      justifyContent: 'flex-end',
+      alignItems: 'flex-end'
+    },
+    statText: _extends({}, _reactNativeTypography.sanFranciscoWeights.semibold, {
+      color: _Colors2.default.rkPureWhite,
+      fontSize: 12,
+      textAlign: 'left',
+      marginTop: 8
+    }),
+    statTextRight: {
+      textAlign: 'right'
+    }
+  });
+
+  exports.default = coinListCellStatsViewStyles;
+},611,[12,510,506],"Raketa/app/components/CoinListCell/CoinListCellStatsView/CoinListCellStatsViewStyles.js");
+__d(function (global, require, module, exports, _dependencyMap) {
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  var _jsxFileName = "/Users/drak/Documents/Raketa/app/components/CoinListCell/CoinListCellChangeView/CoinListCellChangeView.js";
+
+  var _react = require(_dependencyMap[0], "react");
+
+  var _react2 = _interopRequireDefault(_react);
+
+  var _reactNative = require(_dependencyMap[1], "react-native");
+
+  var _CoinListCellChangeViewStyles = require(_dependencyMap[2], "./CoinListCellChangeViewStyles");
+
+  var _CoinListCellChangeViewStyles2 = _interopRequireDefault(_CoinListCellChangeViewStyles);
+
+  var _CoinListCellChangeButton = require(_dependencyMap[3], "../CoinListCellChangeButton/CoinListCellChangeButton");
+
+  var _CoinListCellChangeButton2 = _interopRequireDefault(_CoinListCellChangeButton);
+
+  var _formulaHelper = require(_dependencyMap[4], "../../../shared/utils/formulaHelper");
+
+  var _formulaHelper2 = _interopRequireDefault(_formulaHelper);
+
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+  var s = _CoinListCellChangeViewStyles2.default;
+
+  var CoinListCellChangeView = function CoinListCellChangeView(_ref) {
+    var _ref$item = _ref.item,
+        percentChange1h = _ref$item.percent_change_1h,
+        percentChange24h = _ref$item.percent_change_24h,
+        percentChange7d = _ref$item.percent_change_7d,
+        priceUSD = _ref$item.price_usd;
+    return _react2.default.createElement(
+      _reactNative.View,
+      {
+        style: s.container,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 18
+        }
+      },
+      _react2.default.createElement(
+        _reactNative.View,
+        {
+          style: s.buttonsContainer,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 19
+          }
+        },
+        _react2.default.createElement(
+          _reactNative.View,
+          {
+            style: s.buttonContainer,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 20
+            }
+          },
+          _react2.default.createElement(
+            _reactNative.Text,
+            {
+              style: s.buttonLabelText,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 21
+              }
+            },
+            "1H"
+          ),
+          _react2.default.createElement(_CoinListCellChangeButton2.default, {
+            isNegative: percentChange1h < 0,
+            percentChange: percentChange1h,
+            priceChange: _formulaHelper2.default.getChangeAmount(priceUSD, percentChange1h),
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 22
+            }
+          })
+        ),
+        _react2.default.createElement(
+          _reactNative.View,
+          {
+            style: s.buttonContainer,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 28
+            }
+          },
+          _react2.default.createElement(
+            _reactNative.Text,
+            {
+              style: s.buttonLabelText,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 29
+              }
+            },
+            "24H"
+          ),
+          _react2.default.createElement(_CoinListCellChangeButton2.default, {
+            isNegative: percentChange24h < 0,
+            percentChange: percentChange24h,
+            priceChange: _formulaHelper2.default.getChangeAmount(priceUSD, percentChange24h),
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 30
+            }
+          })
+        ),
+        _react2.default.createElement(
+          _reactNative.View,
+          {
+            style: s.buttonContainer,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 36
+            }
+          },
+          _react2.default.createElement(
+            _reactNative.Text,
+            {
+              style: s.buttonLabelText,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 37
+              }
+            },
+            "7D"
+          ),
+          _react2.default.createElement(_CoinListCellChangeButton2.default, {
+            isNegative: percentChange7d < 0,
+            percentChange: percentChange7d,
+            priceChange: _formulaHelper2.default.getChangeAmount(priceUSD, percentChange7d),
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 38
+            }
+          })
+        )
+      ),
+      _react2.default.createElement(_reactNative.View, {
+        style: s.dividerLine,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 45
+        }
+      })
+    );
+  };
+
+  exports.default = CoinListCellChangeView;
+},612,[109,12,613,608,633],"Raketa/app/components/CoinListCell/CoinListCellChangeView/CoinListCellChangeView.js");
+__d(function (global, require, module, exports, _dependencyMap) {
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+
+  var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+  var _reactNative = require(_dependencyMap[0], "react-native");
+
+  var _reactNativeTypography = require(_dependencyMap[1], "react-native-typography");
+
+  var _Colors = require(_dependencyMap[2], "../../../shared/styles/Colors");
+
+  var _Colors2 = _interopRequireDefault(_Colors);
+
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+  var coinListCellChangeViewStyles = _reactNative.StyleSheet.create({
+    container: {
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'stretch'
+    },
+    buttonsContainer: {
+      marginTop: 16,
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center'
+    },
+    buttonContainer: {
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center'
+    },
+    dividerLine: {
+      backgroundColor: _Colors2.default.rkDarkGray,
+      height: 0.5,
+      marginTop: 16
+    },
+    buttonLabelText: _extends({}, _reactNativeTypography.sanFranciscoWeights.bold, {
+      color: _Colors2.default.rkDarkGray,
+      fontSize: 12,
+      textAlign: 'center',
+      marginBottom: 8
+    })
+  });
+
+  exports.default = coinListCellChangeViewStyles;
+},613,[12,510,506],"Raketa/app/components/CoinListCell/CoinListCellChangeView/CoinListCellChangeViewStyles.js");
 __d(function (global, require, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -84653,7 +85010,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
   }(_react2.Component));
 
   exports.default = CoinListHeader;
-},609,[109,128,12,610,611],"Raketa/app/components/CoinListHeader/CoinListHeader.js");
+},614,[109,128,12,615,616],"Raketa/app/components/CoinListHeader/CoinListHeader.js");
 __d(function (global, require, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -84682,7 +85039,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
   });
 
   exports.default = coinListHeaderStyles;
-},610,[12,506],"Raketa/app/components/CoinListHeader/CoinListHeaderStyles.js");
+},615,[12,506],"Raketa/app/components/CoinListHeader/CoinListHeaderStyles.js");
 __d(function (global, require, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -84830,7 +85187,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
   }(_react2.Component));
 
   exports.default = CoinListHeaderButton;
-},611,[109,128,12,612,613,614],"Raketa/app/components/CoinListHeader/CoinListHeaderButton/CoinListHeaderButton.js");
+},616,[109,128,12,617,618,619],"Raketa/app/components/CoinListHeader/CoinListHeaderButton/CoinListHeaderButton.js");
 __d(function (global, require, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -84882,7 +85239,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
   });
 
   exports.default = coinListHeaderButtonStyles;
-},612,[12,510,506],"Raketa/app/components/CoinListHeader/CoinListHeaderButton/CoinListHeaderButtonStyles.js");
+},617,[12,510,506],"Raketa/app/components/CoinListHeader/CoinListHeaderButton/CoinListHeaderButtonStyles.js");
 __d(function (global, require, module, exports, _dependencyMap) {
   module.exports = require(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -84894,7 +85251,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
     "name": "icon-up-sort",
     "type": "png"
   });
-},613,[325],"app/assets/images/icon-up-sort@2x.png");
+},618,[325],"app/assets/images/icon-up-sort@2x.png");
 __d(function (global, require, module, exports, _dependencyMap) {
   module.exports = require(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -84906,7 +85263,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
     "name": "icon-down-sort",
     "type": "png"
   });
-},614,[325],"app/assets/images/icon-down-sort@2x.png");
+},619,[325],"app/assets/images/icon-down-sort@2x.png");
 __d(function (global, require, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -84927,7 +85284,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
   });
 
   exports.default = coinListStyles;
-},615,[12,506],"Raketa/app/components/CoinList/CoinListStyles.js");
+},620,[12,506],"Raketa/app/components/CoinList/CoinListStyles.js");
 __d(function (global, require, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -85012,7 +85369,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
   }(_react2.Component));
 
   exports.default = MoversScreen;
-},616,[109,128,12],"Raketa/app/screens/MoversScreen/MoversScreen.js");
+},621,[109,128,12],"Raketa/app/screens/MoversScreen/MoversScreen.js");
 __d(function (global, require, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -85097,7 +85454,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
   }(_react2.Component));
 
   exports.default = FavoritesScreen;
-},617,[109,128,12],"Raketa/app/screens/FavoritesScreen/FavoritesScreen.js");
+},622,[109,128,12],"Raketa/app/screens/FavoritesScreen/FavoritesScreen.js");
 __d(function (global, require, module, exports, _dependencyMap) {
   module.exports = require(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -85109,7 +85466,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
     "name": "icon-settings",
     "type": "png"
   });
-},618,[325],"app/assets/images/icon-settings@2x.png");
+},623,[325],"app/assets/images/icon-settings@2x.png");
 __d(function (global, require, module, exports, _dependencyMap) {
   module.exports = require(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -85121,7 +85478,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
     "name": "icon-top100",
     "type": "png"
   });
-},619,[325],"app/assets/images/icon-top100@2x.png");
+},624,[325],"app/assets/images/icon-top100@2x.png");
 __d(function (global, require, module, exports, _dependencyMap) {
   module.exports = require(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -85133,7 +85490,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
     "name": "icon-top100-selected",
     "type": "png"
   });
-},620,[325],"app/assets/images/icon-top100-selected@2x.png");
+},625,[325],"app/assets/images/icon-top100-selected@2x.png");
 __d(function (global, require, module, exports, _dependencyMap) {
   module.exports = require(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -85145,7 +85502,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
     "name": "logo-navbar",
     "type": "png"
   });
-},621,[325],"app/assets/images/logo-navbar@2x.png");
+},626,[325],"app/assets/images/logo-navbar@2x.png");
 __d(function (global, require, module, exports, _dependencyMap) {
   module.exports = require(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -85157,7 +85514,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
     "name": "icon-movers",
     "type": "png"
   });
-},622,[325],"app/assets/images/icon-movers@2x.png");
+},627,[325],"app/assets/images/icon-movers@2x.png");
 __d(function (global, require, module, exports, _dependencyMap) {
   module.exports = require(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -85169,7 +85526,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
     "name": "icon-movers-selected",
     "type": "png"
   });
-},623,[325],"app/assets/images/icon-movers-selected@2x.png");
+},628,[325],"app/assets/images/icon-movers-selected@2x.png");
 __d(function (global, require, module, exports, _dependencyMap) {
   module.exports = require(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -85181,7 +85538,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
     "name": "icon-favorites",
     "type": "png"
   });
-},624,[325],"app/assets/images/icon-favorites@2x.png");
+},629,[325],"app/assets/images/icon-favorites@2x.png");
 __d(function (global, require, module, exports, _dependencyMap) {
   module.exports = require(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -85193,128 +85550,18 @@ __d(function (global, require, module, exports, _dependencyMap) {
     "name": "icon-favorites-selected",
     "type": "png"
   });
-},625,[325],"app/assets/images/icon-favorites-selected@2x.png");
+},630,[325],"app/assets/images/icon-favorites-selected@2x.png");
 __d(function (global, require, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
   });
-
-  var _react2 = require(_dependencyMap[0], "react");
-
-  var _react3 = _interopRequireDefault(_react2);
-
-  var _index = require(_dependencyMap[1], "./../../../../node_modules/react-transform-hmr/lib/index.js");
-
-  var _index2 = _interopRequireDefault(_index);
-
-  var _jsxFileName = "/Users/drak/Documents/Raketa/app/components/CoinListCell/CoinListCellChangeButton/CoinListCellChangeButton.js";
-
-  var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-  var _reactNative = require(_dependencyMap[2], "react-native");
-
-  var _CoinListCellChangeButtonStyles = require(_dependencyMap[3], "./CoinListCellChangeButtonStyles");
-
-  var _CoinListCellChangeButtonStyles2 = _interopRequireDefault(_CoinListCellChangeButtonStyles);
-
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-  function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-  function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-  var _components = {
-    CoinListCellChangeButton: {
-      displayName: "CoinListCellChangeButton"
+  var formulaHelper = {
+    getChangeAmount: function getChangeAmount(currentPrice, percentageChange) {
+      return percentageChange / 100.00 * currentPrice;
     }
   };
-
-  var _node_modulesReactTransformHmrLibIndexJs2 = (0, _index2.default)({
-    filename: "/Users/drak/Documents/Raketa/app/components/CoinListCell/CoinListCellChangeButton/CoinListCellChangeButton.js",
-    components: _components,
-    locals: [module],
-    imports: [_react3.default]
-  });
-
-  function _wrapComponent(id) {
-    return function (Component) {
-      return _node_modulesReactTransformHmrLibIndexJs2(Component, id);
-    };
-  }
-
-  var CoinListCellChangeButton = _wrapComponent("CoinListCellChangeButton")(function (_Component) {
-    _inherits(CoinListCellChangeButton, _Component);
-
-    function CoinListCellChangeButton() {
-      var _ref;
-
-      var _temp, _this, _ret;
-
-      _classCallCheck(this, CoinListCellChangeButton);
-
-      for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-        args[_key] = arguments[_key];
-      }
-
-      return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = CoinListCellChangeButton.__proto__ || Object.getPrototypeOf(CoinListCellChangeButton)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
-        isShowingPercentage: true
-      }, _this.handlePress = function () {
-        _this.setState({
-          isShowingPercentage: !_this.state.isShowingPercentage
-        });
-      }, _temp), _possibleConstructorReturn(_this, _ret);
-    }
-
-    _createClass(CoinListCellChangeButton, [{
-      key: "render",
-      value: function render() {
-        var _props = this.props,
-            isNegative = _props.isNegative,
-            percentChange = _props.percentChange;
-        var s = _CoinListCellChangeButtonStyles2.default;
-        return _react3.default.createElement(
-          _reactNative.TouchableOpacity,
-          {
-            style: isNegative ? [s.container, s.containerNegative] : s.container,
-            onPress: this.handlePress,
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 24
-            }
-          },
-          _react3.default.createElement(
-            _reactNative.View,
-            {
-              __source: {
-                fileName: _jsxFileName,
-                lineNumber: 30
-              }
-            },
-            _react3.default.createElement(
-              _reactNative.Text,
-              {
-                style: isNegative ? [s.changeText, s.changeTextNegative] : s.changeText,
-                __source: {
-                  fileName: _jsxFileName,
-                  lineNumber: 31
-                }
-              },
-              this.state.isShowingPercentage ? {
-                percentChange: percentChange
-              } + "%" : '$850.55'
-            )
-          )
-        );
-      }
-    }]);
-
-    return CoinListCellChangeButton;
-  }(_react2.Component));
-
-  exports.default = CoinListCellChangeButton;
-},627,[109,128,12,608],"Raketa/app/components/CoinListCell/CoinListCellChangeButton/CoinListCellChangeButton.js");
+  exports.default = formulaHelper;
+},633,[],"Raketa/app/shared/utils/formulaHelper.js");
 require(23);
 require(11);
 //# sourceMappingURL=index.map
