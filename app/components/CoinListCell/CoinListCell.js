@@ -1,9 +1,13 @@
-// @flow
 import React, { Component } from 'react'
 import { View, Text, Image, LayoutAnimation, TouchableOpacity } from 'react-native'
+import PropTypes from 'prop-types'
 import coinListCellStyles from './CoinListCellStyles'
-import CoinListCellRangeView from './CoinListCellRangeView/CoinListCellRangeView'
-import CoinListCellHeader from './CoinListCellHeader/CoinListCellHeader'
+import CoinListCellRangeView from './CoinListCellRangeView'
+import CoinListCellFavoritesButton from './CoinListCellFavoritesButton'
+import CoinListCellDeltaButton from './CoinListCellDeltaButton'
+import CoinListCellStatsView from './CoinListCellStatsView'
+import CoinListCellDeltaView from './CoinListCellDeltaView'
+import formulaHelper from '../../shared/utils/formulaHelper'
 
 
 export default class CoinListCell extends Component {
@@ -12,73 +16,100 @@ export default class CoinListCell extends Component {
   }
 
   handleCellPress = () => {
-    LayoutAnimation.easeInEaseOut();
-    this.setState(
-      {
-        isExpanded: !this.state.isExpanded
-      }
-    )
+    LayoutAnimation.easeInEaseOut()
+    this.setState({
+      isExpanded: !this.state.isExpanded,
+    })
   }
 
   render() {
+    const s = coinListCellStyles
 
-  const isPercentChangeNegative = this.props.item.percent_change_24h < 0;
+    const {
+      item: {
+        percent_change_24h: percentChange24h,
+        name,
+        symbol,
+        price_usd: priceUSD,
+      },
+    } = this.props
 
-  let expandedView = <View />;
-  let cellHeader = <View />;
+    const isNegative = percentChange24h < 0
+    const priceChange = formulaHelper.getChangeAmount(priceUSD, percentChange24h)
 
-  if (this.state.isExpanded) {
-    cellHeader = <CoinListCellHeader />;
-    expandedView =  <CoinListCellRangeView item={this.props.item} />;
-  }
+    return (
+      <View style={s.mainContainer}>
+        <TouchableOpacity onPress={this.handleCellPress}>
+          <View style={s.contentContainer}>
+            <View style={s.collapsedContainer}>
+              <View style={s.nameSymbolContainer}>
+                <Image
+                  style={s.symbolImage}
+                  source={{ uri: `https://chasing-coins.com/api/v1/std/logo/${symbol}` }}
+                />
 
-  return (
-    <View style={coinListCellStyles.mainContainer}>
-      <TouchableOpacity
-        style={coinListCellStyles.highlightContainer}
-        onPress={this.handleCellPress}
-      >
-        <View style={coinListCellStyles.contentContainer}>
-          {cellHeader}
-          <View style={coinListCellStyles.collapsedContainer}>
-            <View style={coinListCellStyles.nameSymbolContainer}>
-              <Image
-                style={coinListCellStyles.symbolImage}
-                source={{uri: "https://chasing-coins.com/api/v1/std/logo/" + this.props.item.symbol}}
-              />
-
-              <View style={coinListCellStyles.nameContainer}>
-                <Text style={coinListCellStyles.nameText}>
-                  {this.props.item.name}
-                </Text>
-                <Text style={coinListCellStyles.symbolText}>
-                  {this.props.item.symbol}
-                </Text>
+                <View style={s.nameContainer}>
+                  <Text style={s.nameText}>
+                    {name}
+                  </Text>
+                  <Text style={s.symbolText}>
+                    {symbol}
+                  </Text>
+                </View>
               </View>
+              {
+                this.state.isExpanded === false ?
+                  <View style={s.priceContainer}>
+                    <Text style={isNegative ?
+                    [s.priceText,
+                    s.priceTextNegative] :
+                    s.priceText}
+                    >
+                      ${priceUSD}
+                    </Text>
+                    <CoinListCellDeltaButton
+                      isNegative={isNegative}
+                      percentChange={percentChange24h}
+                      priceChange={priceChange}
+                    />
+                  </View> :
+                  <CoinListCellFavoritesButton />
+              }
             </View>
-
-            <View style={coinListCellStyles.priceContainer}>
-              <Text style={coinListCellStyles.priceText}>
-                    ${this.props.item.price_usd}
-              </Text>
-              <View style={isPercentChangeNegative ? [coinListCellStyles.changeContainer,coinListCellStyles.changeContainerNegative]:
-                coinListCellStyles.changeContainer
-                }
-              >
-                <Text style={
-                    isPercentChangeNegative ?
-                    [coinListCellStyles.changeText, coinListCellStyles.changeTextNegative]:
-                    coinListCellStyles.changeText}
-                >
-                  {this.props.item.percent_change_24h}%
-                </Text>
-              </View>
-            </View>
+            { this.state.isExpanded &&
+              <View style={s.dividerLine} />
+            }
+            { this.state.isExpanded &&
+              <CoinListCellRangeView item={this.props.item} />
+            }
+            {
+              this.state.isExpanded &&
+              <CoinListCellDeltaView item={this.props.item} />
+            }
+            { this.state.isExpanded &&
+              <CoinListCellStatsView item={this.props.item} />
+            }
           </View>
-          {expandedView}
-        </View>
-      </TouchableOpacity>
-    </View>
-    );
+        </TouchableOpacity>
+      </View>
+    )
   }
+}
+
+CoinListCell.defaultProps = {
+  item: {
+    percent_change_24h: '-',
+    name: '-',
+    symbol: '-',
+    price_usd: '-',
+  },
+}
+
+CoinListCell.propTypes = {
+  item: PropTypes.shape({
+    percent_change_24h: PropTypes.string,
+    name: PropTypes.string,
+    symbol: PropTypes.string,
+    price_usd: PropTypes.string,
+  }),
 }

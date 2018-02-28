@@ -3,12 +3,10 @@ import { sanFranciscoWeights } from 'react-native-typography'
 import Colors from '../../shared/styles/Colors'
 
 
-export default coinListCellStyles = StyleSheet.create({
+const coinListCellStyles = StyleSheet.create({
   mainContainer: {
     backgroundColor: Colors.rkLightBlue,
     marginBottom: 4,
-  },
-  highlightContainer: {
     padding: 16,
   },
   contentContainer: {
@@ -59,29 +57,20 @@ export default coinListCellStyles = StyleSheet.create({
   },
   priceText: {
     ...sanFranciscoWeights.semibold,
-    color: Colors.rkPureWhite,
+    color: Colors.rkGreen,
     fontSize: 15,
     textAlign: 'right',
+    marginRight: 12,
   },
-  changeContainer: {
-    width: 100,
-    height: 34,
-    borderRadius: 4,
-    backgroundColor: Colors.rkGreenTransparent,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-around',
-    marginLeft: 16,
-  },
-  changeContainerNegative: {
-    backgroundColor: Colors.rkRedTransparent,
-  },
-  changeText: {
-    ...sanFranciscoWeights.bold,
-    fontSize: 14,
-    color: Colors.rkGreen,
-  },
-  changeTextNegative: {
+  priceTextNegative: {
     color: Colors.rkRed,
   },
+  dividerLine: {
+    backgroundColor: Colors.rkDarkGray,
+    height: 0.5,
+    marginTop: 16,
+  },
 })
+
+
+export default coinListCellStyles
