@@ -12,20 +12,28 @@ import Svg, {
 } from 'react-native-svg'
 import Colors from '../../../shared/styles/Colors'
 import coinListCellRangeViewStyles from './CoinListCellRangeViewStyles'
-import coinMarketcapDataFetcher from '../../../networkers/lowHightDataFetcher'
-
+import lowHighDataFetcher from '../../../networkers/lowHighDataFetcher'
 
 export default class CoinListCellRangeView extends Component {
   state = {
-    symbol: this.props.item.symbol,
-    priceUSD: this.props.item.price_usd,
     low: null,
     high: null,
     fetchedData: false,
   }
 
   componentDidMount() {
-    lowHightDataFetcher(this, this.state.symbol)
+    lowHighDataFetcher(this, this.props.item.symbol)
+  }
+
+  currentPriceArrowPosition() {
+    // starts at 40
+    // end at 320
+    // range 280
+    let priceDeltaRange = parseFloat(this.state.high) - parseFloat(this.state.low)
+    let diffFromMin = parseFloat(this.props.item.price_usd) - parseFloat(this.state.low)
+    let percentageFromMin = diffFromMin / priceDeltaRange
+
+    return (280 * percentageFromMin) + 40
   }
 
   render() {
@@ -37,10 +45,8 @@ export default class CoinListCellRangeView extends Component {
         <View style={s.mainContainer}>
           <Text style={s.headerText}>24H PRICE RANGE</Text>
           <View style={s.rangeView}>
-            <Text style={s.currentPrice}>${this.state.priceUSD}</Text>
-            <Svg
-              style={s.rangeSVGContainer}
-            >
+            <Text style={s.currentPrice}>${this.props.item.price_usd}</Text>
+            <Svg style={s.rangeSVGContainer}>
               <Defs>
                 <LinearGradient id="grad" x1="0%" y1="0" x2="100%" y2="0">
                   <Stop offset="0" stopColor={Colors.rkRed} stopOpacity="1" />
@@ -65,7 +71,7 @@ export default class CoinListCellRangeView extends Component {
                       r="5"
                     />
                     <Polygon
-                      x="150"
+                      x={this.currentPriceArrowPosition()}
                       y="11"
                       rotation="180"
                       points="0,2 20,2 10,10"
@@ -86,8 +92,8 @@ export default class CoinListCellRangeView extends Component {
               />
             </Svg>
             <View style={s.priceRangeBottomContainer}>
-              <Text style={[s.priceRangeText, s.leftAlign]}>{this.state.low}</Text>
-              <Text style={[s.priceRangeText, s.rightAlign]}>{this.state.high}</Text>
+              <Text style={[s.priceRangeText, s.leftAlign]}>${this.state.low}</Text>
+              <Text style={[s.priceRangeText, s.rightAlign]}>${this.state.high}</Text>
             </View>
           </View>
           <View style={s.dividerLine} />
