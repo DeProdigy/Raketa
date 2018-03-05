@@ -28,6 +28,7 @@ export default class Top100Screen extends Component {
           <Text>Loading...</Text>
         </View>)
     }
+
     return (
       <View style={top100ScreenStyles.container}>
         {containerView}
