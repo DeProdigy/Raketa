@@ -70,3 +70,15 @@ Navigation.startTabBasedApp({
     orientation: 'portrait',
   },
 })
+
+const Realm = require('realm')
+
+const FavoriteSchema = {
+  name: 'Favorite',
+  properties: {
+    id: 'string',
+    symbol:  'string',
+  }
+};
+
+Realm.open({schema: [FavoriteSchema]})

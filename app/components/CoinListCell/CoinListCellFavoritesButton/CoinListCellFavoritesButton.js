@@ -3,15 +3,22 @@ import { View, Text, TouchableOpacity, Image } from 'react-native'
 import coinListCellFavoritesButtonStyles from './CoinListCellFavoritesButtonStyles'
 
 export default class CoinListCellFavoritesButton extends Component {
-state ={
 
+handlePress = () => {
+  Realm.open({}).then(realm => {
+    realm.write(() => {
+      realm.create('Favorite', {id: this.props.id, symbol: this.props.symbol});
+    });
+  });
 }
 
 render() {
   const s = coinListCellFavoritesButtonStyles
 
   return (
-    <TouchableOpacity style={s.favoritesButton}>
+    <TouchableOpacity
+      style={s.favoritesButton}
+      onPress={this.handlePress}>
       <View style={s.favoritesButtonImageText}>
         <Image
           style={s.favoritesButtonIcon}

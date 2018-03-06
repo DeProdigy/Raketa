@@ -73,7 +73,10 @@ export default class CoinListCell extends Component {
                       priceChange={priceChange}
                     />
                   </View> :
-                  <CoinListCellFavoritesButton />
+                  <CoinListCellFavoritesButton
+                    id={this.props.item.id}
+                    symbol={this.props.item.symbol}
+                   />
               }
             </View>
             { this.state.isExpanded &&
