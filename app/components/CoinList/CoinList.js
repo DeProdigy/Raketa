@@ -1,6 +1,6 @@
-// @flow
 import React, { Component } from 'react'
-import { View, FlatList } from 'react-native'
+import { View, FlatList, Animated } from 'react-native'
+import LottieView from 'lottie-react-native';
 import propTypes from 'prop-types'
 import CoinListCell from '../CoinListCell/CoinListCell'
 import CoinListHeader from '../CoinListHeader/CoinListHeader'
@@ -12,6 +12,15 @@ export default class CoinList extends Component {
     sortByMarketCapAscending: true,
     sortByChangeAscending: false,
     sortByVolumeAscending: false,
+    progress: new Animated.Value(0),
+  }
+
+  componentDidMount() {
+    // Animated.loop(
+    //   Animated.timing(this.state.progress, {
+    //       toValue: 1,
+    //       duration: 4000,
+    //     })).start()
   }
 
   sortByMarketCap() {
@@ -88,6 +97,12 @@ export default class CoinList extends Component {
   render() {
     return (
       <View>
+        <LottieView
+          style={coinListStyles.refreshViewContainer}
+          source={require('../../assets/animations/raketa-full.json')}
+          progress={this.state.progress}
+
+        />
         <FlatList
           contentContainerStyle={coinListStyles.container}
           data={this.state.coinMarketcapData}
