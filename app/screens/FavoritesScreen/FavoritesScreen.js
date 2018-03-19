@@ -4,21 +4,20 @@ import favoritesScreenStyles from './FavoritesScreenStyles'
 import top100ScreenStyles from '../Top100Screen/Top100ScreenStyles'
 import CoinList from '../../components/CoinList/CoinList'
 import favoritesCoinMarketcapDataFetcher from '../../networkers/favoritesCoinMarketcapDataFetcher'
+
 const Realm = require('realm');
 
 export default class FavoritesScreen extends Component {
   state = {
-    realm: null,
     coinMarketcapDataFetched: false,
     coinMarketcapData: [],
   };
 
   componentWillMount() {
     Realm.open({})
-    .then(realm => {
-      this.setState({ realm })
-      favoritesCoinMarketcapDataFetcher(this, realm.objects('Favorite'))
-    })
+      .then(realm => {
+        favoritesCoinMarketcapDataFetcher(this, realm.objects('Favorite'))
+      })
   }
 
   render() {

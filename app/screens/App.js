@@ -3,11 +3,10 @@ import { registerScreens } from './index'
 import Colors from '../shared/styles/Colors'
 import FavoriteSchema from '../models/favoriteSchema'
 
-// Load the schames to Realm
+// MAKE THIS A GLOBAL VARIABLE
 const Realm = require('realm')
 Realm.open({schema: [FavoriteSchema]})
 
-// Register screens
 registerScreens()
 
 const navigatorStyle = {
