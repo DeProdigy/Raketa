@@ -1,40 +1,32 @@
 import React, { Component } from 'react'
 import { View, Text, TouchableOpacity, Image } from 'react-native'
 import coinListCellFavoritesButtonStyles from './CoinListCellFavoritesButtonStyles'
-
-const Realm = require('realm')
+import realm from '../../../db/realm'
 
 export default class CoinListCellFavoritesButton extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { alreadyInFavorites: false }
-  }
+  state = { alreadyInFavorites: false }
 
   componentDidMount() {
-    Realm.open({}).then(realm => {
-      if (realm.objects('Favorite').filtered('id = ' + this.props.id).length > 0) {
-        this.setState({
-          alreadyInFavorites: true,
-        })
-      }
-    })
+    let favorites = realm.objects('Favorites')
+
+    if (favorites.filtered('id = $0', this.props.id).length > 0) {
+      this.setState({
+        alreadyInFavorites: true,
+      })
+    }
   }
 
   addToFavorites = () => {
-    Realm.open({}).then(realm => {
-      realm.write(() => {
-        realm.create('Favorite', {id: this.props.id, symbol: this.props.symbol})
-      })
+    realm.write(() => {
+      realm.create('Favorites', {id: this.props.id, symbol: this.props.symbol});
     })
   }
 
   removeFromFavorites = () => {
-    Realm.open({}).then(realm => {
-      let favorite = realm.objects('Favorite').filtered('id = ' + this.props.id)
+    let favorite = realm.objects('Favorites').filtered('id = $0', this.props.id)
 
-      realm.write(() => {
-        realm.delete(favorite)
-      })
+    realm.write(() => {
+      realm.delete(favorite)
     })
   }
 

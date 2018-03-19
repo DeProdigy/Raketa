@@ -4,8 +4,7 @@ import favoritesScreenStyles from './FavoritesScreenStyles'
 import top100ScreenStyles from '../Top100Screen/Top100ScreenStyles'
 import CoinList from '../../components/CoinList/CoinList'
 import favoritesCoinMarketcapDataFetcher from '../../networkers/favoritesCoinMarketcapDataFetcher'
-
-const Realm = require('realm');
+import realm from '../../db/realm'
 
 export default class FavoritesScreen extends Component {
   state = {
@@ -14,10 +13,8 @@ export default class FavoritesScreen extends Component {
   };
 
   componentWillMount() {
-    Realm.open({})
-      .then(realm => {
-        favoritesCoinMarketcapDataFetcher(this, realm.objects('Favorite'))
-      })
+    const favorites = realm.objects('Favorites')
+    favoritesCoinMarketcapDataFetcher(this, favorites)
   }
 
   render() {

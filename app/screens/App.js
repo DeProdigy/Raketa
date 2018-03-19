@@ -1,11 +1,6 @@
 import { Navigation } from 'react-native-navigation'
 import { registerScreens } from './index'
 import Colors from '../shared/styles/Colors'
-import FavoriteSchema from '../models/favoriteSchema'
-
-// MAKE THIS A GLOBAL VARIABLE
-const Realm = require('realm')
-Realm.open({schema: [FavoriteSchema]})
 
 registerScreens()
 
