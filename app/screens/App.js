@@ -1,7 +1,13 @@
 import { Navigation } from 'react-native-navigation'
 import { registerScreens } from './index'
 import Colors from '../shared/styles/Colors'
+import FavoriteSchema from '../models/favoriteSchema'
 
+// Load the schames to Realm
+const Realm = require('realm')
+Realm.open({schema: [FavoriteSchema]})
+
+// Register screens
 registerScreens()
 
 const navigatorStyle = {
@@ -72,15 +78,3 @@ Navigation.startTabBasedApp({
     orientation: 'portrait',
   },
 })
-
-const Realm = require('realm')
-
-const FavoriteSchema = {
-  name: 'Favorite',
-  properties: {
-    id: 'string',
-    symbol:  'string',
-  }
-};
-
-Realm.open({schema: [FavoriteSchema]})
