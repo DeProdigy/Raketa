@@ -1,31 +1,45 @@
 import React, { Component } from 'react'
 import { View, Text } from 'react-native'
 import favoritesScreenStyles from './FavoritesScreenStyles'
+import top100ScreenStyles from '../Top100Screen/Top100ScreenStyles'
+import CoinList from '../../components/CoinList/CoinList'
+import favoritesCoinMarketcapDataFetcher from '../../networkers/favoritesCoinMarketcapDataFetcher'
 const Realm = require('realm');
 
 export default class FavoritesScreen extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { realm: null };
-  }
+  state = {
+    realm: null,
+    coinMarketcapDataFetched: false,
+    coinMarketcapData: [],
+  };
 
   componentWillMount() {
-    Realm.open({}).then(realm => {
-      this.setState({ realm });
-    });
+    Realm.open({})
+    .then(realm => {
+      this.setState({ realm })
+      favoritesCoinMarketcapDataFetcher(this, realm.objects('Favorite'))
+    })
   }
 
   render() {
-    const info = this.state.realm
-      ? 'Number of Favorites in this Realm: ' + this.state.realm.objects('Favorite').length
-      : 'Loading...';
+    let containerView
+
+    if (this.state.coinMarketcapDataFetched) {
+      containerView = (
+        <CoinList
+          coinMarketcapData={this.state.coinMarketcapData}
+        />)
+    } else {
+      containerView = (
+        <View>
+          <Text>Loading...</Text>
+        </View>)
+    }
 
     return (
-      <View style={favoritesScreenStyles.container}>
-        <Text>
-          {info}
-        </Text>
+      <View style={top100ScreenStyles.container}>
+        {containerView}
       </View>
-    );
+    )
   }
 }
