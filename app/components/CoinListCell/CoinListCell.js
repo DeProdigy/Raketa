@@ -61,11 +61,11 @@ export default class CoinListCell extends Component {
                 this.state.isExpanded === false ?
                   <View style={s.priceContainer}>
                     <Text style={isNegative ?
-                    [s.priceText,
-                    s.priceTextNegative] :
-                    s.priceText}
+                      [s.priceText,
+                      s.priceTextNegative] :
+                      s.priceText}
                     >
-                      ${priceUSD}
+                      ${formulaHelper.getFormatedPrice(priceUSD)}
                     </Text>
                     <CoinListCellDeltaButton
                       isNegative={isNegative}
