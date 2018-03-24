@@ -10,11 +10,20 @@ export default class FavoritesScreen extends Component {
   state = {
     coinMarketcapDataFetched: false,
     coinMarketcapData: [],
-  };
+  }
 
-  componentWillMount() {
-    const favorites = realm.objects('Favorites')
-    favoritesCoinMarketcapDataFetcher(this, favorites)
+  componentDidMount() {
+    this.updateUI()
+    realm.objects('Favorites').addListener(this.updateUI.bind(this))
+  }
+
+  componentWIllUnmount() {
+    realm.objects('Favorites').removeAllListeners();
+  }
+
+  updateUI() {
+    this.setState({coinMarketcapDataFetched: false})
+    favoritesCoinMarketcapDataFetcher(this, realm.objects('Favorites'))
   }
 
   render() {

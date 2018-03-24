@@ -1,3 +1,7 @@
+sortedList = (unsortedData) => {
+  return unsortedData.sort((a, b) => parseFloat(b.market_cap_usd) - parseFloat(a.market_cap_usd))
+}
+
 favoritesCoinMarketcapDataFetcher = (component, favorites) => {
   var data = []
   var promises = []
@@ -16,8 +20,8 @@ favoritesCoinMarketcapDataFetcher = (component, favorites) => {
   })
 
   Promise.all(promises).then(() =>
-      component.setState({ coinMarketcapData: data, coinMarketcapDataFetched: true })
-  );
+    component.setState({ coinMarketcapData: sortedList(data), coinMarketcapDataFetched: true })
+  )
 }
 
 export default favoritesCoinMarketcapDataFetcher

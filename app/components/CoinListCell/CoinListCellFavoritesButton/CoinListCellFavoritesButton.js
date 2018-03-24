@@ -4,15 +4,14 @@ import coinListCellFavoritesButtonStyles from './CoinListCellFavoritesButtonStyl
 import realm from '../../../db/realm'
 
 export default class CoinListCellFavoritesButton extends Component {
-  state = { alreadyInFavorites: false }
+  state = {
+    alreadyInFavorites: false,
+    favorites: realm.objects('Favorites'),
+  }
 
   componentDidMount() {
-    let favorites = realm.objects('Favorites')
-
-    if (favorites.filtered('id = $0', this.props.id).length > 0) {
-      this.setState({
-        alreadyInFavorites: true,
-      })
+    if (this.state.favorites.filtered('id = $0', this.props.id).length > 0) {
+      this.setState({ alreadyInFavorites: true })
     }
   }
 
@@ -20,6 +19,8 @@ export default class CoinListCellFavoritesButton extends Component {
     realm.write(() => {
       realm.create('Favorites', {id: this.props.id, symbol: this.props.symbol});
     })
+
+    this.setState({alreadyInFavorites: !this.state.alreadyInFavorites})
   }
 
   removeFromFavorites = () => {
@@ -28,6 +29,8 @@ export default class CoinListCellFavoritesButton extends Component {
     realm.write(() => {
       realm.delete(favorite)
     })
+
+    this.setState({alreadyInFavorites: !this.state.alreadyInFavorites})
   }
 
   render() {
