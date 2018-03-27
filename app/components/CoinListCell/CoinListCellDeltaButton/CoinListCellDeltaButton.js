@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
 import PropTypes from 'prop-types'
 import CoinListCellDeltaButtonStyles from './CoinListCellDeltaButtonStyles'
+import formulaHelper from '../../../shared/utils/formulaHelper'
 
 export default class CoinListCellDeltaButton extends Component {
   state = {
@@ -37,7 +38,7 @@ export default class CoinListCellDeltaButton extends Component {
           >
             {this.state.isShowingPercentage ?
               `${(isNegative === false ? '+' : '') + percentChange}%` :
-              `$ ${isNegative === false ? '+' : ''}${priceChange}` }
+              `$ ${isNegative === false ? '+' : ''}${formulaHelper.getFormatedPrice(priceChange)}` }
           </Text>
         </View>
       </TouchableOpacity>

@@ -13,6 +13,7 @@ import Svg, {
 import Colors from '../../../shared/styles/Colors'
 import coinListCellRangeViewStyles from './CoinListCellRangeViewStyles'
 import lowHighDataFetcher from '../../../networkers/lowHighDataFetcher'
+import formulaHelper from '../../../shared/utils/formulaHelper'
 
 export default class CoinListCellRangeView extends Component {
   state = {
@@ -45,7 +46,7 @@ export default class CoinListCellRangeView extends Component {
         <View style={s.mainContainer}>
           <Text style={s.headerText}>24H PRICE RANGE</Text>
           <View style={s.rangeView}>
-            <Text style={s.currentPrice}>${this.props.item.price_usd}</Text>
+            <Text style={s.currentPrice}>${formulaHelper.getFormatedPrice(this.props.item.price_usd)}</Text>
             <Svg style={s.rangeSVGContainer}>
               <Defs>
                 <LinearGradient id="grad" x1="0%" y1="0" x2="100%" y2="0">
