@@ -5,17 +5,11 @@ import Colors from '../shared/styles/Colors'
 registerScreens()
 
 const navigatorStyle = {
-  screenBackgroundColor: '#000000',
-  drawUnderNavBar: true,
-  drawUnderTabBar: true,
-  navBarTranslucent: false,
-  navBarBackgroundColor: Colors.rkNavBarBlue,
+  screenBackgroundColor: Colors.rkDarkBlue,
   statusBarTextColorScheme: 'light',
   navBarButtonColor: Colors.rkPureWhite,
-  topBarElevationShadowEnabled: true,
-  topBarShadowOpacity: 0.5,
-  topBarShadowOffset: 0.2,
-  topBarShadowRadius: 1.5,
+  navBarBackgroundColor: Colors.rkNavBarBlue,
+  navBarNoBorder: true,
 }
 
 const navigatorButtons = {

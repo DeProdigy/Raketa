@@ -11,7 +11,7 @@ const coinListHeaderStyles = StyleSheet.create({
     height: 68,
     paddingLeft: 16,
     paddingRight: 16,
-    backgroundColor: Colors.rkDarkBlue,
+    backgroundColor: Colors.rkNavBarBlue,
   },
 })
 

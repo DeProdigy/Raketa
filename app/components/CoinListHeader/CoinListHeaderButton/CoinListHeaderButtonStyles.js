@@ -9,7 +9,7 @@ const coinListHeaderButtonStyles = StyleSheet.create({
     height: 36,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: Colors.rkLightBlue,
+    backgroundColor: Colors.rkDarkBlue,
     borderRadius: 36,
   },
   unselected: {
