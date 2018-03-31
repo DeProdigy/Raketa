@@ -3,14 +3,17 @@ import Colors from '../../shared/styles/Colors'
 
 const coinListHeaderStyles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 0,
     flexDirection: 'row',
-    justifyContent: 'space-between',
     alignItems: 'center',
+    justifyContent: 'space-between',
+    height: 36,
     width: Dimensions.get('window').width,
-    height: 68,
     paddingLeft: 16,
     paddingRight: 16,
+    paddingTop: 32,
+    paddingBottom: 32,
+    marginBottom: 4,
     backgroundColor: Colors.rkNavBarBlue,
   },
 })

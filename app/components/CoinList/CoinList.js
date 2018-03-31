@@ -88,15 +88,14 @@ export default class CoinList extends Component {
   render() {
     return (
       <View>
+        <CoinListHeader
+          buttons={this.buttons()}
+        />
         <FlatList
           contentContainerStyle={coinListStyles.container}
           data={this.state.coinMarketcapData}
           extraData={this.state}
-          ListHeaderComponent={(
-            <CoinListHeader
-              buttons={this.buttons()}
-            />
-        )}
+
           renderItem={({ item, index }) =>
             (<CoinListCell
               item={item}
