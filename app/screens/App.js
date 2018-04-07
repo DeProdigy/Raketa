@@ -12,18 +12,6 @@ const navigatorStyle = {
   navBarNoBorder: true,
 }
 
-const navigatorButtons = {
-  rightButtons: [
-    {
-      buttonColor: 'red',
-    },
-    {
-      icon: require('../assets/images/icon-settings.png'),
-      id: 'settings',
-    },
-  ],
-}
-
 Navigation.startTabBasedApp({
   tabs: [
     {
@@ -33,18 +21,6 @@ Navigation.startTabBasedApp({
       titleImage: require('../assets/images/logo-navbar.png'),
       label: 'Top 100',
       navigatorStyle,
-      navigatorButtons,
-    },
-    {
-      screen: 'MoversScreen',
-      icon: require('../assets/images/icon-movers.png'),
-      selectedIcon: require('../assets/images/icon-movers-selected.png'),
-      titleImage: require('../assets/images/logo-navbar.png'),
-      title: 'Movers',
-      label: 'Movers',
-      navigatorStyle,
-      navigatorButtons,
-
     },
     {
       screen: 'FavoritesScreen',
@@ -54,7 +30,6 @@ Navigation.startTabBasedApp({
       title: 'Favorites',
       label: 'Favorites',
       navigatorStyle,
-      navigatorButtons,
     },
   ],
   tabsStyle: {
