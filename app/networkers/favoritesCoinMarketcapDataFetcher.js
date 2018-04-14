@@ -20,7 +20,7 @@ favoritesCoinMarketcapDataFetcher = (component, favorites) => {
   })
 
   Promise.all(promises).then(() =>
-    component.setState({ coinMarketcapData: sortedList(data), coinMarketcapDataFetched: true })
+    component.setState({ coinMarketcapData: sortedList(data) })
   )
 }
 
