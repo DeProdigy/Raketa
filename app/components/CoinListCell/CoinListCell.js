@@ -76,6 +76,7 @@ export default class CoinListCell extends Component {
                   <CoinListCellFavoritesButton
                     id={this.props.item.id}
                     symbol={this.props.item.symbol}
+                    onFavorite={this.handleCellPress.bind(this)}
                    />
               }
             </View>
