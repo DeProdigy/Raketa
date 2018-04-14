@@ -6,27 +6,34 @@ import coinMarketcapDataFetcher from '../../networkers/coinMarketcapDataFetcher'
 
 export default class Top100Screen extends Component {
   state = {
-    coinMarketcapDataFetched: false,
     coinMarketcapData: [],
+    coinMarketcapDataSubset: 0,
   }
 
-  componentDidMount() {
+  componentWillMount() {
+    coinMarketcapDataFetcher(this)
+  }
+
+  handleInfiniteScroll() {
     coinMarketcapDataFetcher(this)
   }
 
   render() {
     let containerView
 
-    if (this.state.coinMarketcapDataFetched) {
-      containerView = (
-        <CoinList
-          coinMarketcapData={this.state.coinMarketcapData}
-        />)
-    } else {
+    if (this.state.coinMarketcapData.length == 0) {
       containerView = (
         <View>
           <Text>Loading...</Text>
-        </View>)
+        </View>
+      )
+    } else {
+      containerView = (
+        <CoinList
+          coinMarketcapData={this.state.coinMarketcapData}
+          handleInfiniteScroll={this.handleInfiniteScroll.bind(this)}
+        />
+      )
     }
 
     return (

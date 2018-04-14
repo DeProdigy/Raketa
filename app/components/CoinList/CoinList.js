@@ -93,16 +93,16 @@ export default class CoinList extends Component {
         />
         <FlatList
           contentContainerStyle={coinListStyles.container}
-          data={this.state.coinMarketcapData}
+          data={this.props.coinMarketcapData}
           extraData={this.state}
-
           renderItem={({ item, index }) =>
             (<CoinListCell
               item={item}
-              coinMarketcapData={this.state.coinMarketcapData}
-            />)
-                }
+              coinMarketcapData={this.props.coinMarketcapData}
+            />)}
           keyExtractor={(item, index) => item.id}
+          onEndReachedThreshold={0.6}
+          onEndReached={this.props.handleInfiniteScroll}
         />
       </View>
     )
