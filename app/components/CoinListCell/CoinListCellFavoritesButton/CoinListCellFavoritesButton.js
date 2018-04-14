@@ -17,10 +17,11 @@ export default class CoinListCellFavoritesButton extends Component {
 
   addToFavorites = () => {
     realm.write(() => {
-      realm.create('Favorites', {id: this.props.id, symbol: this.props.symbol});
+      realm.create('Favorites', {id: this.props.id, symbol: this.props.symbol})
     })
 
     this.setState({alreadyInFavorites: !this.state.alreadyInFavorites})
+    this.props.onFavorite()
   }
 
   removeFromFavorites = () => {
@@ -31,6 +32,7 @@ export default class CoinListCellFavoritesButton extends Component {
     })
 
     this.setState({alreadyInFavorites: !this.state.alreadyInFavorites})
+    this.props.onFavorite()
   }
 
   render() {
