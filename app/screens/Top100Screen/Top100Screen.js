@@ -5,9 +5,20 @@ import CoinList from '../../components/CoinList/CoinList'
 import coinMarketcapDataFetcher from '../../networkers/coinMarketcapDataFetcher'
 
 export default class Top100Screen extends Component {
-  state = {
-    coinMarketcapData: [],
-    coinMarketcapDataSubset: 0,
+  constructor (props) {
+    super(props)
+    this.state = {
+      coinMarketcapData: [],
+      coinMarketcapDataSubset: 0,
+    }
+
+    this.props.navigator.setOnNavigatorEvent(this._onNavigatorEvent.bind(this));
+  }
+
+  _onNavigatorEvent(event) {
+    if (event.id == 'bottomTabReselected') {
+      this.coinList.scrollToTop()
+    }
   }
 
   componentWillMount() {
@@ -30,6 +41,7 @@ export default class Top100Screen extends Component {
     } else {
       containerView = (
         <CoinList
+          ref={(instance) => { this.coinList = instance } }
           coinMarketcapData={this.state.coinMarketcapData}
           handleInfiniteScroll={this.handleInfiniteScroll.bind(this)}
         />

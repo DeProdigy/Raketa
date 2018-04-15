@@ -91,6 +91,10 @@ export default class CoinList extends Component {
     }
   }
 
+  scrollToTop() {
+    this.flatListRef.scrollToIndex({animated: true, index: 0});
+  }
+
   render() {
     return (
       <View>
@@ -98,6 +102,7 @@ export default class CoinList extends Component {
           buttons={this.buttons()}
         />
         <FlatList
+          ref={(instance) => { this.flatListRef = instance }}
           contentContainerStyle={coinListStyles.container}
           data={this.state.coinMarketcapData}
           extraData={this.state}
