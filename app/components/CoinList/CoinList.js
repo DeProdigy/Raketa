@@ -85,6 +85,16 @@ export default class CoinList extends Component {
     ]
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.coinMarketcapData !== this.state.coinMarketcapData) {
+      this.setState({ coinMarketcapData: nextProps.coinMarketcapData });
+    }
+  }
+
+  scrollToTop() {
+    this.flatListRef.scrollToIndex({animated: true, index: 0});
+  }
+
   render() {
     return (
       <View>
@@ -92,13 +102,14 @@ export default class CoinList extends Component {
           buttons={this.buttons()}
         />
         <FlatList
+          ref={(instance) => { this.flatListRef = instance }}
           contentContainerStyle={coinListStyles.container}
-          data={this.props.coinMarketcapData}
+          data={this.state.coinMarketcapData}
           extraData={this.state}
           renderItem={({ item, index }) =>
             (<CoinListCell
               item={item}
-              coinMarketcapData={this.props.coinMarketcapData}
+              coinMarketcapData={this.state.coinMarketcapData}
             />)}
           keyExtractor={(item, index) => item.id}
           onEndReachedThreshold={0.6}

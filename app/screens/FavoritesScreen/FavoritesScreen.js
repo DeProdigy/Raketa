@@ -7,8 +7,19 @@ import favoritesCoinMarketcapDataFetcher from '../../networkers/favoritesCoinMar
 import realm from '../../db/realm'
 
 export default class FavoritesScreen extends Component {
-  state = {
-    coinMarketcapData: [],
+  constructor (props) {
+    super(props)
+    this.state = {
+      coinMarketcapData: [],
+    }
+
+    this.props.navigator.setOnNavigatorEvent(this._onNavigatorEvent.bind(this));
+  }
+
+  _onNavigatorEvent(event) {
+    if (event.id == 'bottomTabReselected') {
+      this.coinList.scrollToTop()
+    }
   }
 
   componentDidMount() {
@@ -36,6 +47,7 @@ export default class FavoritesScreen extends Component {
     } else {
       containerView = (
         <CoinList
+          ref={(instance) => { this.coinList = instance } }
           coinMarketcapData={this.state.coinMarketcapData}
         />
       )
