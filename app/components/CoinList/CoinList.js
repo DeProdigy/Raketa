@@ -1,4 +1,3 @@
-// @flow
 import React, { Component } from 'react'
 import { View, FlatList } from 'react-native'
 import propTypes from 'prop-types'
