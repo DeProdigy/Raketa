@@ -8,62 +8,31 @@ const MIN_PULL_HEIGHT = -160
 export default class RefreshScrollView extends Component {
   state = {
     didRelease: false,
-    startLoad: false,
-    endLoad: false,
-    // offsetY: new Animated.Value(0),
   }
 
   onScrollEndDrag = (e) => {
     if (e.nativeEvent.contentOffset.y <= MIN_PULL_HEIGHT) {
       this.scrollview.getNode().scrollTo({ x: 0, y: -165, animated: true })
-      // this.props.scrollViewIsOffset(true)
       this.setState({
         didRelease: true,
       })
       this.onReleaseAnim()
-      // this.releaseRocketAnim()
+      this.animation.play(60, 180)
       setTimeout(() => {
         this.scrollview.getNode().scrollTo({ x: 0, y: 0, animated: true })
         this.setState({
           didRelease: false,
         })
 
-        // this.backgroundAnimProgress = new Animated.Value(0)
-
-        this.releaseAnimProgress = new Animated.Value(0.1667)
-        //
-        // this.loadingAnimProgress = new Animated.Value(0)
-        //
-        // this.doneAnimProgress = new Animated.Value(0)
-      }, 4000)
+        this.releaseAnimProgress = new Animated.Value(0.25)
+      }, 2800)
     }
   }
-
-
-  // backgroundAnim = () => {
-  //   Animated.timing(this.releaseAnimProgress, {
-  //     toValue: 1,
-  //     duration: 2000,
-  //     easing: Easing.linear,
-  //     useNativeDriver: true,
-  //   }).start((a) => {
-  //     // if (a.finished) {
-  //     //   this.setState({
-  //     //     didRelease: false,
-  //     //     startLoad: true,
-  //     //     endLoad: false,
-  //     //   })
-  //     //   this.onLoadingAnim()
-  //     // }
-  //   })
-  // }
-
-
 
   onReleaseAnim = () => {
     Animated.timing(this.releaseAnimProgress, {
       toValue: 1,
-      duration: 4000,
+      duration: 2800,
       easing: Easing.linear,
       useNativeDriver: true,
     }).start((a) => {
@@ -78,41 +47,6 @@ export default class RefreshScrollView extends Component {
     })
   }
 
-  onLoadingAnim = () => {
-    Animated.timing(this.loadingAnimProgress, {
-      toValue: 1,
-      duration: 1000,
-      easing: Easing.linear,
-      useNativeDriver: true,
-    }).start((a) => {
-      if (a.finished) {
-        this.setState({
-          didRelease: false,
-          startLoad: false,
-          endLoad: true,
-        })
-        this.onDoneAnim()
-      }
-    })
-  }
-
-  onDoneAnim = () => {
-    Animated.timing(this.doneAnimProgress, {
-      toValue: 1,
-      duration: 500,
-      easing: Easing.linear,
-      useNativeDriver: true,
-    }).start((a) => {
-      if (a.finished) {
-        this.setState({
-          didRelease: false,
-          startLoad: false,
-          endLoad: false,
-        })
-      }
-    })
-  }
-
   lottieStyle = {
     position: 'absolute',
     top: 0,
@@ -123,55 +57,39 @@ export default class RefreshScrollView extends Component {
 
   offsetY = new Animated.Value(0)
 
-  pullProgress = this.offsetY.interpolate({
+  bgPullProgress = this.offsetY.interpolate({
     inputRange: [MIN_PULL_HEIGHT, 0],
-    outputRange: [0.1667, 0],
+    outputRange: [0.3333, 0],
     extrapolate: 'clamp',
   })
 
-  releaseAnimProgress = new Animated.Value(0.1667)
+  rocketPullProgress = this.offsetY.interpolate({
+    inputRange: [MIN_PULL_HEIGHT, 0],
+    outputRange: [0.25, 0],
+    extrapolate: 'clamp',
+  })
 
-  loadingAnimProgress = new Animated.Value(0)
-
-  doneAnimProgress = new Animated.Value(0)
-
-  backgroundAnimProgress = new Animated.Value(0)
-
+  releaseAnimProgress = new Animated.Value(0.25)
 
   render() {
     return (
       <View>
         <View style={pullToRefreshFlatListStyles.lottieContainer}>
-          {/* <LottieView
+          <LottieView
+            ref={animation => {
+              this.animation = animation;
+            }}
             style={this.lottieStyle}
-            source={require('../../assets/animations/background-only.json')}
-            loop={false}
-            progress={this.backgroundAnimProgress}
-          /> */}
+            source={require('../../assets/animations/background.json')}
+            loop={true}
+            progress={this.state.didRelease ? 0 : this.bgPullProgress}
+          />
           <LottieView
             style={ this.lottieStyle }
-            source={require('../../assets/animations/rocket-only.json')}
+            source={require('../../assets/animations/rocket.json')}
             loop={false}
-            progress={this.state.didRelease ? this.releaseAnimProgress : this.pullProgress}
+            progress={this.state.didRelease ? this.releaseAnimProgress : this.rocketPullProgress}
           />
-          {/* <LottieView
-            style={[this.lottieStyle, this.state.didRelease ? { opacity: 1.0 } : { opacity: 0.0 }]}
-            source={require('../../assets/animations/release.json')}
-            loop={false}
-            progress={this.releaseAnimProgress}
-          />
-          <LottieView
-            style={[this.lottieStyle, this.state.startLoad ? { opacity: 1.0 } : { opacity: 0.0 }]}
-            source={require('../../assets/animations/loading.json')}
-            loop={true}
-            progress={this.loadingAnimProgress}
-          />
-          <LottieView
-            style={[this.lottieStyle, this.state.endLoad ? { opacity: 1.0 } : { opacity: 0.0 }]}
-            source={require('../../assets/animations/done.json')}
-            loop={false}
-            progress={this.doneAnimProgress}
-          /> */}
         </View>
         <Animated.ScrollView
           ref={c => (this.scrollview = c)}
@@ -188,7 +106,6 @@ export default class RefreshScrollView extends Component {
             ],
             {
               useNativeDriver: true,
-              // isInteraction: false,
             },
           )}
         />
