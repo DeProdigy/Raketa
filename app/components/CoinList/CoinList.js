@@ -1,10 +1,9 @@
-// @flow
 import React, { Component } from 'react'
-import { View, FlatList } from 'react-native'
+import { View } from 'react-native'
 import propTypes from 'prop-types'
 import CoinListCell from '../CoinListCell/CoinListCell'
 import CoinListHeader from '../CoinListHeader/CoinListHeader'
-import coinListStyles from './CoinListStyles'
+import PullToRefreshFlatList from '../PullToRefreshFlatList/PullToRefreshFlatList'
 
 export default class CoinList extends Component {
   state = {
@@ -13,6 +12,17 @@ export default class CoinList extends Component {
     sortByChangeAscending: false,
     sortByVolumeAscending: false,
   }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.coinMarketcapData !== this.state.coinMarketcapData) {
+      this.setState({ coinMarketcapData: nextProps.coinMarketcapData })
+    }
+  }
+
+  // scrollToTop() {
+  //   this.pullToRefreshFlatList.scrollToIndex({ animated: true, index: 0 })
+  // }
+
 
   sortByMarketCap() {
     let sortedList
@@ -78,21 +88,11 @@ export default class CoinList extends Component {
         isAscending: this.state.sortByChangeAscending,
       },
       {
-        title: "VOLUME",
+        title: 'VOLUME',
         sortFunction: this.sortByVolume.bind(this),
         isAscending: this.state.sortByVolumeAscending,
       },
     ]
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.coinMarketcapData !== this.state.coinMarketcapData) {
-      this.setState({ coinMarketcapData: nextProps.coinMarketcapData });
-    }
-  }
-
-  scrollToTop() {
-    this.flatListRef.scrollToIndex({animated: true, index: 0});
   }
 
   render() {
@@ -101,18 +101,14 @@ export default class CoinList extends Component {
         <CoinListHeader
           buttons={this.buttons()}
         />
-        <FlatList
-          ref={(instance) => { this.flatListRef = instance }}
-          contentContainerStyle={coinListStyles.container}
+        <PullToRefreshFlatList
+          // ref={(instance) => { this.pullToRefreshFlatList = instance }}
           data={this.state.coinMarketcapData}
-          extraData={this.state}
           renderItem={({ item, index }) =>
             (<CoinListCell
               item={item}
               coinMarketcapData={this.state.coinMarketcapData}
             />)}
-          keyExtractor={(item, index) => item.id}
-          onEndReachedThreshold={0.6}
           onEndReached={this.props.handleInfiniteScroll}
         />
       </View>

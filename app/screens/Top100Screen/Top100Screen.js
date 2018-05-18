@@ -12,12 +12,12 @@ export default class Top100Screen extends Component {
       coinMarketcapDataSubset: 0,
     }
 
-    this.props.navigator.setOnNavigatorEvent(this._onNavigatorEvent.bind(this));
+    this.props.navigator.setOnNavigatorEvent(this._onNavigatorEvent.bind(this))
   }
 
   _onNavigatorEvent(event) {
     if (event.id == 'bottomTabReselected') {
-      this.coinList.scrollToTop()
+      this.pullToRefreshFlatList.scrollToTop()
     }
   }
 
